@@ -1,2 +1,2 @@
-grabli
+grabli - open source, 
 ======
