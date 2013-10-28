@@ -1,0 +1,59 @@
+
+/**
+ *
+ */
+ 
+span.f-bu a.f-bu-bug 
+{
+	background-image: url(/images/icons/bugs/bug.png);
+	background-position: left center;
+	background-repeat: no-repeat;
+	
+	display: block;
+	padding: 3px 0px 3px 25px;
+			
+}
+
+span.f-bu a.f-bu-enhancement 
+{
+	display: block;
+	padding: 3px 0px 3px 20px;
+	background: url(/images/icons/bugs/enhancement.png);
+	background-position: left center;
+	background-repeat: no-repeat; 		
+}
+
+span.f-bu a.f-bu-task {
+	display: block;
+	padding: 3px 0px 3px 20px;
+	background: url(/images/icons/bugs/task.png);
+	background-position: left center;
+	background-repeat: no-repeat; 	
+}
+
+span.f-bu a.f-bu-featurerequest {
+	display: block;
+	padding: 3px 0px 3px 20px;
+	background: url(/images/icons/bugs/featurerequest.png);
+	background-position: left center;
+	background-repeat: no-repeat; 	
+}
+
+span.f-bu a.f-bu-other 
+{
+	display: block;
+	padding: 3px 0px 3px 20px;
+	background: url(/images/icons/bugs/other.png); 
+	background-position: left center;
+	background-repeat: no-repeat;
+}
+
+span.f-bu a.f-bu-idea 
+{
+	display: block;
+	padding: 3px 0px 3px 20px;
+	background: url(/images/icons/bugs/idea.png); 
+	background-position: left center;
+	background-repeat: no-repeat;
+}
+'bug','encantment','other','','
