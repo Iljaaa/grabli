@@ -43,6 +43,7 @@
 <a href="<?=$this->createUrl ('/project/'.$project->code.'/issues/'); ?>">All issues by project <?=$project->name ?></a>
 </div>
 
+<?php /*
 <p class="f-buttons">
 	Create: &nbsp;&nbsp;&nbsp;
 	<span class="f-bu">
@@ -76,7 +77,57 @@
 		<a href="<?=$this->createUrl('/bugs/create/'.$project->code.'/other'); ?>" class="f-bu-other">
 			Other</a>
 	</span>
-</p>
+</p> */ ?>
+
+
+<div>
+	<a href="#" class="issue-ico issue-ico-red" style="margin-left: 5px;">
+		<div><div>
+				B
+			</div></div>
+	</a>
+	<a href="#" class="issue-ico issue-ico-orange" style="margin-left: 5px;">
+		<div><div>
+				B
+			</div></div>
+	</a>
+	<a href="#" class="issue-ico issue-ico-purple" style="margin-left: 5px;">
+		<div><div>
+				C
+			</div></div>
+	</a>
+	<a href="#" class="issue-ico issue-ico-pr" style="margin-left: 5px;">
+		<div><div>
+				B
+			</div></div>
+	</a>
+	<a href="#" class="issue-ico issue-ico-navy" style="margin-left: 5px;">
+		<div><div>
+				B
+			</div></div>
+	</a>
+	<a href="#" class="issue-ico issue-ico-blue" style="margin-left: 5px;">
+		<div><div>
+				B
+			</div></div>
+	</a>
+	<a href="#" class="issue-ico issue-ico-light-blue" style="margin-left: 5px;">
+		<div><div>
+				B
+			</div></div>
+	</a>
+	<a href="#" class="issue-ico issue-ico-c3" style="margin-left: 5px;">
+		<div><div>
+				B
+			</div></div>
+	</a>
+	<a href="#" class="issue-ico issue-ico-c4" style="margin-left: 5px;">
+		<div><div>
+				B
+			</div></div>
+	</a>
+	<div style="clear: both;"></div>
+</div>
 
 <?php $bugs = $project->getBugs (); ?>
 <?php if (count($bugs) > 0) : ?>

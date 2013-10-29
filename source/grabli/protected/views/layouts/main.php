@@ -18,6 +18,17 @@
 
 <body>
 
+<div>
+
+	<a href="#" class="issue-ico issue-ico-red">
+		<div><div>
+				B
+		</div></div>
+	</a>
+
+</div>
+
+
 <div class="g">
 	<div class="g-row">
 		<div class="g-12">

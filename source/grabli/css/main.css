@@ -1,8 +1,128 @@
 
+
+a.issue-ico {
+    display: table;
+    height: 50px;
+    width: 50px;
+    overflow: hidden;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 24px;
+
+    font-family: Tahoma;
+    text-shadow: 1px 1px 2px black;
+    float: left;
+}
+
+a.issue-ico div {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+a.issue-ico div div {
+    text-align: center;
+    display: block;
+}
+
+
+
+
+
+.issue-ico-red {
+    background-color: #BA1D48;
+    color: white;
+}
+
+.issue-ico-red:hover {
+    color: white;
+}
+
+
+.issue-ico-orange {
+    background-color: #F27501;
+    color: white;
+}
+
+.issue-ico-orange:hover {
+    color: white;
+}
+
+
+.issue-ico-purple {
+    background-color: #651E4A;
+    color: white;
+}
+
+.issue-ico-purple:hover {
+    color: white;
+}
+
+
+.issue-ico-pr {
+    background-color: #369B17;
+    color: white;
+}
+
+.issue-ico-pr:hover {
+    color: white;
+}
+
+
+
+.issue-ico-navy {
+    background-color: #5E3ABB;
+    color: white;
+}
+
+.issue-ico-navy:hover {
+    color: white;
+}
+
+
+.issue-ico-blue {
+    background-color: #1882B6;
+    color: white;
+}
+
+.issue-ico-blue:hover {
+    color: white;
+}
+
+
+.issue-ico-light-blue {
+    background-color: #1CB7CB;
+    color: white;
+}
+
+.issue-ico-light-blue:hover {
+    color: white;
+}
+
+
+.issue-ico-c3{
+    background-color: #01C593;
+    color: white;
+}
+
+.issue-ico-c3:hover {
+    color: white;
+}
+
+
+.issue-ico-c4 {
+    background-color: #8D1D8D;
+    color: white;
+}
+
+.issue-ico-c4:hover {
+    color: white;
+}
+
+
+
 /**
  *
- */
- 
+
 span.f-bu a.f-bu-bug 
 {
 	background-image: url(/images/icons/bugs/bug.png);
@@ -55,5 +175,4 @@ span.f-bu a.f-bu-idea
 	background: url(/images/icons/bugs/idea.png); 
 	background-position: left center;
 	background-repeat: no-repeat;
-}
-'bug','encantment','other','','
+} */

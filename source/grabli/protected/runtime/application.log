@@ -10239,3 +10239,336 @@ Stack trace:
 REQUEST_URI=/images/icons/bugs/.png
 HTTP_REFERER=http://grabli/index.php/project/lodba
 ---
+2013/10/28 12:56:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "user".' in /var/www/grabli2/source/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/grabli2/source/framework/web/CWebApplication.php(141): CWebApplication->runController('user')
+#1 /var/www/grabli2/source/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/grabli2/source/grabli/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/user
+HTTP_REFERER=http://grabli/index.php
+---
+2013/10/28 12:56:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "user".' in /var/www/grabli2/source/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/grabli2/source/framework/web/CWebApplication.php(141): CWebApplication->runController('user')
+#1 /var/www/grabli2/source/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/grabli2/source/grabli/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/user
+HTTP_REFERER=http://grabli/user
+---
+2013/10/28 12:56:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/icons/bugs/.png".' in /var/www/grabli2/source/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/grabli2/source/framework/web/CWebApplication.php(141): CWebApplication->runController('images/icons/bu...')
+#1 /var/www/grabli2/source/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/grabli2/source/grabli/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/icons/bugs/.png
+HTTP_REFERER=http://grabli/index.php/user/1
+---
+2013/10/28 12:56:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/icons/bugs/.png".' in /var/www/grabli2/source/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/grabli2/source/framework/web/CWebApplication.php(141): CWebApplication->runController('images/icons/bu...')
+#1 /var/www/grabli2/source/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/grabli2/source/grabli/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/icons/bugs/.png
+HTTP_REFERER=http://grabli/index.php/user/1
+---
+2013/10/28 12:56:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/icons/bugs/.png".' in /var/www/grabli2/source/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/grabli2/source/framework/web/CWebApplication.php(141): CWebApplication->runController('images/icons/bu...')
+#1 /var/www/grabli2/source/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/grabli2/source/grabli/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/icons/bugs/.png
+HTTP_REFERER=http://grabli/index.php/project/lodba
+---
+2013/10/28 12:56:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/icons/bugs/.png".' in /var/www/grabli2/source/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/grabli2/source/framework/web/CWebApplication.php(141): CWebApplication->runController('images/icons/bu...')
+#1 /var/www/grabli2/source/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/grabli2/source/grabli/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/icons/bugs/.png
+HTTP_REFERER=http://grabli/index.php/user/1
+---
+2013/10/28 12:56:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/icons/bugs/.png".' in /var/www/grabli2/source/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/grabli2/source/framework/web/CWebApplication.php(141): CWebApplication->runController('images/icons/bu...')
+#1 /var/www/grabli2/source/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/grabli2/source/grabli/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/icons/bugs/.png
+HTTP_REFERER=http://grabli/index.php/user/1
+---
+2013/10/28 12:56:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/icons/bugs/.png".' in /var/www/grabli2/source/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/grabli2/source/framework/web/CWebApplication.php(141): CWebApplication->runController('images/icons/bu...')
+#1 /var/www/grabli2/source/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/grabli2/source/grabli/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/icons/bugs/.png
+HTTP_REFERER=http://grabli/index.php/project/lodba
+---
+2013/10/28 12:56:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/icons/bugs/.png".' in /var/www/grabli2/source/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/grabli2/source/framework/web/CWebApplication.php(141): CWebApplication->runController('images/icons/bu...')
+#1 /var/www/grabli2/source/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/grabli2/source/grabli/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/icons/bugs/.png
+HTTP_REFERER=http://grabli/index.php/project/lodba
+---
+2013/10/28 12:56:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/icons/bugs/.png".' in /var/www/grabli2/source/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/grabli2/source/framework/web/CWebApplication.php(141): CWebApplication->runController('images/icons/bu...')
+#1 /var/www/grabli2/source/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/grabli2/source/grabli/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/icons/bugs/.png
+HTTP_REFERER=http://grabli/index.php/project/grabli
+---
+2013/10/28 12:56:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/icons/bugs/.png".' in /var/www/grabli2/source/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/grabli2/source/framework/web/CWebApplication.php(141): CWebApplication->runController('images/icons/bu...')
+#1 /var/www/grabli2/source/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/grabli2/source/grabli/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/icons/bugs/.png
+HTTP_REFERER=http://grabli/index.php/project/grabli
+---
+2013/10/28 13:04:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/icons/bugs/.png".' in /var/www/grabli2/source/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/grabli2/source/framework/web/CWebApplication.php(141): CWebApplication->runController('images/icons/bu...')
+#1 /var/www/grabli2/source/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/grabli2/source/grabli/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/icons/bugs/.png
+HTTP_REFERER=http://grabli/index.php/user/1
+---
+2013/10/28 13:04:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/icons/bugs/.png".' in /var/www/grabli2/source/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/grabli2/source/framework/web/CWebApplication.php(141): CWebApplication->runController('images/icons/bu...')
+#1 /var/www/grabli2/source/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/grabli2/source/grabli/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/icons/bugs/.png
+HTTP_REFERER=http://grabli/index.php/user/1
+---
+2013/10/29 10:50:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/icons/bugs/.png".' in /var/www/grabli2/source/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/grabli2/source/framework/web/CWebApplication.php(141): CWebApplication->runController('images/icons/bu...')
+#1 /var/www/grabli2/source/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/grabli2/source/grabli/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/icons/bugs/.png
+HTTP_REFERER=http://grabli/index.php/project/lodba
+---
+2013/10/29 10:50:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/icons/bugs/.png".' in /var/www/grabli2/source/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/grabli2/source/framework/web/CWebApplication.php(141): CWebApplication->runController('images/icons/bu...')
+#1 /var/www/grabli2/source/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/grabli2/source/grabli/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/icons/bugs/.png
+HTTP_REFERER=http://grabli/index.php/project/lodba
+---
+2013/10/29 10:50:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/icons/bugs/.png".' in /var/www/grabli2/source/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/grabli2/source/framework/web/CWebApplication.php(141): CWebApplication->runController('images/icons/bu...')
+#1 /var/www/grabli2/source/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/grabli2/source/grabli/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/icons/bugs/.png
+HTTP_REFERER=http://grabli/index.php/project/lodba
+---
+2013/10/29 10:50:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/icons/bugs/.png".' in /var/www/grabli2/source/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/grabli2/source/framework/web/CWebApplication.php(141): CWebApplication->runController('images/icons/bu...')
+#1 /var/www/grabli2/source/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/grabli2/source/grabli/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/icons/bugs/.png
+HTTP_REFERER=http://grabli/index.php/project/lodba
+---
+2013/10/29 10:50:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/icons/bugs/.png".' in /var/www/grabli2/source/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/grabli2/source/framework/web/CWebApplication.php(141): CWebApplication->runController('images/icons/bu...')
+#1 /var/www/grabli2/source/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/grabli2/source/grabli/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/icons/bugs/.png
+HTTP_REFERER=http://grabli/index.php/project/lodba
+---
+2013/10/29 10:51:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/icons/bugs/.png".' in /var/www/grabli2/source/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/grabli2/source/framework/web/CWebApplication.php(141): CWebApplication->runController('images/icons/bu...')
+#1 /var/www/grabli2/source/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/grabli2/source/grabli/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/icons/bugs/.png
+HTTP_REFERER=http://grabli/index.php/project/lodba
+---
+2013/10/29 10:51:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/icons/bugs/.png".' in /var/www/grabli2/source/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/grabli2/source/framework/web/CWebApplication.php(141): CWebApplication->runController('images/icons/bu...')
+#1 /var/www/grabli2/source/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/grabli2/source/grabli/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/icons/bugs/.png
+HTTP_REFERER=http://grabli/index.php/project/lodba
+---
+2013/10/29 10:51:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/icons/bugs/.png".' in /var/www/grabli2/source/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/grabli2/source/framework/web/CWebApplication.php(141): CWebApplication->runController('images/icons/bu...')
+#1 /var/www/grabli2/source/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/grabli2/source/grabli/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/icons/bugs/.png
+HTTP_REFERER=http://grabli/index.php/project/lodba
+---
+2013/10/29 10:51:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/icons/bugs/.png".' in /var/www/grabli2/source/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/grabli2/source/framework/web/CWebApplication.php(141): CWebApplication->runController('images/icons/bu...')
+#1 /var/www/grabli2/source/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/grabli2/source/grabli/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/icons/bugs/.png
+HTTP_REFERER=http://grabli/index.php/project/lodba
+---
+2013/10/29 10:51:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/icons/bugs/.png".' in /var/www/grabli2/source/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/grabli2/source/framework/web/CWebApplication.php(141): CWebApplication->runController('images/icons/bu...')
+#1 /var/www/grabli2/source/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/grabli2/source/grabli/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/icons/bugs/.png
+HTTP_REFERER=http://grabli/index.php/project/lodba
+---
+2013/10/29 10:51:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/icons/bugs/.png".' in /var/www/grabli2/source/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/grabli2/source/framework/web/CWebApplication.php(141): CWebApplication->runController('images/icons/bu...')
+#1 /var/www/grabli2/source/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/grabli2/source/grabli/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/icons/bugs/.png
+HTTP_REFERER=http://grabli/index.php/project/lodba
+---
+2013/10/29 10:56:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/icons/bugs/.png".' in /var/www/grabli2/source/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/grabli2/source/framework/web/CWebApplication.php(141): CWebApplication->runController('images/icons/bu...')
+#1 /var/www/grabli2/source/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/grabli2/source/grabli/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/icons/bugs/.png
+HTTP_REFERER=http://grabli/index.php/project/lodba
+---
+2013/10/29 11:05:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/icons/bugs/.png".' in /var/www/grabli2/source/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/grabli2/source/framework/web/CWebApplication.php(141): CWebApplication->runController('images/icons/bu...')
+#1 /var/www/grabli2/source/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/grabli2/source/grabli/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/icons/bugs/.png
+HTTP_REFERER=http://grabli/index.php/project/lodba
+---
+2013/10/29 11:05:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/icons/bugs/.png".' in /var/www/grabli2/source/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/grabli2/source/framework/web/CWebApplication.php(141): CWebApplication->runController('images/icons/bu...')
+#1 /var/www/grabli2/source/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/grabli2/source/grabli/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/icons/bugs/.png
+HTTP_REFERER=http://grabli/index.php/project/lodba
+---
+2013/10/29 11:06:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/icons/bugs/.png".' in /var/www/grabli2/source/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/grabli2/source/framework/web/CWebApplication.php(141): CWebApplication->runController('images/icons/bu...')
+#1 /var/www/grabli2/source/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/grabli2/source/grabli/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/icons/bugs/.png
+HTTP_REFERER=http://grabli/index.php/project/lodba
+---
+2013/10/29 11:06:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/icons/bugs/.png".' in /var/www/grabli2/source/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/grabli2/source/framework/web/CWebApplication.php(141): CWebApplication->runController('images/icons/bu...')
+#1 /var/www/grabli2/source/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/grabli2/source/grabli/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/icons/bugs/.png
+HTTP_REFERER=http://grabli/index.php/project/lodba
+---
+2013/10/29 11:06:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/icons/bugs/.png".' in /var/www/grabli2/source/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/grabli2/source/framework/web/CWebApplication.php(141): CWebApplication->runController('images/icons/bu...')
+#1 /var/www/grabli2/source/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/grabli2/source/grabli/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/icons/bugs/.png
+HTTP_REFERER=http://grabli/index.php/project/lodba
+---
+2013/10/29 11:06:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/icons/bugs/.png".' in /var/www/grabli2/source/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/grabli2/source/framework/web/CWebApplication.php(141): CWebApplication->runController('images/icons/bu...')
+#1 /var/www/grabli2/source/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/grabli2/source/grabli/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/icons/bugs/.png
+HTTP_REFERER=http://grabli/index.php/project/lodba
+---
+2013/10/29 11:07:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/icons/bugs/.png".' in /var/www/grabli2/source/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/grabli2/source/framework/web/CWebApplication.php(141): CWebApplication->runController('images/icons/bu...')
+#1 /var/www/grabli2/source/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/grabli2/source/grabli/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/icons/bugs/.png
+HTTP_REFERER=http://grabli/index.php/project/lodba
+---
+2013/10/29 11:07:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/icons/bugs/.png".' in /var/www/grabli2/source/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/grabli2/source/framework/web/CWebApplication.php(141): CWebApplication->runController('images/icons/bu...')
+#1 /var/www/grabli2/source/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/grabli2/source/grabli/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/icons/bugs/.png
+HTTP_REFERER=http://grabli/index.php/project/lodba
+---
+2013/10/29 11:08:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/icons/bugs/.png".' in /var/www/grabli2/source/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/grabli2/source/framework/web/CWebApplication.php(141): CWebApplication->runController('images/icons/bu...')
+#1 /var/www/grabli2/source/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/grabli2/source/grabli/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/icons/bugs/.png
+HTTP_REFERER=http://grabli/index.php/project/lodba
+---
+2013/10/29 11:08:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/icons/bugs/.png".' in /var/www/grabli2/source/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/grabli2/source/framework/web/CWebApplication.php(141): CWebApplication->runController('images/icons/bu...')
+#1 /var/www/grabli2/source/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/grabli2/source/grabli/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/icons/bugs/.png
+HTTP_REFERER=http://grabli/index.php/project/lodba
+---
+2013/10/29 11:08:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/icons/bugs/.png".' in /var/www/grabli2/source/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/grabli2/source/framework/web/CWebApplication.php(141): CWebApplication->runController('images/icons/bu...')
+#1 /var/www/grabli2/source/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/grabli2/source/grabli/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/icons/bugs/.png
+HTTP_REFERER=http://grabli/index.php/project/lodba
+---
+2013/10/29 11:08:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/icons/bugs/.png".' in /var/www/grabli2/source/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/grabli2/source/framework/web/CWebApplication.php(141): CWebApplication->runController('images/icons/bu...')
+#1 /var/www/grabli2/source/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /var/www/grabli2/source/grabli/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/icons/bugs/.png
+HTTP_REFERER=http://grabli/index.php/project/lodba
+---
