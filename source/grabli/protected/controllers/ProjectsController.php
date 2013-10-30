@@ -82,7 +82,13 @@ class ProjectsController extends Controller
 
 		$this->render('user', $data);
 	}
-	
+
+	/**
+	 * Отображение проекта
+	 *
+	 * @param $code
+	 * @throws CHttpException
+	 */
 	public function actionView ($code) 
 	{
 		if (yii::app()->user->isGuest) {
@@ -92,12 +98,10 @@ class ProjectsController extends Controller
 		$project = Project::findByCode($code);
 		
 		if ($project == null) {
-			throw new CHttpException('404 project whitch code "'.$code.'" not found');
+			throw new CHttpException('404 project witch code "'.$code.'" not found');
 		}
-		
-		
+
 		$this->pageTitle = $project->name;
-		
 		$this->breadcrumbs['Проект: '.$project->name] = array('/project/'.$project->code); 
 		
 		$this->render('view', array('project'=>$project));

@@ -18,7 +18,7 @@ class Bug extends CActiveRecord
     	return 'id';
     }
     
-    public function findByPk($pk, $condirion = '', $params = '')
+    public function findByPk($pk, $condition = '', $params = '')
     {
     	$criteria = new CDbCriteria();
     	$criteria->addCondition("id = :id");
@@ -26,8 +26,15 @@ class Bug extends CActiveRecord
     
     	return Bug::model()->find ($criteria);
     }
-    
-    public static function getNextFreeNumberByProject ($projectId) 
+
+	/**
+	 * Получаем следующий свободный номер
+	 * для бага по проекту
+	 *
+	 * @param $projectId
+	 * @return array|int|mixed|null
+	 */
+	public static function getNextFreeNumberByProject ($projectId)
     {
     	$nomber = 1;
     	
@@ -43,8 +50,15 @@ class Bug extends CActiveRecord
     
     	return $nomber;
     }
-    
-    public static function getBugByProjectAndNomber ($project_id, $nomber) 
+
+	/**
+	 * Получаем бар по коду проекта и номеру
+	 *
+	 * @param $project_id
+	 * @param $nomber
+	 * @return array|CActiveRecord|mixed|null
+	 */
+	public static function getBugByProjectAndNomber ($project_id, $nomber)
     {
     	$criteria = new CDbCriteria();
     	$criteria->addCondition('project_id = :pid');

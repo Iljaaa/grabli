@@ -39,15 +39,21 @@
 <hr />
 
 <h3 style="margin-bottom: 0px; paddign-bottom: 0px;">Issues</h3>
+
 <div style="margin-bottom: 10px;">
-<a href="<?=$this->createUrl ('/project/'.$project->code.'/issues/'); ?>">All issues by project <?=$project->name ?></a>
+
+	<a href="<?=$this->createUrl ('/project/'.$project->code.'/issues/'); ?>">
+		All issues for project "<?=$project->name ?>"
+	</a>
+
+	<input type="button" name="createIssue" onclick="openCreateIssueWindow()" value="Create issue"  style="margin-left: 5px;" />
+
 </div>
 
-<input type="button" name="createIssue" onclick="openCreateIssueWindow()" value="Create issue" />
 <?=$this->renderPartial ('/projects/view/create_issue', array('project' => $project)) ?>
 
 
-<?php $bugs = $project->getBugs (); ?>
+<?php $bugs = $project->getOpenBugs (); ?>
 <?php if (count($bugs) > 0) : ?>
 <?=$this->renderPartial('/bugs/list', array ('bugs' => $bugs)); ?>
 <?php else : ?>

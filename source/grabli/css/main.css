@@ -32,6 +32,10 @@
     color: white;
 }
 
+a.issue-ico {
+    color: white;
+}
+
 .issue-ico div {
     display: table-cell;
     vertical-align: middle;

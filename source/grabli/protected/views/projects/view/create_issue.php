@@ -22,7 +22,7 @@
 </style>
 
 
-<div id="create-issue-window" class="popup-window">
+<div id="create-issue-window" class="popup-window" style="display: none;">
 	<h1 style="text-align: center;">Create issue</h1>
 
 	<div>

@@ -167,15 +167,34 @@ class Project extends CActiveRecord
 		
 		return Bug::model()->findAll($criteria);
 	}
-	
-	
-	
+
+
+	/**
+	 * Получаем все баги по проекту
+	 *
+	 * @return array|CActiveRecord|mixed|null
+	 */
 	public function getBugs ()
 	{
 		$criteria = new CDbCriteria();
 		$criteria->addCondition("project_id = :id");
 		$criteria->params = array (':id' => $this->id);
-		
+
+		return Bug::model()->findAll($criteria);
+	}
+
+	/**
+	 * Получаем только открытые баги для проекта
+	 *
+	 * @return array|CActiveRecord|mixed|null
+	 */
+	public function getOpenBugs ()
+	{
+		$criteria = new CDbCriteria();
+		$criteria->addCondition("project_id = :id");
+		$criteria->addCondition("steps_id <> 6");
+		$criteria->params = array (':id' => $this->id);
+
 		return Bug::model()->findAll($criteria);
 	}
 	
