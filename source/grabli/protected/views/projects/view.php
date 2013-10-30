@@ -129,6 +129,10 @@
 	<div style="clear: both;"></div>
 </div>
 
+<input type="button" name="createIssue" onclick="openCreateIssueWindow()" value="Create issue" />
+<?=$this->renderPartial ('/projects/view/create_issue') ?>
+
+
 <?php $bugs = $project->getBugs (); ?>
 <?php if (count($bugs) > 0) : ?>
 <?=$this->renderPartial('/bugs/list', array ('bugs' => $bugs)); ?>
