@@ -17,7 +17,7 @@ return array(
 		'application.models.*',
 		'application.components.*',
 		'application.forms.*',
-		'application.widgets.*'
+		'application.widgets.*',
 	),
 
 	'modules'=>array(
@@ -89,6 +89,18 @@ return array(
 				),
 				*/
 			),
+		),
+
+		'image'=>array(
+			'class'=>'application.extensions.image.CImageComponent',
+			// GD or ImageMagick
+			'driver'=>'GD',
+			// ImageMagick setup path
+			// 'params'=>array('directory'=>'/opt/local/bin'),
+		),
+
+		'firephp'	=> array (
+			'class'=>'application.extensions.firephp.FirePHP',
 		),
 	),
 

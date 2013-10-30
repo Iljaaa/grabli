@@ -58,6 +58,15 @@ class BugAddForm extends CFormModel
 		);
 	}
 
+
+	public function attributeLabels() {
+		return array (
+			'posled'	=> 'Reproduction steps'
+		);
+	}
+
+
+
 	/**
 	 * Declares customized attribute labels.
 	 * If not declared here, an attribute would have a label that is
@@ -77,7 +86,7 @@ class BugAddForm extends CFormModel
 		if (!$this->isPosledRequired()) return;
 
 		if ($this->posled == '') {
-			$this->addError('posled', 'Последовательность не указана');
+			$this->addError('posled', 'Reproduction steps not setted');
 			return false;
 		}
 		

@@ -1,6 +1,24 @@
+/*
+
+Всплывающие окна
+
+*/
 
 
-a.issue-ico {
+.popup-window {
+    background-color: white;
+    padding: 15px;
+}
+
+
+
+/*
+
+Иконки
+
+*/
+
+.issue-ico {
     display: table;
     height: 50px;
     width: 50px;
@@ -11,23 +29,28 @@ a.issue-ico {
 
     font-family: Tahoma;
     text-shadow: 1px 1px 2px black;
-    float: left;
+    color: white;
 }
 
-a.issue-ico div {
+.issue-ico div {
     display: table-cell;
     vertical-align: middle;
 }
 
-a.issue-ico div div {
+.issue-ico div div {
     text-align: center;
     display: block;
 }
 
+/*             */
+.issue-ico-bug {
+    background-color: #BA1D48;
+    color: white;
+}
 
 
 
-
+/*       */
 .issue-ico-red {
     background-color: #BA1D48;
     color: white;
@@ -118,6 +141,14 @@ a.issue-ico div div {
     color: white;
 }
 
+.issue-ico-gray {
+    background-color: gray;
+    color: white;
+}
+
+.issue-ico-gray:hover {
+    color: white;
+}
 
 
 /**

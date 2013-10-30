@@ -6,7 +6,7 @@
  */
 
 popup = {
-	backgroundImageUrl	: "/themes/eng/images/gray.png",
+	backgroundImageUrl	: "/images/gray.png",
 
 	show		: function (selector) {},
 	showImage	: function ( obj ) {},
