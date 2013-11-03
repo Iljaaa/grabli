@@ -128,7 +128,7 @@ class Project extends CActiveRecord
 	
 	
 	
-	public function bugsCount () 
+	public function issuesCount ()
 	{
 		$criteria = new CDbCriteria();
 		$criteria->addCondition("project_id = :id");
@@ -151,6 +151,21 @@ class Project extends CActiveRecord
 		// $criteria->params = array (':id' => $this->id, ':userId' => $userId);
 		$criteria->params = array (':id' => $this->id, ':active' => 6);
 		
+		return Bug::model()->count($criteria);
+	}
+
+	/**
+	 * Количество закрытых багов
+	 *
+	 * @param unknown_type $userId
+	 */
+	public function getClosedIssuesCount ()
+	{
+		$criteria = new CDbCriteria();
+		$criteria->addCondition("project_id = :id");
+		$criteria->addCondition('steps_id = 6');
+		$criteria->params = array (':id' => $this->id);
+
 		return Bug::model()->count($criteria);
 	}
 	

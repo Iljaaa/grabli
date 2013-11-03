@@ -35,6 +35,46 @@
 	</div>
 </div>
 
+<div class="g-row">
+
+	<div class="g-6">
+		<table style="margin-top: 0;">
+			<thead>
+				<tr>
+					<th></th>
+					<th style="width: 50px; text-align: center;">open</th>
+					<th style="width: 50px; text-align: center;">all</th>
+					<th style="width: 50px; text-align: center;"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						Issues
+					</td>
+					<td style="text-align: center;">
+						<?php
+							$closed = $project->getClosedIssuesCount();
+							$all = $project->issuesCount();
+							echo ($all - $closed);
+						?>
+					</td>
+					<td style="text-align: center;">
+						<?=$all; ?>
+					</td>
+					<td style="text-align: center; font-weight: bold;">
+						<?php
+						echo ' '.number_format((($closed/$all) * 100), 1);
+						echo '%';
+						?>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+</div>
+
 <hr />
 
 <h2 style="margin-bottom: 0px; paddign-bottom: 0px;">Issues</h2>

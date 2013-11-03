@@ -291,9 +291,7 @@ class IssuesController extends Controller
 				
 				$item = new Bug();
 				$item->added_date = time();
-				$item->updateByAddModel ($model);	
-
-				$item = Bug::model()->findByPk ($item->id);
+				$item->updateByAddModel ($model);
 				
 				$item->save();
 

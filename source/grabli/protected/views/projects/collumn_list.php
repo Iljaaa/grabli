@@ -10,7 +10,7 @@
 		</div>
 		
 		<div style="float: left; background-image: url(/images/icons/bug.png); padding-left: 25px; background-repeat: no-repeat; background-position: 0; margin-left: 25px;">
-			<b style="font-size: 16px;" title="active/all"><?=$p->getActiveBugsCount(); ?>/<?=$p->bugsCount() ?></b>
+			<b style="font-size: 16px;" title="active/all"><?=$p->getActiveBugsCount(); ?>/<?=$p->issuesCount() ?></b>
 		</div>
 		
 		<br style="clear: both" />
