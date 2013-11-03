@@ -59,7 +59,10 @@ a.issue-ico {
     color: white;
 }
 
-
+.issue-ico-featurerequest {
+    background-color: #F27501;
+    color: white;
+}
 
 /*       */
 .issue-ico-red {

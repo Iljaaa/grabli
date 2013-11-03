@@ -3,6 +3,13 @@
 
 class Bug extends CActiveRecord
 {
+	/**
+	 *
+	 *
+	 * @var string
+	 */
+	private $primaryKey = 'id';
+
     public static function model($className=__CLASS__)
     {
         return parent::model($className);
@@ -11,20 +18,6 @@ class Bug extends CActiveRecord
     public function tableName()
     {
         return 'bugs';
-    }
-    
-    public function getPrimaryKey() {
-    	$pk = parent::getPrimaryKey();
-    	return 'id';
-    }
-    
-    public function findByPk($pk, $condition = '', $params = '')
-    {
-    	$criteria = new CDbCriteria();
-    	$criteria->addCondition("id = :id");
-    	$criteria->params = array (':id' => $pk);
-    
-    	return Bug::model()->find ($criteria);
     }
 
 	/**
@@ -137,17 +130,12 @@ class Bug extends CActiveRecord
 		
 		$this->owner_id		= $model->owner_id;
 		
-		$this->title		= $model->name;
+		$this->title		= $model->title;
 		$this->type			= $model->type;
 		$this->description	= $model->description;
 		$this->rep_steps	= $model->rep_steps;
 		
 		$this->nomber		= $model->nomber;
-		
-		$this->save();
-		
-		
-		$this->createSystemComment (ucfirst($this->type).' created');
 
     	return $this;
     }

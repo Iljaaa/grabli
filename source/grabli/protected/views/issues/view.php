@@ -1,11 +1,19 @@
-<h1 style="font-weight: normal;">
-<?=ucfirst($bug->type) ?> #<b><?=$bug->nomber ?></b> : "<b><?=$bug->title ?></b>"
- for project : <?=$project->name ?>
-</h1>
+<div>
+	<div class="issue-ico issue-ico-<?=$bug->type ?>" style="float: left; margin-right: 10px; height: 50px;">
+		<div><div><?=ucfirst(IssueHelper::getIssueAbbreviation($bug->type)); ?></div></div>
+	</div>
+
+	<div class="g-8" style="float:left;">
+		<h2 style="padding: 0; margin: 0; margin-top: -7px;"><b><?=$bug->title ?></b></h2>
+		<div><?=ucfirst(IssueHelper::getIssueNameByType($bug->type)); ?> Issue <b>#<?=$bug->nomber ?></b> for project : <?=$project->name ?></div>
+	</div>
+
+	<div style="clear: both;"></div>
+</div>
 
 <?php $flash = yii::app()->user->getFlash('good_news'); ?>
 <?php if ($flash != '') : ?>
-<div class="f-message f-message-success"><?=$flash ?></div>
+<div class="f-message f-message-success" style="margin-top: 15px;"><?=$flash ?></div>
 <?php endif; ?>
 
 
@@ -69,6 +77,16 @@
 					<?php endif; ?>
 				</td>
 			</tr>
+			<tr>
+				<td>Milestoun :</td>
+				<td>
+					<?php if ($bug->dedline_date == 0) : ?>
+						<i>not setted</i>
+					<?php else : ?>
+						<?=date('d.m.Y H.s', $bug->dedline_date); ?>
+					<?php endif; ?>
+				</td>
+			</tr>
 	
 		</tbody>
 	
@@ -84,13 +102,13 @@
 
 <div class="f-message">
 	<h5>Описание</h5>
-	<?=$bug->description ?>
+	<?=nl2br($bug->description); ?>
 </div>
 
 <?php if ($bug->type == "bug") : ?>
 <div class="f-message">
 	<h5>Последовательность действий:</h5> 
-	<?=$bug->rep_steps ?>
+	<?=nl2br($bug->rep_steps); ?>
 </div>
 <?php endif; ?>
 

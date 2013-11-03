@@ -4,11 +4,13 @@ class IssueHelper {
 
 
 	private static $_issuesNames = array (
-		'bug'	=> 'bug',
+		'bug'				=> 'bug',
+		'featurerequest'	=> 'feature request',
 	);
 
 	private static $_issuesAbbreviation = array (
-		'bug'	=> 'b',
+		'bug'				=> 'b',
+		'featurerequest'	=> 'fr',
 	);
 
 

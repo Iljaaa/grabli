@@ -53,10 +53,11 @@ return array(
 				
 				'user/<id:\d>' 				=> 'users/view', 
 					
-				// 'bugs/create/<type:\w+>'					=> 'bugs/create',
-				'bug/<projectCode:\w+>/<nomber:\w+>'		=> 'bugs/view',
-				'bugbyid/<id:\d+>'							=> 'bugs/viewbyid',
-				'bugs/create/<projectCode:\w+>/<type:\w+>' 	=> 'bugs/create',
+				// 'issues/create/<type:\w+>'					=> 'issues/create',
+				'issue/<projectCode:\w+>/<nomber:\w+>'		=> 'issues/view',
+				'issue/<projectCode:\w+>/<number:\w+>/edit'	=> 'issues/edit',
+				'issuebyid/<id:\d+>'						=> 'issues/viewbyid',
+				'issue/create/<projectCode:\w+>/<type:\w+>' => 'issues/create',
 					
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
 				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',

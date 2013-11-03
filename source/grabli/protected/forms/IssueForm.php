@@ -8,7 +8,7 @@ class IssueForm extends CFormModel
 	public $step_id;
 	public $project_id;
 	
-	public $name;
+	public $title;
 	public $owner_id;
 	public $assigned_to;
 	public $type;
@@ -45,8 +45,8 @@ class IssueForm extends CFormModel
 			array ('type', 'length', 'min'=>1, 'tooShort'=>'Type setten wrong'),
 				
 			// name, email, subject and body are required
-			array ('name', 'required', 'message' => 'Name not setted'),
-			array ('name', 'length', 'max'=>128, 'tooLong'=>'Name to long'),
+			array ('title', 'required', 'message' => 'Name not setted'),
+			array ('title', 'length', 'max'=>128, 'tooLong'=>'Name to long'),
 				
 			array ('description', 'required', 'message' => 'Descrption not setted'),
 			array ('description', 'length', 'max'=>1024, 'tooLong'=>'Description to long'),

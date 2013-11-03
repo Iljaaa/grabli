@@ -1,14 +1,18 @@
 <div style="margin-bottom: 20px;">
-	<div class="issue-ico issue-ico-<?=$type ?>" style="float: left; margin-right: 20px;">
-		<div><div><?=ucfirst(IssueHelper::getIssueAbbreviation($type)); ?></div></div>
+	<div class="issue-ico issue-ico-<?=$issue->type ?>" style="float: left; margin-right: 10px; height: 50px;">
+		<div><div><?=ucfirst(IssueHelper::getIssueAbbreviation($issue->type)); ?></div></div>
 	</div>
 
-	<h1><i>Create Issue :</i> <?=ucfirst(IssueHelper::getIssueNameByType($type)); ?></h1>
+	<div class="g-8" style="float:left;">
+		<h2 style="padding: 0; margin: 0;">Edit issue :<?=ucfirst(IssueHelper::getIssueNameByType($issue->type)); ?> <b>#<?=$issue->nomber ?></b></h2>
+		<div><b><?=$issue->title ?></b></div>
+	</div>
+
 	<div style="clear: both;"></div>
 </div>
 
 
-<?php 
+<?php
 $userProjects = $user->getProjects();
 $projectsForSelect = array (0=>'--');
 foreach ($userProjects as $p) $projectsForSelect[$p->id] = $p->name;
@@ -43,7 +47,8 @@ foreach ($userProjects as $p) $projectsForSelect[$p->id] = $p->name;
 
 		<?php
 		$attrs = array('class'=>'g-6');
-		if ($model->getScenario() == 'create') {
+		yii::app()->firephp->log ($model->getScenario(), 'scnario');
+		if ($model->getScenario() == 'edit') {
 			$attrs['disabled'] = 'disabled';
 		}
 

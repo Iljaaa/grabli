@@ -1,24 +1,13 @@
 <?php
 
-class BugsController extends Controller
+class IssuesController extends Controller
 {
 
-	
+
 	protected function beforeAction($action) 
 	{
 		
-		
-		switch ($action->getId()) 
-		{
-			case 'index' :
-			case 'view' :
-			case 'create' :
-			case 'viewbyid' : 
-				$this->breadcrumbs['Мои проекты'] = array ('/projects');
-				break;
-			default : 
-				break;
-		}
+
 		
 		return parent::beforeAction($action);
 	}
@@ -61,15 +50,12 @@ class BugsController extends Controller
 		if (!yii::app()->user->getUserObject()->isInProject($project->id)){
 			throw new CHttpException('You can\'t see this assign, вы не являетесь участником проекта', 403);
 		}
-		
-		
-		
+
 		$this->viewCommandor($bug, $project);
-		
-		
-		
-		$this->breadcrumbs['Проект: '.$project->name] = array('/project/'.$project->code); 
-		$this->breadcrumbs[$bug->title] = array('/bug/'.$project->code.'/'.$bug->nomber);
+
+		$this->breadcrumbs[$project->name] = array('/project/'.$project->code);
+		$t = IssueHelper::getIssueNameByType($bug->type).' #'.$bug->nomber.' '.$bug->title;
+		$this->breadcrumbs[$t] = array('/issue/'.$project->code.'/'.$bug->nomber);
 		$this->pageTitle = "#".$bug->nomber." ".$bug->title;
 		
 		$data = array (
@@ -103,9 +89,9 @@ class BugsController extends Controller
 					$bug->save ();*/
 					$bug->updateAll(array('steps_id' => $nextStep->id), 'id = :id', array(':id' => $bug->id));
 					
-					yii::app()->user->setFlash ('good_news', 'Bug status changed.');
+					yii::app()->user->setFlash ('good_news', 'Issue status changed.');
 					
-					$url = $this->createUrl('/bug/'.$project->code.'/'.$bug->nomber);
+					$url = $this->createUrl('/issue/'.$project->code.'/'.$bug->nomber);
 					$this->redirect($url);
 				}
 			}
@@ -132,7 +118,7 @@ class BugsController extends Controller
 				
 				yii::app()->user->setFlash ('good_news', 'Assigned user changed.');
 				
-				$url = $this->createUrl('/bug/'.$project->code.'/'.$bug->nomber);
+				$url = $this->createUrl('/issue/'.$project->code.'/'.$bug->nomber);
 				$this->redirect($url);
 			}
 			
@@ -149,18 +135,13 @@ class BugsController extends Controller
 				$mess = 'User <b>'.yii::app()->user->getUserObject()->name.'</b> ';
 				$mess .= 'set status <b>'.$newStep->title.'</b> ';
 		
-				$bug->createUserComment($mess, yii::app()->user->getId());
-		
-				
-				//$bug->updateByPk ($bug->id, array('assigned_to' => $u->id));
-				//$bug->assigned_to = $u->id;
-				//$bug->save ();
+				$bug->createSystemComment ($mess);
 		
 				$bug->updateAll(array('steps_id' => $newStep->id), 'id = :id', array(':id' => $bug->id));
 
-				yii::app()->user->setFlash ('good_news', 'Step setted.');
+				yii::app()->user->setFlash ('good_news', 'Status changed.');
 		
-				$url = $this->createUrl('/bug/'.$project->code.'/'.$bug->nomber);
+				$url = $this->createUrl('/issue/'.$project->code.'/'.$bug->nomber);
 				$this->redirect($url);
 			}
 				
@@ -175,7 +156,7 @@ class BugsController extends Controller
 	
 				yii::app()->user->setFlash ('good_news', 'New comment posted.');
 		
-				$url = $this->createUrl('/bug/'.$project->code.'/'.$bug->nomber);
+				$url = $this->createUrl('/issue/'.$project->code.'/'.$bug->nomber);
 				$this->redirect($url);
 			}
 		}
@@ -197,12 +178,12 @@ class BugsController extends Controller
 		$bug = Bug::model()->findByPk ($id);
 		
 		if ($bug == null) {
-			throw new CHttpException('Bug id "'.$id.'" not found');
+			throw new CHttpException('Issue id "'.$id.'" not found');
 		}
 		
 		$project = $bug->getProject ();
 		if ($project == null) {
-			throw new CHttpException('Project for bug id "'.$id.'" not found');
+			throw new CHttpException('Project for issue id "'.$id.'" not found');
 		}
 		
 		$this->actionView($project->code, $bug->nomber);
@@ -218,7 +199,6 @@ class BugsController extends Controller
 	 */
 	public function actionCreate ($projectCode, $type)
 	{
-
 		
 		if (yii::app()->user->isGuest) {
 			throw new CHttpException('Только для авторизованых пользователей');
@@ -228,8 +208,6 @@ class BugsController extends Controller
 			throw new CHttpException('Url wrong project code not setted');
 		}
 		
-
-		
 		// определяем выбраный проект
 		$project = Project::findByCode($projectCode);
 		if ($project == null) {
@@ -237,7 +215,8 @@ class BugsController extends Controller
 		}
 
 		$this->breadcrumbs[$project->name] = array('/project/'.$project->code.'/');
-		$this->breadcrumbs['New issue: '.ucfirst($type)] = array('/bugs/create/'.$type);
+		$this->breadcrumbs['New issue: '.ucfirst($type)] = array('/issues/create/'.$type);
+		$this->pageTitle = 'Create '.IssueHelper::getIssueNameByType($type);
 		
 		// проверяем 
 		$projectUser = $project->getUsers();
@@ -249,7 +228,6 @@ class BugsController extends Controller
 			// throw new CHttpException('Вы не можете создавать Issues, вы не являетесь участником проекта');
 			throw new CHttpException('You can\'t create Issues, you have no access to this project.');
 		}
-
 
 		$model = new IssueForm();
 		$model->setScenario('create');
@@ -283,12 +261,13 @@ class BugsController extends Controller
 				$item = Bug::model()->findByPk ($item->id);
 				
 				$item->save();
-				
-				
-				$project = Project::model()->findByPk ($model->project_id);
+
+
+				//
+				$item->createSystemComment ('Issue created');
 				
 				// $this->redirect('/bugbyid/'.$item->id);
-				$this->redirect('/bug/'.$project->code.'/'.$item->nomber);
+				$this->redirect('/issue/'.$project->code.'/'.$item->nomber);
 			}
 		endif;
 		
@@ -301,4 +280,88 @@ class BugsController extends Controller
 		$this->render('create', $data);
 	}
 
+	public function actionEdit ($projectCode, $number)
+	{
+		yii::app()->firephp->log ('333');
+		if (yii::app()->user->isGuest) {
+			throw new CHttpException('Только для авторизованых пользователей');
+		}
+
+		$project = Project::findByCode($projectCode);
+		if ($project == null) {
+			throw new CHttpException('Project by code "'.$projectCode.'" not found');
+		}
+
+		$bug = Bug::getBugByProjectAndNomber($project->id, $number);
+		if ($bug == null){
+			throw new CHttpException('Bug not found; project code : "'.$projectCode.'"; bug number : "'.$number.'"', 404);
+		}
+		yii::app()->firephp->log ($bug, '$bug');
+
+		// проверяем есть ли упользователя доступ к провекту
+		if (!yii::app()->user->getUserObject()->isInProject($project->id)){
+			throw new CHttpException('You can\'t see this assign, вы не являетесь участником проекта', 403);
+		}
+
+		// проверяем
+		// $projectUser = $project->getUsers();
+
+		$this->breadcrumbs[$project->name] = array('/project/'.$project->code);
+		$this->breadcrumbs[$bug->title] = array('/issue/'.$project->code.'/'.$bug->nomber);
+		$this->breadcrumbs['Edit'] = array('/issue/'.$project->code.'/'.$bug->nomber.'/edit');
+		$this->pageTitle = "Edit: #".$bug->nomber." ".$bug->title;
+
+		$model = new IssueForm();
+		$model->setScenario('edit');
+		$model->attributes = $bug->attributes;
+
+		if (isset($_POST['IssueForm']) && count(($_POST['IssueForm'])) > 0) :
+			$model->attributes = $_POST['IssueForm'];
+			$model->step_id = $bug->steps_id;
+
+			if (isset($_POST['assigned_to'])) {
+				$model->assigned_to = intVal($_POST['assigned_to']);
+			}
+
+			if ($model->validate())
+			{
+				$bug->updateByAddModel ($model);
+				$bug->save();
+
+
+				$mess = 'Issue updated by  <b>'.yii::app()->user->getUserObject()->name.'</b> ';
+				$bug->createSystemComment($mess);
+
+				$this->redirect('/issue/'.$project->code.'/'.$bug->nomber);
+
+				/*
+				$item = new Bug();
+				$item->added_date = time();
+				$item->updateByAddModel ($model);
+
+				$item = Bug::model()->findByPk ($item->id);
+
+				$item->save();
+
+
+				$project = Project::model()->findByPk ($model->project_id);
+
+				// $this->redirect('/bugbyid/'.$item->id);
+				*/
+			}
+		endif;
+
+		if ($project != null) {
+			$model->project_id = $project->id;
+		}
+
+		$data = array (
+			'issue'		=> $bug,
+			'project'	=> $project,
+			'user'		=> yii::app()->user->getUserObject(),
+			'model'		=> $model
+		);
+
+		$this->render('edit', $data);
+	}
 }
