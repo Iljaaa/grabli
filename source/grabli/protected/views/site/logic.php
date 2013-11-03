@@ -21,34 +21,34 @@
 <p class="f-buttons">
 	Create: &nbsp;&nbsp;&nbsp;
 	<span class="f-bu">
-		<a href="<?=$this->createUrl('/bugs/create/'.$project->code.'/bug') ?>" class="f-bu-bug">
+		<a href="<?=$this->createUrl('/issues/create/'.$project->code.'/bug') ?>" class="f-bu-bug">
 			Bug
 		</a>
 	</span>
 
 	<span class="f-bu">
-		<a href="<?=$this->createUrl('/bugs/create/'.$project->code.'/encantment') ?>"  class="f-bu-enhancement">
+		<a href="<?=$this->createUrl('/issues/create/'.$project->code.'/encantment') ?>"  class="f-bu-enhancement">
 			Enhancement</a>
 	</span>
 
 	<span class="f-bu">
-		<a href="<?=$this->createUrl('/bugs/create/'.$project->code.'/task') ?>" class="f-bu-task">
+		<a href="<?=$this->createUrl('/issues/create/'.$project->code.'/task') ?>" class="f-bu-task">
 			Task</a>
 	</span>
 
 	<span class="f-bu">
-		<a href="<?=$this->createUrl('/bugs/create/'.$project->code.'/featurerequest') ?>" class="f-bu-featurerequest">
+		<a href="<?=$this->createUrl('/issues/create/'.$project->code.'/featurerequest') ?>" class="f-bu-featurerequest">
 			Feature Request</a>
 	</span>
 
 
 	<span class="f-bu">
-		<a href="<?=$this->createUrl('/bugs/create/'.$project->code.'/idea') ?>" class="f-bu-idea">
+		<a href="<?=$this->createUrl('/issues/create/'.$project->code.'/idea') ?>" class="f-bu-idea">
 			Idea</a>
 	</span>
 
 	<span class="f-bu">
-		<a href="<?=$this->createUrl('/bugs/create/'.$project->code.'/other'); ?>" class="f-bu-other">
+		<a href="<?=$this->createUrl('/issues/create/'.$project->code.'/other'); ?>" class="f-bu-other">
 			Other</a>
 	</span>
 </p> */ ?>

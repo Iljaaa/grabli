@@ -38,7 +38,7 @@
 							'items'=>array(
 								
 								array('label'=>'Проекты', 'url'=>'/projects', 'visible'=>!Yii::app()->user->isGuest),
-								array('label'=>'Баги', 'url'=>'/bugs', 'visible'=>!Yii::app()->user->isGuest),
+								array('label'=>'Баги', 'url'=>'/issues', 'visible'=>!Yii::app()->user->isGuest),
 								array('label'=>'Персональная информация', 'url'=>'/user', 'visible'=>!Yii::app()->user->isGuest),
 									
 								array('label'=>'Home', 'url'=>array('/site/index')),

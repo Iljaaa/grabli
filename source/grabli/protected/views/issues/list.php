@@ -18,12 +18,12 @@
 				<?=$b->nomber ?>
 			</td>
 			<td>
-				<a href="<?=$this->createUrl('/bug/'.$b->getProject()->code.'/'.$b->nomber); ?>">
+				<a href="<?=$this->createUrl('/issue/'.$b->getProject()->code.'/'.$b->nomber); ?>">
 				<img src="<?=$b->getSmallIconUrl (); ?>" height="16px;" />
 				</a>
 			</td>
 			<td>
-				<a href="<?=$this->createUrl('/bug/'.$b->getProject()->code.'/'.$b->nomber); ?>">
+				<a href="<?=$this->createUrl('/issue/'.$b->getProject()->code.'/'.$b->nomber); ?>">
 					<?=$b->title ?></a>
 			</td>
 			<td>

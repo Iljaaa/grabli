@@ -18,7 +18,7 @@ if (count($selectedBugs) == 0) continue;
 <?=$step->title  ?>
 </h2>
 
-<?php $this->renderPartial ('/bugs/list', array ('bugs' => $selectedBugs)); ?>
+<?php $this->renderPartial ('/issues/list', array ('bugs' => $selectedBugs)); ?>
 
 <?php endforeach; ?>
 

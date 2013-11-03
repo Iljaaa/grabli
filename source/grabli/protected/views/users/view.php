@@ -8,6 +8,6 @@
 <h2>Таски по проектам</h2>
 
 <?php $userBugs = $user->getBugs (); ?>
-<?=$this->renderPartial ('/bugs/list', array ('bugs' => $userBugs)); ?>
+<?=$this->renderPartial ('/issues/list', array ('bugs' => $userBugs)); ?>
 
 

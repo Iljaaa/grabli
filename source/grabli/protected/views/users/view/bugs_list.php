@@ -23,5 +23,5 @@ foreach ($projectsIds as $projectId) :
 		endforeach; ?>
 	
 	<?php if (count($projectBugs) > 0) 
-		echo $this->renderPartial('/projects/view/bugs', array('bugs' => $projectBugs)); 
+		echo $this->renderPartial('/projects/view/issues', array('bugs' => $projectBugs));
 endforeach; ?>

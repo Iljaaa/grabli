@@ -55,7 +55,7 @@
 
 <?php $bugs = $project->getOpenBugs (); ?>
 <?php if (count($bugs) > 0) : ?>
-<?=$this->renderPartial('/bugs/list', array ('bugs' => $bugs)); ?>
+<?=$this->renderPartial('/issues/list', array ('bugs' => $bugs)); ?>
 <?php else : ?>
 <p>No issues</p>
 <?php endif; ?>

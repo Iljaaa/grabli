@@ -24,7 +24,7 @@ foreach ($bugs as $b) if ($b->type == $type) $filtredBugs[] = $b;
 
 <?php if (count($filtredBugs) == 0) continue; ?>
 <h3><?=$type ?></h3>
-<?php $this->renderPartial('/bugs/list', array ('bugs' => $filtredBugs)); ?>
+<?php $this->renderPartial('/issues/list', array ('bugs' => $filtredBugs)); ?>
 
 <?php endforeach; ?>
 <?php endforeach; ?>

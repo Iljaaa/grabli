@@ -10,7 +10,7 @@
 
 
 <div style="display: none;">
-<?=$this->renderPartial('/bugs/view/commands', array('bug'=>$bug)); ?>
+<?=$this->renderPartial('/issues/view/commands', array('bug'=>$bug)); ?>
 </div>
 
 <div class="g-row" style="margin-top: 0px;">
@@ -30,13 +30,13 @@
 			</tr>
 			<tr>
 				<td>Ответственный</td>
-				<td><?php $this->renderPartial ('/bugs/view/assigneduser', array ('bug' => $bug, 'project' => $project)); ?></td>
+				<td><?php $this->renderPartial ('/issues/view/assigneduser', array ('bug' => $bug, 'project' => $project)); ?></td>
 			</tr>
 			
 			<tr>
 				<td>Статус</td>
 				<td>
-					<?php $this->renderPartial ('/bugs/view/status', array ('bug' => $bug, 'project' => $project)) ?>
+					<?php $this->renderPartial ('/issues/view/status', array ('bug' => $bug, 'project' => $project)) ?>
 				</td>
 			</tr>
 	
@@ -96,5 +96,5 @@
 
 
 <div>
-<?php $this->renderPartial ('/bugs/view/comments', array ('bug' => $bug)); ?>
+<?php $this->renderPartial ('/issues/view/comments', array ('bug' => $bug)); ?>
 </div>

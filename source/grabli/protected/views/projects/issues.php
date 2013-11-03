@@ -6,7 +6,7 @@
 
 <?php $bugs = $project->getBugs (); ?>
 <?php if (count($bugs) > 0) : ?>
-	<?=$this->renderPartial('/bugs/group_list', array ('bugs' => $bugs)); ?>
+	<?=$this->renderPartial('/issues/group_list', array ('bugs' => $bugs)); ?>
 <?php else : ?>
 	<p>Нет задач</p>
 <?php endif; ?>
