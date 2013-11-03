@@ -69,6 +69,9 @@ class IssuesController extends Controller
 	protected function viewCommandor ($bug, $project)
 	{
 		$command = yii::app()->request->getParam ('command', '');
+		yii::app()->firephp->log ($command, 'command');
+		yii::app()->firephp->log ($_POST, 'post');
+
 		
 		if ($command == 'set_status') {
 			$statusId = yii::app()->request->getParam('step', 0);
@@ -95,8 +98,41 @@ class IssuesController extends Controller
 					$this->redirect($url);
 				}
 			}
-		} 
-		
+		}
+
+		if ($command == 'set-deadline')
+		{
+			$date = yii::app()->request->getParam('date', '');
+			$dt = date_parse($date);
+
+			if (isset($dt['error_count']) && $dt['error_count'] > 0){
+				return;
+			}
+
+			$bug->dedline_date = DateTimeHelper::dateToTimeStamp($date);
+			$bug->save();
+
+			$mess = 'User <b>'.yii::app()->user->getUserObject()->name.'</b> ';
+			$mess .= 'set dead line ';
+			$bug->createSystemComment ($mess);
+
+			$this->refresh();
+		}
+
+		if ($command == 'clear-deadline')
+		{
+
+			$bug->dedline_date = 0;
+			$bug->save();
+
+			$mess = 'User <b>'.yii::app()->user->getUserObject()->name.'</b> ';
+			$mess .= 'clear dead line ';
+			$bug->createSystemComment ($mess);
+
+
+			$this->refresh();
+		}
+
 		if ($command == 'set_assigned_user') 
 		{
 			$selectedUser = yii::app()->request->getParam ('select_user_assigned_user', 0);	
@@ -140,9 +176,8 @@ class IssuesController extends Controller
 				$bug->updateAll(array('steps_id' => $newStep->id), 'id = :id', array(':id' => $bug->id));
 
 				yii::app()->user->setFlash ('good_news', 'Status changed.');
-		
-				$url = $this->createUrl('/issue/'.$project->code.'/'.$bug->nomber);
-				$this->redirect($url);
+
+				$this->refresh();
 			}
 				
 		}

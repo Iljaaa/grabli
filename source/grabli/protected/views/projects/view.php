@@ -2,15 +2,14 @@
 
 <?php if (yii::app()->user->getId() == $project->owner_id) : ?>
 <p class="f-buttons">
-	
-	<span class="f-bu">
-		<a href="<?=$this->createUrl('/project/'.$project->code.'/edit') ?>">Редактировать данные проекта</a>
-	</span>
-	
-	
-	<span class="f-bu">
-		<a href="<?=$this->createUrl('/project/'.$project->code.'/users') ?>">Управление участниками проекта</a>
-	</span>
+
+	<a href="<?=$this->createUrl('/project/'.$project->code.'/edit') ?>" class="f-bu f-bu-default">
+		Edit project
+	</a>
+
+	<a href="<?=$this->createUrl('/project/'.$project->code.'/users') ?>" class="f-bu f-bu-default">
+		Project users
+	</a>
 </p>
 <?php endif; ?>
 
@@ -38,15 +37,17 @@
 
 <hr />
 
-<h3 style="margin-bottom: 0px; paddign-bottom: 0px;">Issues</h3>
+<h2 style="margin-bottom: 0px; paddign-bottom: 0px;">Issues</h2>
 
 <div style="margin-bottom: 10px;">
 
-	<a href="<?=$this->createUrl ('/project/'.$project->code.'/issues/'); ?>">
+	<a href="<?=$this->createUrl ('/project/'.$project->code.'/issues/'); ?>" class="f-bu f-bu-default">
 		All issues for project "<?=$project->name ?>"
 	</a>
 
-	<input type="button" name="createIssue" onclick="openCreateIssueWindow()" value="Create issue"  style="margin-left: 5px;" />
+	<a href="javascript:openCreateIssueWindow()" class="f-bu f-bu-default"  style="margin-left: 5px;">
+		Create issue
+	</a>
 
 </div>
 

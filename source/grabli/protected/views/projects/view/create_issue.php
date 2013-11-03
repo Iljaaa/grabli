@@ -97,7 +97,7 @@
 		</table>
 
 		<div style="text-align: center">
-			<input type="button" value="Отмена" onclick="popup.hide('#create-issue-window')" />
+			<input type="button" value="Отмена" class="f-bu f-bu-warning" onclick="popup.hide('#create-issue-window')" />
 		</div>
 
 	</div>

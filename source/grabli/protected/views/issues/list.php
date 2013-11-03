@@ -7,8 +7,8 @@
 <table class="f-table-zebra issues-list">
 	<thead>
 		<tr>
-			<th style="width: 20px; text-align: center;">#</th>
-			<th style="width: 10px; text-align: center;"></th>
+			<th style="width: 20px; text-align: center;"></th>
+			<th style="width: 10px; text-align: center;">#</th>
 			<th>Object</th>
 			<th style="width: 100px; text-align: left;">Posted by</th>
 			<th style="width: 20px; text-align: center;">to</th>
@@ -26,7 +26,7 @@
 				</div>
 			</td>
 			<td style="text-align: center;">
-				<?=$b->nomber ?>
+				<b><?=$b->nomber ?></b>
 			</td>
 			<td>
 				<a href="<?=$this->createUrl('/issue/'.$b->getProject()->code.'/'.$b->nomber); ?>">

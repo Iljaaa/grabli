@@ -68,23 +68,19 @@
 				</td>
 			</tr>
 			<tr>
+				<td>&nbsp;</td>
+				<td></td>
+			</tr>
+			<tr>
 				<td>Dedline :</td>
 				<td>
-					<?php if ($bug->dedline_date == 0) : ?>
-						<i>not setted</i>
-					<?php else : ?>
-						<?=date('d.m.Y H.s', $bug->dedline_date); ?>
-					<?php endif; ?>
+					<?php $this->renderPartial ('/issues/view/deadline', array ('bug' => $bug, 'project' => $project)) ?>
 				</td>
 			</tr>
 			<tr>
-				<td>Milestoun :</td>
+				<td>Milestone :</td>
 				<td>
-					<?php if ($bug->dedline_date == 0) : ?>
-						<i>not setted</i>
-					<?php else : ?>
-						<?=date('d.m.Y H.s', $bug->dedline_date); ?>
-					<?php endif; ?>
+					---
 				</td>
 			</tr>
 	
