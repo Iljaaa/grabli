@@ -212,52 +212,62 @@ class BugsController extends Controller
 	/**
 	 * Акшн создания бага
 	 * 
-	 * @param string $projectCode
-	 * @param unknown_type $type
+	 * @param string $projectCode код проекта
+	 * @param string $type тип создаваемого бага
 	 * @throws CHttpException
 	 */
 	public function actionCreate ($projectCode, $type)
 	{
-		$this->breadcrumbs['Новый обект: '.ucfirst($type)] = array('/bugs/create/'.$type);
+
 		
 		if (yii::app()->user->isGuest) {
 			throw new CHttpException('Только для авторизованых пользователей');
 		}
 
 		if ($projectCode == '') {
-			throw new CHttpException('Url wrong');
+			throw new CHttpException('Url wrong project code not setted');
 		}
 		
-		$model = new BugAddForm();
+
+		
+		// определяем выбраный проект
+		$project = Project::findByCode($projectCode);
+		if ($project == null) {
+			throw new CHttpException('Project "'.$projectCode.'" not found');
+		}
+
+		$this->breadcrumbs[$project->name] = array('/project/'.$project->code.'/');
+		$this->breadcrumbs['New issue: '.ucfirst($type)] = array('/bugs/create/'.$type);
+		
+		// проверяем 
+		$projectUser = $project->getUsers();
+		$found = false;
+		foreach ($projectUser as $u) {
+			if ($u->id == yii::app()->user->getId()) $found = true;
+		}
+		if (!$found) {
+			// throw new CHttpException('Вы не можете создавать Issues, вы не являетесь участником проекта');
+			throw new CHttpException('You can\'t create Issues, you have no access to this project.');
+		}
+
+
+		$model = new IssueForm();
 		$model->setScenario('create');
 		$model->id = 0;
 		$model->owner_id = yii::app()->user->getId();
 		$model->assigned_to = 0;
 		$model->step_id = 1;
 		$model->type = $type;
-		
-		// определяем выбраный проект
-		$project = null;
-		if ($projectCode != '') {
-			$project = Project::findByCode($projectCode);
-			if ($project != null) $model->project_id = $project->id;
+
+		if ($project != null) {
+			$model->project_id = $project->id;
 		}
+
+
+
 		
-		if ($project == null) {
-			throw new CHttpException('Проект не найден');
-		}
-		
-		
-		
-		// проверяем 
-		$projectUser = $project->getUsers();
-		$found = false;
-		foreach ($projectUser as $u) if ($u->id == yii::app()->user->getId()) $found = true;
-		if (!$found) throw new CHttpException('Вы не можете создавать Issues, вы не являетесь участником проекта');
-		
-		
-		if (isset($_POST['BugAddForm']) && count(($_POST['BugAddForm'])) > 0) :
-			$model->attributes = $_POST['BugAddForm'];
+		if (isset($_POST['IssueForm']) && count(($_POST['IssueForm'])) > 0) :
+			$model->attributes = $_POST['IssueForm'];
 		
 			if (isset($_POST['assigned_to']))
 				$model->assigned_to = intVal($_POST['assigned_to']);

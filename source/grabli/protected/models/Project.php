@@ -41,7 +41,12 @@ class Project extends CActiveRecord
     	return Project::model()->find($criteria);
     }
 
-    public function getOwner (){
+	/**
+	 * Владелец проекта
+	 *
+	 * @return array|CActiveRecord|mixed|null
+	 */
+	public function getOwner (){
     	return User::model()->findByPk($this->owner_id);
     }
 

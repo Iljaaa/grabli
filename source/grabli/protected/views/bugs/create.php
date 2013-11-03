@@ -14,14 +14,23 @@ $projectsForSelect = array (0=>'--');
 foreach ($userProjects as $p) $projectsForSelect[$p->id] = $p->name;
 ?>
 
+
+<?php $errSummary = CHtml::errorSummary($model); ?>
+<?php yii::app()->firephp->log ($errSummary, '$errSummary'); ?>
+<?php if ($errSummary != '') : ?>
+<div class="f-message f-message-error">
+	<?=$errSummary ?>
+</div>
+<?php endif; ?>
+
+
 <?=CHtml::beginForm(); ?>
-
-<?php echo CHtml::errorSummary($model); ?>
-
 
 <?=CHtml::activeHiddenField($model, 'id'); ?>
 <?=CHtml::activeHiddenField($model, 'step_id') ?>
 <?=CHtml::activeHiddenField($model, 'assigned_to') ?>
+
+<?php yii::app()->firephp->log ($model->getScenario(), 'scn'); ?>
 
 <div class="f-row">
 	<div class="f-actions">
@@ -30,9 +39,18 @@ foreach ($userProjects as $p) $projectsForSelect[$p->id] = $p->name;
 </div>
 
 <div class="f-row">
-	<label><?=CHtml::label('project_id', 'project_id') ?></label>
+	<label><?=CHtml::activeLabel($model, 'project_id'); // CHtml::label(, 'Project') ?></label>
 	<div class="f-input">
-		<?=CHtml::activeDropDownList($model, 'project_id', $projectsForSelect, array('class'=>'g-6')); ?>
+
+		<?php
+		$attrs = array('class'=>'g-6');
+		if ($model->getScenario() == 'create') {
+			$attrs['disabled'] = 'disabled';
+		}
+
+		?>
+
+		<?=CHtml::activeDropDownList($model, 'project_id', $projectsForSelect, $attrs); ?>
 		<?=CHtml::error($model, "project_id"); ?>
 	</div>
 </div>
@@ -58,19 +76,19 @@ foreach ($userProjects as $p) $projectsForSelect[$p->id] = $p->name;
 <div class="f-row">
 	<?=CHtml::activeLabel($model, 'description') ?>
 	<div class="f-input">
-		<?=CHtml::activeTextArea($model, 'description', array('maxlength' => 2048, 'class'=>'g-6')) ?>
+		<?=CHtml::activeTextArea($model, 'description', array('maxlength' => 2048, 'class'=>'g-6', 'style' => 'height: 150px;')) ?>
 		<?=CHtml::error($model, "description"); ?>
 	</div>
 </div>
 
 <?php if ($model->type == 'bug') : ?>
 <div class="f-row">
-	<?=CHtml::activeLabel($model, 'posled') ?>
+	<?=CHtml::activeLabel($model, 'rep_steps') ?>
 	<div class="f-input">
 		<?php $data = array ('maxlength' => 2048, 'class'=>'g-6', 'style' => 'height: 150px;'); ?>
 		<?php if (!$model->isPosledRequired()) $data['disabled'] = 'disabled'; ?>
-		<?=CHtml::activeTextArea($model, 'posled', $data) ?>
-		<?=CHtml::error($model, "posled"); ?>
+		<?=CHtml::activeTextArea($model, 'rep_steps', $data) ?>
+		<?=CHtml::error($model, "rep_steps"); ?>
 	</div>
 </div>;
 <?php endif; ?>

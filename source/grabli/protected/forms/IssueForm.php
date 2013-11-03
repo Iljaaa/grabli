@@ -1,7 +1,7 @@
 <?php
 
 
-class BugAddForm extends CFormModel
+class IssueForm extends CFormModel
 {
 	public $id;
 	
@@ -16,7 +16,7 @@ class BugAddForm extends CFormModel
 	public $nomber;
 	
 	public $description;
-	public $posled;
+	public $rep_steps;
 
 	/**
 	 * Declares the validation rules.
@@ -51,8 +51,8 @@ class BugAddForm extends CFormModel
 			array ('description', 'required', 'message' => 'Descrption not setted'),
 			array ('description', 'length', 'max'=>1024, 'tooLong'=>'Description to long'),
 
-			array ('posled', 'length', 'max'=>1024, 'tooLong'=>'Последовательность to long'),
-			array ('posled', 'validatePosled'),
+			array ('rep_steps', 'length', 'max'=>1024, 'tooLong'=>'Последовательность to long'),
+			array ('rep_steps', 'validatePosled'),
 				
 			array ('nomber', 'validateNomber'),
 		);
@@ -61,7 +61,9 @@ class BugAddForm extends CFormModel
 
 	public function attributeLabels() {
 		return array (
-			'posled'	=> 'Reproduction steps'
+			'rep_steps'		=> 'Reproduction steps',
+			'project_id'	=> 'Project',
+			'owner_id'		=> 'Owner'
 		);
 	}
 
@@ -77,7 +79,8 @@ class BugAddForm extends CFormModel
 		if ($this->type == 'bug') {
 			return true;
 		}
-		
+
+
 		return false;
 	}
 	
@@ -85,8 +88,8 @@ class BugAddForm extends CFormModel
 	{
 		if (!$this->isPosledRequired()) return;
 
-		if ($this->posled == '') {
-			$this->addError('posled', 'Reproduction steps not setted');
+		if ($this->rep_steps == '') {
+			$this->addError('rep_steps', 'Reproduction steps not setted');
 			return false;
 		}
 		

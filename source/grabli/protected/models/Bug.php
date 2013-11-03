@@ -140,7 +140,7 @@ class Bug extends CActiveRecord
 		$this->title		= $model->name;
 		$this->type			= $model->type;
 		$this->description	= $model->description;
-		$this->posled		= $model->posled;
+		$this->rep_steps	= $model->rep_steps;
 		
 		$this->nomber		= $model->nomber;
 		

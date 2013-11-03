@@ -90,7 +90,7 @@
 <?php if ($bug->type == "bug") : ?>
 <div class="f-message">
 	<h5>Последовательность действий:</h5> 
-	<?=$bug->posled ?>
+	<?=$bug->rep_steps ?>
 </div>
 <?php endif; ?>
 
