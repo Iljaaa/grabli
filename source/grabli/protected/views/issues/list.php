@@ -1,4 +1,10 @@
-<table class="f-table-zebra">
+<style>
+	.issues-list tbody tr td {
+		vertical-align: middle;
+	}
+</style>
+
+<table class="f-table-zebra issues-list">
 	<thead>
 		<tr>
 			<th style="width: 20px; text-align: center;">#</th>
@@ -14,13 +20,13 @@
 	<tbody>
 		<?php foreach ($bugs as $b) : ?>
 		<tr>
+			<td>
+				<div class="issue-small-ico issue-ico-<?=$b->type ?>">
+					<div><div><?=ucfirst(IssueHelper::getIssueAbbreviation($b->type)); ?></div></div>
+				</div>
+			</td>
 			<td style="text-align: center;">
 				<?=$b->nomber ?>
-			</td>
-			<td>
-				<a href="<?=$this->createUrl('/issue/'.$b->getProject()->code.'/'.$b->nomber); ?>">
-				<img src="<?=$b->getSmallIconUrl (); ?>" height="16px;" />
-				</a>
 			</td>
 			<td>
 				<a href="<?=$this->createUrl('/issue/'.$b->getProject()->code.'/'.$b->nomber); ?>">

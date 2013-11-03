@@ -3,23 +3,6 @@
 class ProjectsController extends Controller
 {
 
-	protected function beforeAction($action) 
-	{
-		
-		
-		switch ($action->getId()) 
-		{
-			case 'index' :
-			case 'view' :
-				$this->breadcrumbs['Мои проекты'] = array('/projects');
-				break;
-			default : 
-				break;
-		}
-		
-		
-		return parent::beforeAction($action);
-	}
 	
 	/**
 	 * Добавляем проект

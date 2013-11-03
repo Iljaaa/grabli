@@ -39,19 +39,34 @@
     color: white;
 }
 
+.issue-small-ico {
+    display: table;
+    height: 25px;
+    width: 25px;
+    overflow: hidden;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 12px;
+
+    font-family: Tahoma;
+    text-shadow: 1px 1px 2px black;
+    color: white;
+}
+
 a.issue-ico {
     color: white;
 }
 
-.issue-ico div {
+.issue-ico div, .issue-small-ico div {
     display: table-cell;
     vertical-align: middle;
 }
 
-.issue-ico div div {
+.issue-ico div div, .issue-small-ico div div {
     text-align: center;
     display: block;
 }
+
 
 /*             */
 .issue-ico-bug {
@@ -61,6 +76,11 @@ a.issue-ico {
 
 .issue-ico-featurerequest {
     background-color: #F27501;
+    color: white;
+}
+
+.issue-ico-enhancement {
+    background-color: #01C593;
     color: white;
 }
 
