@@ -84,6 +84,23 @@ a.issue-ico {
     color: white;
 }
 
+.issue-ico-other {
+    background-color: gray;
+    color: white;
+}
+
+.issue-ico-task {
+    background-color: #1882B6;
+    color: white;
+}
+
+.issue-ico-idea {
+    background-color: #5E3ABB;
+    color: white;
+}
+
+
+
 /*       */
 .issue-ico-red {
     background-color: #BA1D48;
