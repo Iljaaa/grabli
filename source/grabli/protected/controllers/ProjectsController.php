@@ -3,7 +3,29 @@
 class ProjectsController extends Controller
 {
 
-	
+	public function filters()
+	{
+		return array(
+			'accessControl',
+		);
+	}
+
+	public function accessRules()
+	{
+		return array(
+			array('deny',
+				'actions'=>array('index', 'create', 'edit', 'users', 'issues'),
+				// 'roles'=>array('admin'),
+				'users'=>array('?'),
+			),
+			/*
+			array('allow',
+				'actions'=>array('create', 'edit','delete'),
+				'users'=>array('@'),
+			),*/
+		);
+	}
+
 	/**
 	 * Добавляем проект
 	 * 
@@ -40,7 +62,7 @@ class ProjectsController extends Controller
 			'model' => $model
 		);
 		
-		$this->render('add', $data);
+		$this->render('create', $data);
 	}
 	
 	
@@ -89,32 +111,43 @@ class ProjectsController extends Controller
 		
 		$this->render('view', array('project'=>$project));
 	}
-	
+
+	/**
+	 * Редактироавние проекта
+	 *
+	 * @param $code
+	 * @throws CHttpException
+	 */
 	public function actionEdit ($code)
 	{
-		if (yii::app()->user->isGuest) {
-			throw new CHttpException('403 Auth required');
+		if ($code == '') {
+			throw new CHttpException('Project code not sended');
 		}
 		
 		$project = Project::findByCode($code);
 		
 		if ($project == null) {
-			throw new CHttpException('404 project whitch code "'.$code.'" not found');
+			throw new CHttpException('Project whitch code "'.$code.'" not found');
 		}
 		
 		if ($project->owner_id != yii::app()->user->getId()) {
-			throw new CHttpException('403 only owner can edit project "'.$code.'"');
+			throw new CHttpException('Only owner can edit project "'.$code.'"');
 		}
-		
+
+
+		$this->breadcrumbs[$project->name] = array('/project/'.$project->code);
+		$this->breadcrumbs['Edit'] = array('/project/'.$project->code.'/edit');
+		$this->pageTitle = 'Edit: '.$project->name;
+
+
 		$model = new ProjectForm();
 		$model->setScenario('edit');
 		
 		if (isset($_POST['ProjectForm']) && count(($_POST['ProjectForm'])) > 0) {
 			$model->attributes = $_POST['ProjectForm'];
-			if ($model->validate())
-			{
+			if ($model->validate()) {
 				$project->updateByModel ($model);
-				$this->redirect('/project/'.$project->code.'/');
+				$this->redirect('/project/'.$model->code.'/');
 			}
 		}
 		else {
@@ -122,7 +155,7 @@ class ProjectsController extends Controller
 		}
 		
 		$data = array (
-			'model'	=> $model		
+			'model'	=> $model
 		);
 		
 		$this->render('edit', $data);

@@ -4,6 +4,7 @@ class WebUser extends CWebUser
 {
 	private $dbUser = null;
 
+	/*
 	public function checkAccess($operation, $params = Array (), $allowCaching = true)
 	{
 		$controllerRoles = yii::app()->controller->accessRules();
@@ -47,7 +48,7 @@ class WebUser extends CWebUser
 		}
 
 		return false;
-	}
+	}*/
 
 	/**
 	 * Генерируем url для доступа пользователя к регистрации
@@ -117,7 +118,12 @@ class WebUser extends CWebUser
 		return md5($password);
 	}
 
-	
+	/**
+	 * Генерируем пароль
+	 *
+	 * @param int $password_lenght
+	 * @return string
+	 */
 	public static function generatePassword ($password_lenght = 10)
     {
 	    $lethers = array(
