@@ -125,9 +125,13 @@ class Project extends CActiveRecord
 		
 		return UserHasProjects::model()->deleteAll($criteria);
 	}
-	
-	
-	
+
+
+	/**
+	 * Количество заданий в проекте
+	 *
+	 * @return CDbDataReader|mixed|resource|string
+	 */
 	public function issuesCount ()
 	{
 		$criteria = new CDbCriteria();

@@ -42,9 +42,14 @@ class User extends CActiveRecord
     
     	return User::model()->find($crit);
     }
-    
-    
-    public static function search ($searchString)
+
+	/**
+	 * Поиск по строке
+	 *
+	 * @param $searchString
+	 * @return array|CActiveRecord|mixed|null
+	 */
+	public static function search ($searchString)
     {
     	$crit = new CDbCriteria();
     	
@@ -53,22 +58,25 @@ class User extends CActiveRecord
     	
     	return User::model()->findAll($crit);    	
     }
-    
-    
-    public static function addUserByRegistrationModel (RegistrationForm $model)
+
+	/**
+	 * Создаем учетную запись пользователя
+	 * по данным модели
+	 *
+	 * @param RegistrationForm $model
+	 */
+	public static function addUserByRegistrationModel (RegistrationForm $model)
     {
     	$u = new User();
-    	
-    	$u->owner_id		= $model->owner_id;
+
     	$u->name			= $model->name;
     	$u->email			= $model->email;
-    	
     	$u->password 		= WebUser::hashPassword($model->password);
     	
     	$u->status 			= 'worked';
     	$u->last_activaty 	= time();
 
-    	$u->save(); 	
+    	$u->save();
     }
     
     

@@ -29,5 +29,5 @@
 
 <div>
 <a href="<?=$this->createUrl('/users/restore/') ?>">Восстановление пароля</a><br />
-<a href="<?=$this->createUrl('/users/restore/') ?>">Регистрация</a>
+<a href="<?=$this->createUrl('/users/registration/') ?>">Регистрация</a>
 </div>

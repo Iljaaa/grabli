@@ -102,27 +102,8 @@ class UsersController extends Controller
 		$this->pageTitle = 'Регистрация';
 		
 		$model = new RegistrationForm();
-		$model->setScenario('checkrequest');
-		
-		$r = yii::app()->request;
-		$model->email 		= $r->getParam('email', '');
-		$model->owner_id	= $r->getParam('owner', '');
-		$model->code		= $r->getParam('code', '');
-		$model->time		= $r->getParam('time', '');
-		
-		$data = array (
-			'model'		=> $model,
-			'urlValid'	=> true	
-		);
-		
-		if (!$model->validate()) {
-			$data['urlValid'] = false;
-			$this->render('registration', $data);
-			return;
-		}
 		
 		// проверяем форму регистрации
-		$model->setScenario('registration');
 		if (isset($_POST['RegistrationForm']) && count($_POST['RegistrationForm'])) {
 			$model->attributes = $_POST['RegistrationForm'];
 			
@@ -134,12 +115,15 @@ class UsersController extends Controller
 			}
 			
 		}
-		
-		$data['model'] = $model;
+
+		$data = array (
+			'model'		=> $model
+		);
 		$this->render('registration', $data);
 		
 			
 	}
+
 	
 
 	public function actionRegistrationcomplite()
