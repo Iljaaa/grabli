@@ -3,6 +3,14 @@
 
 class Project extends CActiveRecord
 {
+	/**
+	 *
+	 *
+	 * @var string
+	 */
+	private $primaryKey = 'id';
+
+
     public static function model($className=__CLASS__)
     {
         return parent::model($className);
@@ -12,25 +20,7 @@ class Project extends CActiveRecord
     {
         return 'projects';
     }
-    
-    public function primaryKey()
-    {
-    	return array('id');
-    }
-    
-    public function getPrimaryKey() {
-    	$pk = parent::getPrimaryKey();
-    	return 'id';
-    }
-    
-    public function findByPk($pk, $condirion = '', $params = '')
-    {
-    	$criteria = new CDbCriteria();
-    	$criteria->addCondition("id = :id");
-    	$criteria->params = array (':id' => $pk);
-    
-    	return Project::model()->find ($criteria);
-    }
+
     
     public static function findByCode ($code)
     {
@@ -49,6 +39,27 @@ class Project extends CActiveRecord
 	public function getOwner (){
     	return User::model()->findByPk($this->owner_id);
     }
+
+	/**
+	 * Может ли пользователь просматривать проект
+	 *
+	 * @param $userId
+	 */
+	public function canUserViewProject ($userId)
+	{
+		if ($this->owner_id == $userId){
+			return true;
+		}
+
+		$users = $this->getUsers();
+		foreach ($users as $u) {
+			if ($u->id == $userId){
+				return true;
+			}
+		}
+
+		return false;
+	}
 
     
     

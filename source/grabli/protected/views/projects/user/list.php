@@ -1,10 +1,10 @@
 <table class="f-table-zebra">
 	<thead>
 		<tr>
-			<td style="width: 20px;"></td>
-			<th>Проект</th>
-			<th style="width: 160px;">Количество участников</th>
-			<th style="width: 150px;">Количество объектов</th>
+			<th style="width: 20px;"></th>
+			<th>Project</th>
+			<th style="width: 75px; text-align: center">Users</th>
+			<th style="width: 75px; text-align: center">Issues</th>
 		</tr>
 		
 	</thead>

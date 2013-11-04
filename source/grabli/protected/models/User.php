@@ -78,27 +78,28 @@ class User extends CActiveRecord
 
     	$u->save();
     }
-    
-    
-    
-    
-    public function getAvataraUrl () 
+
+
+	/**
+	 * Урл для аватары
+	 *
+	 * @return string
+	 */
+	public function getAvataraUrl ()
     {
-    	array ('.jpg', '.jpeg', '.gif', ',png');
-    	//$path = dirname (APPPATH);
-    	
-    	$filename = $this->id;
+    	$extensions = array ('.jpg', '.jpeg', '.gif', ',png');
+
     	$path = yii::getPathOfAlias('webroot.images.avatars');
-  
-    	$preFilePath = $path.'/'.$filename;
+		foreach ($extensions as $ext){
+			$filename = $this->id.$ext;
+			$filePath = $path.'/'.$filename;
+			if (file_exists($filePath)){
+				return '/images/avatars/'.$filename;
+			}
+		}
     	
     	$url = '/images/avatara.jpg';
     	return $url;
-    	
-    	return $path.'/avatara.jpg';
-    	
-    	die ($preFilePath);
-    	//fb ('333');
     }
     
    
@@ -120,9 +121,15 @@ class User extends CActiveRecord
     	return '/images/icons/user.png';
     	
     }
-    
-    
-    public function getBugs () 
+
+	/**
+	 * Баги пользователя
+	 * которые он опубликовали
+	 * или на него завязаные
+	 *
+	 * @return array|CActiveRecord|mixed|null
+	 */
+	public function getIssues ()
     {
     	$criteria = new CDbCriteria();
     	$criteria->addCondition("owner_id = :userid OR assigned_to = :userid");
@@ -130,7 +137,27 @@ class User extends CActiveRecord
     	
     	return Bug::model()->findAll($criteria);
     }
-    
+
+	/**
+	 * Отрытые баги польвателя
+	 *
+	 * @param CDbCriteria $criteria
+	 * @return array|CActiveRecord|mixed|null
+	 */
+	public function getOpenIssues (CDbCriteria $criteria = null)
+	{
+		if ($criteria == null) $criteria = new CDbCriteria();
+
+		$criteria->addCondition("(owner_id = :userid OR assigned_to = :userid) AND steps_id != :active");
+		$criteria->params = array (':userid' => $this->id, ':active' => 6);
+
+		if ($criteria->order == '') {
+			$criteria->order = 'last_activity DESC';
+		}
+
+		return Bug::model()->findAll($criteria);
+	}
+
     /**
      * Проекты в которых учствует пользователь
      * 
@@ -231,5 +258,13 @@ class User extends CActiveRecord
     	Yii::app()->db->createCommand()->update($this->tableName(), $data, 'id=:id', array(':id' => $this->id));
     
     }
-    
+
+	/**
+	 * Обновляем счетчик последней активности
+	 *
+	 */
+	public function updateLastActivity () {
+		$this->last_activity = time();
+		$this->save ();
+	}
 }

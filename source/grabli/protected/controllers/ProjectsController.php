@@ -14,7 +14,7 @@ class ProjectsController extends Controller
 	{
 		return array(
 			array('deny',
-				'actions'=>array('index', 'create', 'edit', 'users', 'issues'),
+				'actions'=>array('index', 'create', 'edit', 'users', 'issues', 'view'),
 				// 'roles'=>array('admin'),
 				'users'=>array('?'),
 			),
@@ -96,14 +96,18 @@ class ProjectsController extends Controller
 	 */
 	public function actionView ($code) 
 	{
-		if (yii::app()->user->isGuest) {
-			throw new CHttpException('403 Auth required');
+		if ($code == '') {
+			throw new CHttpException('Project code not sended');
 		}
-		
+
 		$project = Project::findByCode($code);
 		
 		if ($project == null) {
-			throw new CHttpException('404 project witch code "'.$code.'" not found');
+			throw new CHttpException('Project code "'.$code.'" not found');
+		}
+
+		if (!$project->canUserViewProject(yii::app()->user->getId())){
+			throw new CHttpException(302, 'You can\'t view this project');
 		}
 
 		$this->pageTitle = $project->name;
@@ -127,7 +131,7 @@ class ProjectsController extends Controller
 		$project = Project::findByCode($code);
 		
 		if ($project == null) {
-			throw new CHttpException('Project whitch code "'.$code.'" not found');
+			throw new CHttpException('Project code "'.$code.'" not found');
 		}
 		
 		if ($project->owner_id != yii::app()->user->getId()) {

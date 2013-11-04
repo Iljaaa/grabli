@@ -155,6 +155,9 @@ class Bug extends CActiveRecord
     	$c->description	= $message;
     	
     	$c->save();
+
+		// обновляем последнюю активность
+		$this->updateLastActivity();
     	
     }
     
@@ -179,7 +182,18 @@ class Bug extends CActiveRecord
     	$c->description	= $message;
     	 
     	$c->save();
-    	 
+
+		// обновляем последнюю активность
+		$this->updateLastActivity();
     }
+
+	/**
+	 * Обновляем счетчик последней активности
+	 *
+	 */
+	public function updateLastActivity () {
+		$this->last_activity = time();
+		$this->save ();
+	}
 
 }

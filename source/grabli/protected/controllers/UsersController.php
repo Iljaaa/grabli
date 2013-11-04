@@ -2,7 +2,28 @@
 
 class UsersController extends Controller
 {
+	public function filters()
+	{
+		return array(
+			'accessControl',
+		);
+	}
 
+	public function accessRules()
+	{
+		return array(
+			array('deny',
+				'actions'=>array('index', 'edit', 'view', 'sendrequest'),
+				// 'roles'=>array('admin'),
+				'users'=>array('?'),
+			),
+			/*
+			array('allow',
+				'actions'=>array('create', 'edit','delete'),
+				'users'=>array('@'),
+			),*/
+		);
+	}
 
 	/**
 	 * Данные пользователя
@@ -32,13 +53,122 @@ class UsersController extends Controller
 
 	public function actionView ($id)
 	{
+		if ($id == 0) {
+			throw new CHttpException('User id not sended');
+		}
+
 		$user = User::findByPk($id);
+		yii::app()->firephp->log ($user->name, '$user');
+
+		if ($user == null) {
+			throw new CHttpException('User id "'.$id.'" not found');
+		}
+
+		/*
+		if ($user->owner_id != yii::app()->user->getId()) {
+			throw new CHttpException('Only owner can edit project "'.$code.'"');
+		}*/
 
 		$this->pageTitle = $user->name;
 		$this->breadcrumbs[$user->name] = array('/user/'.$user->id);
 
-		$this->render('view', array('user'=>$user));
+		//
+
+		$avatar = CUploadedFile::getInstanceByName('avatar');
+		if ($avatar != null && $avatar->hasError == false) {
+			if ($this->saveAvatarImage($avatar, $user)){
+				//
+				$user->updateLastActivity();
+
+				$this->refresh();
+			}
+		}
+
+
+		//
+		$issuesCrit = new CDbCriteria ();
+		$issuesCrit->limit = 10;
+		yii::app()->firephp->log ($user->name, '$user');
+
+		$data = array (
+			'user'		=> $user,
+			'issues'	=> $user->getOpenIssues($issuesCrit)
+		);
+
+		$this->render('view', $data);
 	}
+
+	/**
+	 * Сохраняем аватар для пользователя
+	 *
+	 */
+	protected function saveAvatarImage (CUploadedFile $avatar, $user)
+	{
+		$fileName = $user->id.'.'.$avatar->getExtensionName();
+		$fileIcoName = $user->id.'_ico.'.$avatar->getExtensionName();
+
+		$filePath = realpath(yii::app()->getBasePath().'/../images/avatars');
+
+		$fileFullPath = $filePath.'/'.$fileName;
+		$fileFullIcoPath = $filePath.'/'.$fileIcoName;
+
+		//
+		$this->deleteAvatarImage($user);
+
+		if ($avatar->saveAs($fileFullPath))
+		{
+			$image = yii::app()->image->load($fileFullPath);
+
+			// минимальный размер картинки
+			$min = $image->width;
+			if ($min > $image->height) $min = $image->height;
+
+			$k = 64 / $min;
+			yii::app()->firephp->log ($k, '$k');
+
+			$newWidth = intVal($k * $image->width);
+			$newHeight = intVal($k * $image->height);
+
+			$image->resize($newWidth, $newHeight);
+			$image->crop(64, 64);
+
+			$image->save();
+
+			// сохраняем иконку
+			$icoPath =
+			$image->resize (16, 16);
+			$image->save($fileFullIcoPath);
+
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Удаляем изображения аватары
+	 *
+	 * @param $user
+	 */
+	protected function deleteAvatarImage ($user)
+	{
+		$files = array (
+			$user->id.'.jpg', $user->id.'_ico.jpg',
+			$user->id.'.png', $user->id.'_ico.png',
+			$user->id.'.gif', $user->id.'_ico.gif',
+			$user->id.'.jpeg', $user->id.'_ico.jpeg',
+		);
+
+		$path = $filePath = realpath(yii::app()->getBasePath().'/../images/avatars');
+
+		foreach ($files as $f) {
+			$filePath = $path.'/'.$f;
+			if (file_exists($filePath)){
+				unlink($filePath);
+			}
+		}
+	}
+
 
 	/**
 	 * Отправляем письмо пользователю с 
@@ -196,7 +326,8 @@ class UsersController extends Controller
 		
 		$em = mail($user->email, $title, $body, $headers);
 	}
-	
+
+
 	/**
 	 *
 	 *

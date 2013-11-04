@@ -1,13 +1,18 @@
 <?=$this->renderPartial('/users/view/info', array('user' => $user)); ?>
 
-
-<h2>Участие в проектах</h2>
 <?php $projects = $user->getProjects() ?>
-<?=$this->renderPartial('/projects/user/list', array('projects' => $projects)); ?>
+<h2>Projects</h2>
+<?php if (count($projects) > 0) : ?>
+	<?=$this->renderPartial('/projects/user/list', array('projects' => $projects)); ?>
+<?php else : ?>
+	<p><i>No project to show</i></p>
+<?php endif; ?>
 
-<h2>Таски по проектам</h2>
-
-<?php $userBugs = $user->getBugs (); ?>
-<?=$this->renderPartial ('/issues/list', array ('bugs' => $userBugs)); ?>
+<h2>Issues</h2>
+<?php if (isset($issues) && count($issues) > 0) : ?>
+	<?=$this->renderPartial ('/issues/list', array ('bugs' => $issues)); ?>
+<?php else : ?>
+	<p><i>No issues to show</i></p>
+<?php endif; ?>
 
 

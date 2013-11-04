@@ -38,7 +38,7 @@ class IssuesController extends Controller
 		
 		$project = Project::findByCode($projectCode);
 		if ($project == null) {
-			throw new CHttpException('Project by code "'.$projectCode.'" not found');
+			throw new CHttpException(304, 'Project by code "'.$projectCode.'" not found');
 		}
 		
 		$bug = Bug::getBugByProjectAndNomber($project->id, $nomber);
