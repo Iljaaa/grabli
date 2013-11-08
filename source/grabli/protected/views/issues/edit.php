@@ -4,7 +4,7 @@
 	</div>
 
 	<div class="g-8" style="float:left;">
-		<h2 style="padding: 0; margin: 0;">Edit issue :<?=ucfirst(IssueHelper::getIssueNameByType($issue->type)); ?> <b>#<?=$issue->nomber ?></b></h2>
+		<h2 style="padding: 0; margin: 0;">Edit issue :<?=ucfirst(IssueHelper::getIssueNameByType($issue->type)); ?> <b>#<?=$issue->number ?></b></h2>
 		<div><b><?=$issue->title ?></b></div>
 	</div>
 

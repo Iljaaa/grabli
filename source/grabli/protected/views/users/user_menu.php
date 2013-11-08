@@ -25,7 +25,7 @@
 			 
 	?>
 		<div style="clear: both; padding-top: 10px;">
-			<?php $this->renderPartial('/projects/collumn_list', array ('projects' => $projects)); ?>
+			<?php $this->renderPartial('/projects/collumn_list', array ('projects' => $projects, 'user' => yii::app()->user->getUserObject())); ?>
 		</div>	
 	<?php endif; ?>
 	

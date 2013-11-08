@@ -54,7 +54,7 @@ return array(
 				'user/<id:\d>' 				=> 'users/view', 
 					
 				// 'issues/create/<type:\w+>'					=> 'issues/create',
-				'issue/<projectCode:\w+>/<nomber:\w+>'		=> 'issues/view',
+				'issue/<projectCode:\w+>/<number:\w+>'		=> 'issues/view',
 				'issue/<projectCode:\w+>/<number:\w+>/edit'	=> 'issues/edit',
 				'issuebyid/<id:\d+>'						=> 'issues/viewbyid',
 				'issue/create/<projectCode:\w+>/<type:\w+>' => 'issues/create',

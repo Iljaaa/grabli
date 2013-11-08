@@ -2,38 +2,45 @@
 
 class SelectUserWidget extends CWidget
 {
-		public $users = array ();
-		public $selectedUser = 0;
-		public $name;
+	/**
+	 * Массив объектов пользователей для выбора
+	 *
+	 * @var array
+	 */
+	public $users = array ();
+
+	/**
+	 * Идентификатор выбраного пользователя
+	 *
+	 * @var int
+	 */
+	public $selectedUserId = 0;
+
+	/**
+	 * Название селекта
+	 *
+	 * @var
+	 */
+	public $name;
+
+	/**
+	 * Текст который будет показан если пользователь не выбран
+	 *
+	 * @var string
+	 */
+	public $emptyUserText = 'User not selected';
+
 		
-		/**
-		 * Показывать строку пустого польвателя
-		 * 
-		 * @var bool
-		 */
-		public $showEmptyUser = false;
-	
 		
 		
-		
-		public function init()
-		{
-			
-		}
-	
-		
-		
-		
-		public function run()
-		{
-			// этот метод будет вызван внутри CBaseController::endWidget()
-			
-			$users = array();
-			
-			if ($this->showEmptyUser) $users[0] = '---';
-		
-			foreach ($this->users as $key => $u) $users[$key] = $u;
-			
-			$this->render ('SelectUserWidget', array ('users' => $users,));
-		}
+	public function init()
+	{
+
+	}
+
+
+	public function run()
+	{
+		$this->render ('SelectUserWidget');
+	}
 }

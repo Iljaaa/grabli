@@ -26,10 +26,10 @@
 				</div>
 			</td>
 			<td style="text-align: center;">
-				<b><?=$b->nomber ?></b>
+				<b><?=$b->number ?></b>
 			</td>
 			<td>
-				<a href="<?=$this->createUrl('/issue/'.$b->getProject()->code.'/'.$b->nomber); ?>">
+				<a href="<?=$this->createUrl('/issue/'.$b->getProject()->code.'/'.$b->number); ?>">
 					<?=$b->title ?></a>
 			</td>
 			<td>

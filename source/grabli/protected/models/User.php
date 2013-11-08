@@ -3,6 +3,13 @@
 
 class User extends CActiveRecord
 {
+	/**
+	 *
+	 *
+	 * @var string
+	 */
+	private $primaryKey = 'id';
+
     public static function model($className=__CLASS__)
     {
         return parent::model($className);
@@ -11,20 +18,6 @@ class User extends CActiveRecord
     public function tableName()
     {
         return 'user';
-    }
-    
-    public function getPrimaryKey() {
-    	$pk = parent::getPrimaryKey();
-    	return 'id';
-    }
-    
-    public function findByPk($pk, $condirion = '', $params = '') 
-    {
-    	$criteria = new CDbCriteria();
-    	$criteria->addCondition("id = :id");
-    	$criteria->params = array (':id' => $pk);
-
-    	return User::model()->find ($criteria);
     }
     
     /**
@@ -101,9 +94,14 @@ class User extends CActiveRecord
     	$url = '/images/avatara.jpg';
     	return $url;
     }
-    
-   
-    public function getIcoUrl() 
+
+	/**
+	 * Урл иконки пользователя
+	 *
+	 *
+	 * @return string
+	 */
+	public function getIcoUrl()
     {
     	$extensions = array ('.jpg', '.jpeg', '.gif', ',png');
     	

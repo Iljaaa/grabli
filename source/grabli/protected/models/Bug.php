@@ -29,34 +29,34 @@ class Bug extends CActiveRecord
 	 */
 	public static function getNextFreeNumberByProject ($projectId)
     {
-    	$nomber = 1;
+    	$number = 1;
     	
     	$criteria = new CDbCriteria();
-    	$criteria->select = array ('MAX(nomber) as nomber');
+    	$criteria->select = array ('MAX(number) as number');
     	$criteria->addCondition('project_id = :pid');
     	$criteria->params = array (':pid' => $projectId);
-    	$criteria->order = 'nomber DESC';
+    	$criteria->order = 'number DESC';
     	
     	$bug = Bug::model()->find($criteria);
     	
-    	if ($bug != null) $nomber = $bug->nomber + 1;
+    	if ($bug != null) $number = $bug->number + 1;
     
-    	return $nomber;
+    	return $number;
     }
 
 	/**
 	 * Получаем бар по коду проекта и номеру
 	 *
 	 * @param $project_id
-	 * @param $nomber
+	 * @param $number
 	 * @return array|CActiveRecord|mixed|null
 	 */
-	public static function getBugByProjectAndNomber ($project_id, $nomber)
+	public static function getBugByProjectAndnumber ($project_id, $number)
     {
     	$criteria = new CDbCriteria();
     	$criteria->addCondition('project_id = :pid');
-    	$criteria->addCondition("nomber = :nomber");
-    	$criteria->params = array (':pid' => $project_id, ':nomber' => $nomber);
+    	$criteria->addCondition("number = :number");
+    	$criteria->params = array (':pid' => $project_id, ':number' => $number);
     	 
     	return Bug::model()->find($criteria);
     }
@@ -135,7 +135,7 @@ class Bug extends CActiveRecord
 		$this->description	= $model->description;
 		$this->rep_steps	= $model->rep_steps;
 		
-		$this->nomber		= $model->nomber;
+		$this->number		= $model->number;
 
     	return $this;
     }

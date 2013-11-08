@@ -110,10 +110,13 @@ class ProjectsController extends Controller
 			throw new CHttpException(302, 'You can\'t view this project');
 		}
 
+
 		$this->pageTitle = $project->name;
 		$this->breadcrumbs['Проект: '.$project->name] = array('/project/'.$project->code); 
 		
-		$this->render('view', array('project'=>$project));
+		$this->render('view', array(
+			'project'	=> $project,
+		));
 	}
 
 	/**
@@ -274,30 +277,54 @@ class ProjectsController extends Controller
 	/**
 	 * Список участников проекта
 	 *
-	 * @param unknown_type $code
+	 * @param string $code
 	 * @throws CHttpException
 	 */
 	public function actionIssues ($code)
 	{
-		if (yii::app()->user->isGuest) {
-			throw new CHttpException('403 Auth required');
+		if ($code == '') {
+			throw new CHttpException('Project code not sended');
 		}
-			
+
 		$project = Project::findByCode($code);
-	
+
 		if ($project == null) {
-			throw new CHttpException('404 project whitch code "'.$code.'" not found');
+			throw new CHttpException('Project code "'.$code.'" not found');
 		}
-	
-		// $this->actionUserCommandor($project);
-	
+
+		if (!$project->canUserViewProject(yii::app()->user->getId())){
+			throw new CHttpException(302, 'You can\'t view this project');
+		}
+
+		yii::app()->firephp->log ($_POST, 'post');
+
 		$this->pageTitle = 'Issues : '.$project->name;
 		//$this->breadcrumbs['Мои проекты'] = array('/projects/');
 		$this->breadcrumbs['Проект: '.$project->name] = array('/project/'.$project->code.'/');
 		$this->breadcrumbs['Issues for project : '.$project->name] = array('/project/'.$project->code.'/users');
-	
+
+		$form = new IssueFilterForm ();
+		$form->setScenario ('project-based');
+		$form->setProject ($project);
+		$form->setActionUrl('/project/'.$project->code.'/issues');
+
+		$form->show = yii::app()->getRequest()->getParam('show', 'groups');
+		$form->sorting = yii::app()->getRequest()->getParam('sorting', 'number');
+
+
+		$criteria = new CDbCriteria();
+		$criteria->order = $form->sorting.' ASC';
+
+
+		$form->project = $project->id;
+		// $form->user = yii::app()->user->getUserObject();
+
+
 		$data = array (
-			'project'		=> $project,
+			'project'	=> $project,
+			'form'		=> $form,
+			'bugs'		=> $project->getIssues ($criteria),
+			'count'		=> $project->getIssuesCount ($criteria)
 		);
 	
 		// ищим задачи по проекту

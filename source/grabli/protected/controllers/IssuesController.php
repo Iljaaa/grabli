@@ -30,7 +30,7 @@ class IssuesController extends Controller
 	}
 	
 	
-	public function actionView ($projectCode, $nomber) 
+	public function actionView ($projectCode, $number)
 	{
 		if (yii::app()->user->isGuest) {
 			throw new CHttpException('Только для авторизованых пользователей');
@@ -41,9 +41,9 @@ class IssuesController extends Controller
 			throw new CHttpException(304, 'Project by code "'.$projectCode.'" not found');
 		}
 		
-		$bug = Bug::getBugByProjectAndNomber($project->id, $nomber);
+		$bug = Bug::getBugByProjectAndnumber($project->id, $number);
 		if ($bug == null){
-			throw new CHttpException('Bug not found; project code : "'.$projectCode.'"; bug number : "'.$nomber.'"', 404);
+			throw new CHttpException('Bug not found; project code : "'.$projectCode.'"; bug number : "'.$number.'"', 404);
 		}
 		
 		// проверяем есть ли упользователя доступ к провекту
@@ -54,9 +54,9 @@ class IssuesController extends Controller
 		$this->viewCommandor($bug, $project);
 
 		$this->breadcrumbs[$project->name] = array('/project/'.$project->code);
-		$t = IssueHelper::getIssueNameByType($bug->type).' #'.$bug->nomber.' '.$bug->title;
-		$this->breadcrumbs[$t] = array('/issue/'.$project->code.'/'.$bug->nomber);
-		$this->pageTitle = "#".$bug->nomber." ".$bug->title;
+		$t = IssueHelper::getIssueNameByType($bug->type).' #'.$bug->number.' '.$bug->title;
+		$this->breadcrumbs[$t] = array('/issue/'.$project->code.'/'.$bug->number);
+		$this->pageTitle = "#".$bug->number." ".$bug->title;
 		
 		$data = array (
 			'bug'		=> $bug, 
@@ -94,7 +94,7 @@ class IssuesController extends Controller
 					
 					yii::app()->user->setFlash ('good_news', 'Issue status changed.');
 					
-					$url = $this->createUrl('/issue/'.$project->code.'/'.$bug->nomber);
+					$url = $this->createUrl('/issue/'.$project->code.'/'.$bug->number);
 					$this->redirect($url);
 				}
 			}
@@ -154,7 +154,7 @@ class IssuesController extends Controller
 				
 				yii::app()->user->setFlash ('good_news', 'Assigned user changed.');
 				
-				$url = $this->createUrl('/issue/'.$project->code.'/'.$bug->nomber);
+				$url = $this->createUrl('/issue/'.$project->code.'/'.$bug->number);
 				$this->redirect($url);
 			}
 			
@@ -191,7 +191,7 @@ class IssuesController extends Controller
 	
 				yii::app()->user->setFlash ('good_news', 'New comment posted.');
 		
-				$url = $this->createUrl('/issue/'.$project->code.'/'.$bug->nomber);
+				$url = $this->createUrl('/issue/'.$project->code.'/'.$bug->number);
 				$this->redirect($url);
 			}
 		}
@@ -221,7 +221,7 @@ class IssuesController extends Controller
 			throw new CHttpException('Project for issue id "'.$id.'" not found');
 		}
 		
-		$this->actionView($project->code, $bug->nomber);
+		$this->actionView($project->code, $bug->number);
 		
 	}
 
@@ -287,7 +287,7 @@ class IssuesController extends Controller
 				
 			if ($model->validate())
 			{
-				$model->nomber = Bug::getNextFreeNumberByProject($model->project_id);
+				$model->number = Bug::getNextFreeNumberByProject($model->project_id);
 				
 				$item = new Bug();
 				$item->added_date = time();
@@ -300,7 +300,7 @@ class IssuesController extends Controller
 				$item->createSystemComment ('Issue created');
 				
 				// $this->redirect('/bugbyid/'.$item->id);
-				$this->redirect('/issue/'.$project->code.'/'.$item->nomber);
+				$this->redirect('/issue/'.$project->code.'/'.$item->number);
 			}
 		endif;
 		
@@ -325,7 +325,7 @@ class IssuesController extends Controller
 			throw new CHttpException('Project by code "'.$projectCode.'" not found');
 		}
 
-		$bug = Bug::getBugByProjectAndNomber($project->id, $number);
+		$bug = Bug::getBugByProjectAndnumber($project->id, $number);
 		if ($bug == null){
 			throw new CHttpException('Bug not found; project code : "'.$projectCode.'"; bug number : "'.$number.'"', 404);
 		}
@@ -340,9 +340,9 @@ class IssuesController extends Controller
 		// $projectUser = $project->getUsers();
 
 		$this->breadcrumbs[$project->name] = array('/project/'.$project->code);
-		$this->breadcrumbs[$bug->title] = array('/issue/'.$project->code.'/'.$bug->nomber);
-		$this->breadcrumbs['Edit'] = array('/issue/'.$project->code.'/'.$bug->nomber.'/edit');
-		$this->pageTitle = "Edit: #".$bug->nomber." ".$bug->title;
+		$this->breadcrumbs[$bug->title] = array('/issue/'.$project->code.'/'.$bug->number);
+		$this->breadcrumbs['Edit'] = array('/issue/'.$project->code.'/'.$bug->number.'/edit');
+		$this->pageTitle = "Edit: #".$bug->number." ".$bug->title;
 
 		$model = new IssueForm();
 		$model->setScenario('edit');
@@ -365,7 +365,7 @@ class IssuesController extends Controller
 				$mess = 'Issue updated by  <b>'.yii::app()->user->getUserObject()->name.'</b> ';
 				$bug->createSystemComment($mess);
 
-				$this->redirect('/issue/'.$project->code.'/'.$bug->nomber);
+				$this->redirect('/issue/'.$project->code.'/'.$bug->number);
 
 				/*
 				$item = new Bug();

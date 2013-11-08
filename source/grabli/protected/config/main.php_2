@@ -52,7 +52,7 @@ return array(
 				'user/<id:\d>' 				=> 'users/view', 
 					
 				'bugs/create/<type:\w+>'					=> 'bugs/create',
-				'bug/<projectCode:\w+>/<nomber:\w+>'			=> 'bugs/view',
+				'bug/<projectCode:\w+>/<number:\w+>'			=> 'bugs/view',
 				'bugbyid/<id:\d+>'								=> 'bugs/viewbyid',
 				'bugs/create/<projectCode:\w+>/<type:\w+>' 	=> 'bugs/create',
 					

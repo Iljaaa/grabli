@@ -13,7 +13,7 @@ class IssueForm extends CFormModel
 	public $assigned_to;
 	public $type;
 	
-	public $nomber;
+	public $number;
 	
 	public $description;
 	public $rep_steps;
@@ -54,7 +54,7 @@ class IssueForm extends CFormModel
 			array ('rep_steps', 'length', 'max'=>1024, 'tooLong'=>'Последовательность to long'),
 			array ('rep_steps', 'validatePosled'),
 				
-			array ('nomber', 'validateNomber'),
+			array ('number', 'validateNumber'),
 		);
 	}
 
@@ -96,12 +96,12 @@ class IssueForm extends CFormModel
 		return true;
 	}
 	
-	public function validateNomber ($params = array(), $attrs = array())
+	public function validateNumber ($params = array(), $attrs = array())
 	{
 		if ($this->id == 0) return;
 
-		if ($this->nomber == 0) {
-			$this->addError('nomber', 'Nomber setted wrong');
+		if ($this->number == 0) {
+			$this->addError('number', 'Number setted wrong');
 			return false;
 		}
 		

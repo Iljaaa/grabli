@@ -1,14 +1,15 @@
 <?php 
 $steps = Step::model()->getOrderSteps(); ?>
-<?php 
+<?php
+
 foreach ($steps as $step) : 
 
-$selectedBugs = array ();
-foreach ($bugs as $b){
-	if ($b->steps_id == $step->id) $selectedBugs[] = $b;
-}
+	$selectedBugs = array ();
+	foreach ($bugs as $b){
+		if ($b->steps_id == $step->id) $selectedBugs[] = $b;
+	}
 
-if (count($selectedBugs) == 0) continue;
+	if (count($selectedBugs) == 0) continue;
 
 ?>
 

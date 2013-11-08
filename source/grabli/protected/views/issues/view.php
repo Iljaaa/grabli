@@ -5,7 +5,7 @@
 
 	<div class="g-8" style="float:left;">
 		<h2 style="padding: 0; margin: 0; margin-top: -7px;"><b><?=$bug->title ?></b></h2>
-		<div><?=ucfirst(IssueHelper::getIssueNameByType($bug->type)); ?> Issue <b>#<?=$bug->nomber ?></b> for project : <?=$project->name ?></div>
+		<div><?=ucfirst(IssueHelper::getIssueNameByType($bug->type)); ?> Issue <b>#<?=$bug->number ?></b> for project : <?=$project->name ?></div>
 	</div>
 
 	<div style="clear: both;"></div>

@@ -22,15 +22,15 @@
 	<div class="g-row">
 		<div class="g-12">
 
-			<h1>
-				<div id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></div>
-			</h1><!-- header -->
+			<div id="logo">
+				<h1><?php echo CHtml::encode(Yii::app()->name); ?></h1>
+			</div>
 
 
 			<div class="f-nav-bar">
 				<div class="f-nav-bar-body">
 					<div class="f-nav-bar-title">
-						<a href="#">Грабли</a>
+						<a href="/">Грабли</a>
 					</div><!-- f-nav-bar-title -->
 
 

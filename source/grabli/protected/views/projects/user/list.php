@@ -23,7 +23,7 @@
 				<a href="<?=$this->createUrl('/project/'.$p->code); ?>#users">[<?=$p->usersCount(); ?>]</a>
 			</td>
 			<td style="text-align: center;">
-				<a href="<?=$this->createUrl('/project/'.$p->code); ?>#bugs">[<?=$p->issuesCount() ?>]</a>
+				<a href="<?=$this->createUrl('/project/'.$p->code); ?>#bugs">[<?=$p->getIssuesCount() ?>]</a>
 			</td>
 		</tr>
 		<?php endforeach; ?>

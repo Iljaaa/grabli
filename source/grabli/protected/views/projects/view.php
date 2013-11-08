@@ -55,7 +55,7 @@
 					<td style="text-align: center;">
 						<?php
 							$closed = $project->getClosedIssuesCount();
-							$all = $project->issuesCount();
+							$all = $project->getIssuesCount();
 							echo ($all - $closed);
 						?>
 					</td>

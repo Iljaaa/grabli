@@ -71,7 +71,12 @@ class Project extends CActiveRecord
 		
 		return UserHasProjects::model()->count($criteria);
 	}
-	
+
+	/**
+	 * Пользователи проекта
+	 *
+	 * @return array
+	 */
 	public function getUsers ()
 	{
 		$users = array ();
@@ -139,20 +144,6 @@ class Project extends CActiveRecord
 
 
 	/**
-	 * Количество заданий в проекте
-	 *
-	 * @return CDbDataReader|mixed|resource|string
-	 */
-	public function issuesCount ()
-	{
-		$criteria = new CDbCriteria();
-		$criteria->addCondition("project_id = :id");
-		$criteria->params = array (':id' => $this->id);
-		
-		return Bug::model()->count($criteria);
-	}
-	
-	/**
 	 * Получаем количество пользователей ассициотивны для пользователя
 	 * 
 	 * @param unknown_type $userId
@@ -207,15 +198,37 @@ class Project extends CActiveRecord
 	/**
 	 * Получаем все баги по проекту
 	 *
+	 * @param CDbCriteria $criteria
 	 * @return array|CActiveRecord|mixed|null
 	 */
-	public function getBugs ()
+	public function getIssues (CDbCriteria $criteria = null)
 	{
-		$criteria = new CDbCriteria();
+		if ($criteria == null){
+			$criteria = new CDbCriteria();
+		}
+
 		$criteria->addCondition("project_id = :id");
-		$criteria->params = array (':id' => $this->id);
+		$criteria->params[':id'] = $this->id;
 
 		return Bug::model()->findAll($criteria);
+	}
+
+	/**
+	 * Количество заданий в проекте
+	 *
+	 * @param CDbCriteria $criteria
+	 * @return int
+	 */
+	public function getIssuesCount (CDbCriteria $criteria = null)
+	{
+		if ($criteria == null){
+			$criteria = new CDbCriteria();
+		}
+
+		$criteria->addCondition("project_id = :id");
+		$criteria->params[':id'] = $this->id;
+
+		return Bug::model()->count($criteria);
 	}
 
 	/**
