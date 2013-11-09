@@ -224,9 +224,12 @@ class UsersController extends Controller
 		$title = 'Приглашение к регистрации на граблях';
 		
 		$em = mail($email, $title, $body, $headers);
-	} 
-	
-	
+	}
+
+	/**
+	 * Регистрация
+	 *
+	 */
 	public function actionRegistration ()
 	{
 		$this->pageTitle = 'Регистрация';

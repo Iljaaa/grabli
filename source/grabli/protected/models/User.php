@@ -69,7 +69,7 @@ class User extends CActiveRecord
     	$u->password 		= WebUser::hashPassword($model->password);
     	
     	$u->status 			= 'worked';
-    	$u->last_activaty 	= time();
+    	$u->last_activity 	= time();
 
     	$u->save();
     }
