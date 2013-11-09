@@ -3,7 +3,6 @@
 <?=CHtml::beginForm($this->createUrl($form->getActionUrl()), 'get', array ('class' => 'f-horizontal', 'name' => 'issuesFilterForm')); ?>
 
 <?php
-yii::app()->firephp->log ($form->getScenario(), 'scenario');
 
 $projectUsers = array ();
 if ($form->getScenario() == 'project-based')  {
@@ -24,9 +23,13 @@ if ($form->getScenario() == 'user-based') {
 
 ?>
 
+<?=Chtml::hiddenField('sorting', $form->sorting); ?>
+<?=Chtml::hiddenField('direction', $form->direction); ?>
+<?=Chtml::hiddenField('page', $form->page); ?>
+<?=Chtml::hiddenField('pagesize', $form->pagesize); ?>
 
 <div class="f-row">
-	<label>Проект</label>
+	Проект :
 	<?php if ($form->getScenario() == 'project-based')  : ?>
 		<?=CHtml::hiddenField('project', $form->project); ?>
 		<?=$form->getProject()->name; ?>
@@ -36,23 +39,34 @@ if ($form->getScenario() == 'user-based') {
 </div>
 
 <div class="f-row">
-	<label>Assigned to: </label>
+	<span style="float: left;">Assigned to: &nbsp;</span>
+	<div style="float: left;">
 	<?php $this->widget('SelectUserWidget', array(
 		'users' 			=> $projectUsers,
-		'selectedUserId'	=> $form->user_assigned,
-		'name'				=> 'user_assigned'
+		'selectedUserId'	=> $form->assigned_to,
+		'name'				=> 'assigned_to'
 	)); ?>
+	</div>
+
+	<span id="assigned-to-clear-button">&nbsp;&nbsp;&nbsp;<a href="javascript:clearAssignedTo()">Clear</a></span>
 </div>
 
 <div class="f-row">
-	<label>Posted by: </label>
+	<span style="float: left;">Posted by: &nbsp;</span>
+	<div style="float: left;">
 	<?php $this->widget('SelectUserWidget', array(
 		'users' 			=> $projectUsers,
-		'selectedUserId'	=> $form->user_posted,
-		'name'				=> 'user_posted'
+		'selectedUserId'	=> $form->posted_by,
+		'name'				=> 'posted_by'
 	)); ?>
+	</div>
+
+	<span id="posted-by-clear-button">&nbsp;&nbsp;&nbsp;<a href="javascript:clearPostedBy()">Clear</a></span>
 </div>
 
+<div class="f-row">
+<?=CHtml::submitButton('Filter') ?>
+</div>
 
 <div class="f-row">
 	<?=Chtml::hiddenField('show', $form->show); ?>
@@ -73,22 +87,4 @@ if ($form->getScenario() == 'user-based') {
 </div>
 
 
-<div class="f-row">
-	<?=Chtml::hiddenField('sorting', $form->sorting); ?>
-	Sorting :
-	<?php foreach ($form->sortingTypes as $t) : ?>
-		<?php if ($t == $form->sorting) : ?>
-			<?=$t ?>
-		<?php else : ?>
-			<a href="javascript:setSort('<?=$t ?>')"><?=$t ?></a>
-		<?php endif; ?>
-	<?php endforeach; ?>
-</div>
-
-<div>
-	<div>page : <?=$form->page ?></div>
-	<div>pagesize : <?=$form->pagesize ?></div>
-</div>
-
-<?=CHtml::submitButton('Filter') ?>
 <?=CHtml::endForm(); ?>

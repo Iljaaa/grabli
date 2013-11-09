@@ -2,14 +2,64 @@
 	.issues-list tbody tr td {
 		vertical-align: middle;
 	}
+
+	.arrow {
+		width: 17px;
+		height: 16px;
+		background-image: url(/images/sort_arrows.png);
+		background-position: -40px 0px;
+		display: inline-block;
+		padding-top: 1px;
+	}
+
+	.arrow-down {
+		background-position: -20px 0px;
+	}
+
+	.arrow-up {
+		background-position: 0px 0px;
+	}
+
 </style>
 
 <table class="f-table-zebra issues-list">
 	<thead>
 		<tr>
 			<th style="width: 20px; text-align: center;"></th>
-			<th style="width: 10px; text-align: center;">#</th>
-			<th>Object</th>
+			<th style="width: 40px; text-align: center;">
+				#
+				<?php
+				$class = "arrow";
+				if (isset($sorting) && $sorting == 'number') {
+					if (isset($direction) && $direction == 'asc') {
+						$class .= ' arrow-up';
+						$direction = 'desc';
+					}
+					else {
+						$class .= ' arrow-down';
+						$direction = 'asc';
+					}
+				}
+				?>
+				<a href="javascript:setSort('number', '<?=$direction ?>')" style="float:right;" class="<?=$class ?>"></a>
+			</th>
+			<th>
+				Object
+				<?php
+				$class = "arrow";
+				if (isset($sorting) && $sorting == 'title') {
+					if (isset($direction) && $direction == 'asc') {
+						$class .= ' arrow-up';
+						$direction = 'desc';
+					}
+					else {
+						$class .= ' arrow-down';
+						$direction = 'asc';
+					}
+				}
+				?>
+				<a href="javascript:setSort('title', '<?=$direction ?>')" style="float:right;" class="<?=$class ?>"></a>
+			</th>
 			<th style="width: 100px; text-align: left;">Posted by</th>
 			<th style="width: 20px; text-align: center;">to</th>
 			<th style="width: 100px; text-align: left;">Assigned to</th>

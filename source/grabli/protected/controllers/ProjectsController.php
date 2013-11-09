@@ -310,22 +310,50 @@ class ProjectsController extends Controller
 
 		$form->show = yii::app()->getRequest()->getParam('show', 'groups');
 		$form->sorting = yii::app()->getRequest()->getParam('sorting', 'number');
+		$form->direction = yii::app()->getRequest()->getParam('direction', 'asc');
+		$form->assigned_to = yii::app()->getRequest()->getParam('assigned_to', 0);
+		$form->posted_by = yii::app()->getRequest()->getParam('posted_by', 0);
+		$form->page = yii::app()->getRequest()->getParam('page', 1);
+		$form->pagesize = yii::app()->getRequest()->getParam('pagesize', 20);
 
 
 		$criteria = new CDbCriteria();
-		$criteria->order = $form->sorting.' ASC';
+		$criteria->order = '';
+		if ($form->show == 'groups'){
+			$form->show == 'steps_id ASC AND ';
+		}
+		$criteria->order .= $form->sorting.' '.$form->direction;
+		$criteria->params = array ();
 
+		if ($form->assigned_to > 0){
+			$criteria->addCondition('assigned_to = :assigned_to');
+			$criteria->params[':assigned_to'] = $form->assigned_to;
+		}
 
-		$form->project = $project->id;
-		// $form->user = yii::app()->user->getUserObject();
-
+		if ($form->posted_by > 0){
+			$criteria->addCondition('owner_id = :owner_id');
+			$criteria->params[':owner_id'] = $form->posted_by;
+		}
 
 		$data = array (
 			'project'	=> $project,
-			'form'		=> $form,
-			'bugs'		=> $project->getIssues ($criteria),
-			'count'		=> $project->getIssuesCount ($criteria)
+			'count'		=> $project->getIssuesCount ($criteria),
+			'form'		=> $form
 		);
+
+		if ($form->page > 0 && $form->pagesize > 0 && $data['count'] > $form->pagesize) {
+			$pagesCount = ceil($data['count'] / $form->pagesize);
+			if ($form->page > $pagesCount) $form->page = 1;
+			$criteria->limit = $form->pagesize;
+			$criteria->offset = ($form->page - 1) * $form->pagesize;
+		}
+
+		$form->project = $project->id;
+
+
+
+		$data['bugs'] = $project->getIssues ($criteria);
+
 	
 		// ищим задачи по проекту
 		// $search = $data['search'] =  yii::app()->request->getParam('search', '');

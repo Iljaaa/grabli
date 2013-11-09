@@ -19,7 +19,13 @@ foreach ($steps as $step) :
 <?=$step->title  ?>
 </h2>
 
-<?php $this->renderPartial ('/issues/list', array ('bugs' => $selectedBugs)); ?>
+<?php
+$data = array ('bugs' => $selectedBugs);
+if (isset($direction)) $data['direction'] = $direction;
+if (isset($sorting)) $data['sorting'] = $sorting;
+?>
+
+<?php $this->renderPartial ('/issues/list', $data); ?>
 
 <?php endforeach; ?>
 

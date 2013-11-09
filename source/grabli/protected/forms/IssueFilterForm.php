@@ -16,11 +16,12 @@ class IssueFilterForm extends CFormModel
 	 *
 	 * @var
 	 */
-	public $user_assigned;
-	public $user_posted;
+	public $assigned_to;
+	public $posted_by;
 	public $project;
 
 	public $sorting = 'number'; // Сортировка результатов
+	public $direction = 'asc'; // Сортировка результатов
 	public $show = 'groups'; // Тип отображения
 	public $page = 1;
 	public $pagesize = 20;
@@ -74,7 +75,8 @@ class IssueFilterForm extends CFormModel
 	public function rules()
 	{
 		return array(
-			array('project, user_assigned, user_posted, show, sort', 'required'),
+			array ('project, assigned_to, posted_by, show, sort, direction', 'required'),
+			array ('page', 'validPage')
 		);
 	}
 
@@ -131,6 +133,11 @@ class IssueFilterForm extends CFormModel
 		}
 
 		return true;
+	}
+
+	protected function validPage ($attribute,$params){
+		if ($this->page <= 1) $page = 1;
+
 	}
 
 }
