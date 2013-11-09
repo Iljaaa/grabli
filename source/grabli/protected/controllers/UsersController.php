@@ -57,7 +57,7 @@ class UsersController extends Controller
 			throw new CHttpException('User id not sended');
 		}
 
-		$user = User::findByPk($id);
+		$user = User::model()->findByPk($id);
 		yii::app()->firephp->log ($user->name, '$user');
 
 		if ($user == null) {

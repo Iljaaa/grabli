@@ -10,15 +10,17 @@ class User extends CActiveRecord
 	 */
 	private $primaryKey = 'id';
 
-    public static function model($className=__CLASS__)
-    {
-        return parent::model($className);
-    }
+
+	public static function model($className=__CLASS__)
+	{
+		return parent::model($className);
+	}
  
     public function tableName()
     {
         return 'user';
     }
+
     
     /**
      *
@@ -45,11 +47,11 @@ class User extends CActiveRecord
 	public static function search ($searchString)
     {
     	$crit = new CDbCriteria();
-    	
+
     	$crit->addCondition("email LIKE (:search) OR name LIKE (:search) ");
     	$crit->params = array (':search' => '%'.$searchString.'%');
-    	
-    	return User::model()->findAll($crit);    	
+
+    	return User::model()->findAll($crit);
     }
 
 	/**
