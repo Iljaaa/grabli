@@ -41,7 +41,9 @@
 					}
 				}
 				?>
+				<?php if (isset($sorting) && $sorting != '') :  ?>
 				<a href="javascript:setSort('number', '<?=$direction ?>')" style="float:right;" class="<?=$class ?>"></a>
+				<?php endif; ?>
 			</th>
 			<th>
 				Object
@@ -57,8 +59,9 @@
 						$direction = 'asc';
 					}
 				}
-				?>
+				?><?php if (isset($sorting) && $sorting != '') :  ?>
 				<a href="javascript:setSort('title', '<?=$direction ?>')" style="float:right;" class="<?=$class ?>"></a>
+				<?php endif; ?>
 			</th>
 			<th style="width: 100px; text-align: left;">Posted by</th>
 			<th style="width: 20px; text-align: center;">to</th>
