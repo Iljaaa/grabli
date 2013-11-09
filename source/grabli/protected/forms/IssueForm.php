@@ -32,10 +32,10 @@ class IssueForm extends CFormModel
 				
 			array ('project_id', 'required', 'message' => 'Project id required'),
 			array ('project_id', 'numerical', 'min'=>1, 'tooSmall'=>'Project bot setted'),
-					
-				
-			array ('assigned_to', 'required', 'message' => 'Assigned to id required'),
-			// array ('assigned_to', 'numerical', 'min'=>1, 'tooSmall'=>'Project bot setted'),
+
+
+			array ('assigned_to', 'requiredValidate'),
+			array ('assigned_to', 'required', 'message' => 'Assigned to required'),
 			// array ('assigned_to', 'assignedUserRequired'),
 
 			array ('owner_id', 'required', 'message' => 'Owner id required'),
@@ -51,8 +51,9 @@ class IssueForm extends CFormModel
 			array ('description', 'required', 'message' => 'Descrption not setted'),
 			array ('description', 'length', 'max'=>1024, 'tooLong'=>'Description to long'),
 
-			array ('rep_steps', 'length', 'max'=>1024, 'tooLong'=>'Последовательность to long'),
-			array ('rep_steps', 'validatePosled'),
+			array ('rep_steps', 'length', 'max'=>1024, 'tooLong'=>'Rep steps to long'),
+			array ('rep_steps', 'length', 'max'=>1024, 'tooLong'=>'Rep steps to long'),
+			// array ('rep_steps', 'validatePosled'),
 				
 			array ('number', 'validateNumber'),
 		);
@@ -115,4 +116,13 @@ class IssueForm extends CFormModel
 			return ;
 		}
 	}
+
+	/**
+	 * Фильтр отвественного
+	 *
+	 */
+	public function requiredValidate () {
+		if ($this->assigned_to == '')  $this->assigned_to = 0;
+	}
+
 }

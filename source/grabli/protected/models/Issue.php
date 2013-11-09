@@ -1,7 +1,7 @@
 <?php
 
 
-class Bug extends CActiveRecord
+class Issue extends CActiveRecord
 {
 	/**
 	 *
@@ -37,7 +37,7 @@ class Bug extends CActiveRecord
     	$criteria->params = array (':pid' => $projectId);
     	$criteria->order = 'number DESC';
     	
-    	$bug = Bug::model()->find($criteria);
+    	$bug = Issue::model()->find($criteria);
     	
     	if ($bug != null) $number = $bug->number + 1;
     
@@ -58,7 +58,7 @@ class Bug extends CActiveRecord
     	$criteria->addCondition("number = :number");
     	$criteria->params = array (':pid' => $project_id, ':number' => $number);
     	 
-    	return Bug::model()->find($criteria);
+    	return Issue::model()->find($criteria);
     }
     
     /**

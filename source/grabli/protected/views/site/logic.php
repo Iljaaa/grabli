@@ -22,7 +22,7 @@
 	Create: &nbsp;&nbsp;&nbsp;
 	<span class="f-bu">
 		<a href="<?=$this->createUrl('/issues/create/'.$project->code.'/bug') ?>" class="f-bu-bug">
-			Bug
+			Issue
 		</a>
 	</span>
 

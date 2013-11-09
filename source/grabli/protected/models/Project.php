@@ -157,7 +157,7 @@ class Project extends CActiveRecord
 		// $criteria->params = array (':id' => $this->id, ':userId' => $userId);
 		$criteria->params = array (':id' => $this->id, ':active' => 6);
 		
-		return Bug::model()->count($criteria);
+		return Issue::model()->count($criteria);
 	}
 
 	/**
@@ -172,7 +172,7 @@ class Project extends CActiveRecord
 		$criteria->addCondition('steps_id = 6');
 		$criteria->params = array (':id' => $this->id);
 
-		return Bug::model()->count($criteria);
+		return Issue::model()->count($criteria);
 	}
 	
 	
@@ -191,7 +191,7 @@ class Project extends CActiveRecord
 		// $criteria->params = array (':id' => $this->id, ':userId' => $userId);
 		$criteria->params = array (':id' => $this->id, ':active' => 6, ':userId' => $userId);
 		
-		return Bug::model()->findAll($criteria);
+		return Issue::model()->findAll($criteria);
 	}
 
 
@@ -210,7 +210,7 @@ class Project extends CActiveRecord
 		$criteria->addCondition("project_id = :id");
 		$criteria->params[':id'] = $this->id;
 
-		return Bug::model()->findAll($criteria);
+		return Issue::model()->findAll($criteria);
 	}
 
 	/**
@@ -228,7 +228,7 @@ class Project extends CActiveRecord
 		$criteria->addCondition("project_id = :id");
 		$criteria->params[':id'] = $this->id;
 
-		return Bug::model()->count($criteria);
+		return Issue::model()->count($criteria);
 	}
 
 	/**
@@ -243,7 +243,7 @@ class Project extends CActiveRecord
 		$criteria->addCondition("steps_id <> 6");
 		$criteria->params = array (':id' => $this->id);
 
-		return Bug::model()->findAll($criteria);
+		return Issue::model()->findAll($criteria);
 	}
 	
 	

@@ -135,7 +135,7 @@ class User extends CActiveRecord
     	$criteria->addCondition("owner_id = :userid OR assigned_to = :userid");
     	$criteria->params = array (':userid' => $this->id);
     	
-    	return Bug::model()->findAll($criteria);
+    	return Issue::model()->findAll($criteria);
     }
 
 	/**
@@ -155,7 +155,7 @@ class User extends CActiveRecord
 			$criteria->order = 'last_activity DESC';
 		}
 
-		return Bug::model()->findAll($criteria);
+		return Issue::model()->findAll($criteria);
 	}
 
     /**

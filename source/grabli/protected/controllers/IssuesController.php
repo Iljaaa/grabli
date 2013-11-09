@@ -41,9 +41,9 @@ class IssuesController extends Controller
 			throw new CHttpException(304, 'Project by code "'.$projectCode.'" not found');
 		}
 		
-		$bug = Bug::getBugByProjectAndnumber($project->id, $number);
+		$bug = Issue::getBugByProjectAndnumber($project->id, $number);
 		if ($bug == null){
-			throw new CHttpException('Bug not found; project code : "'.$projectCode.'"; bug number : "'.$number.'"', 404);
+			throw new CHttpException('Issue not found; project code : "'.$projectCode.'"; bug number : "'.$number.'"', 404);
 		}
 		
 		// проверяем есть ли упользователя доступ к провекту
@@ -69,8 +69,6 @@ class IssuesController extends Controller
 	protected function viewCommandor ($bug, $project)
 	{
 		$command = yii::app()->request->getParam ('command', '');
-		yii::app()->firephp->log ($command, 'command');
-		yii::app()->firephp->log ($_POST, 'post');
 
 		
 		if ($command == 'set_status') {
@@ -210,7 +208,7 @@ class IssuesController extends Controller
 	
 	public function actionViewbyid ($id)
 	{
-		$bug = Bug::model()->findByPk ($id);
+		$bug = Issue::model()->findByPk ($id);
 		
 		if ($bug == null) {
 			throw new CHttpException('Issue id "'.$id.'" not found');
@@ -287,9 +285,9 @@ class IssuesController extends Controller
 				
 			if ($model->validate())
 			{
-				$model->number = Bug::getNextFreeNumberByProject($model->project_id);
+				$model->number = Issue::getNextFreeNumberByProject($model->project_id);
 				
-				$item = new Bug();
+				$item = new Issue();
 				$item->added_date = time();
 				$item->updateByAddModel ($model);
 				
@@ -315,7 +313,6 @@ class IssuesController extends Controller
 
 	public function actionEdit ($projectCode, $number)
 	{
-		yii::app()->firephp->log ('333');
 		if (yii::app()->user->isGuest) {
 			throw new CHttpException('Только для авторизованых пользователей');
 		}
@@ -325,11 +322,10 @@ class IssuesController extends Controller
 			throw new CHttpException('Project by code "'.$projectCode.'" not found');
 		}
 
-		$bug = Bug::getBugByProjectAndnumber($project->id, $number);
+		$bug = Issue::getBugByProjectAndnumber($project->id, $number);
 		if ($bug == null){
-			throw new CHttpException('Bug not found; project code : "'.$projectCode.'"; bug number : "'.$number.'"', 404);
+			throw new CHttpException('Issue not found; project code : "'.$projectCode.'"; bug number : "'.$number.'"', 404);
 		}
-		yii::app()->firephp->log ($bug, '$bug');
 
 		// проверяем есть ли упользователя доступ к провекту
 		if (!yii::app()->user->getUserObject()->isInProject($project->id)){
@@ -353,7 +349,7 @@ class IssuesController extends Controller
 			$model->step_id = $bug->steps_id;
 
 			if (isset($_POST['assigned_to'])) {
-				$model->assigned_to = intVal($_POST['assigned_to']);
+				// $model->assigned_to = intVal($_POST['assigned_to']);
 			}
 
 			if ($model->validate())
@@ -366,21 +362,6 @@ class IssuesController extends Controller
 				$bug->createSystemComment($mess);
 
 				$this->redirect('/issue/'.$project->code.'/'.$bug->number);
-
-				/*
-				$item = new Bug();
-				$item->added_date = time();
-				$item->updateByAddModel ($model);
-
-				$item = Bug::model()->findByPk ($item->id);
-
-				$item->save();
-
-
-				$project = Project::model()->findByPk ($model->project_id);
-
-				// $this->redirect('/bugbyid/'.$item->id);
-				*/
 			}
 		endif;
 
