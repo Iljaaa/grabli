@@ -7,6 +7,8 @@ class RegistrationForm extends CFormModel
 	
 	public $password;
 	public $password_confirm;
+
+	public $verifyCode;
 	
 	/**
 	 * Declares the validation rules.
@@ -27,6 +29,8 @@ class RegistrationForm extends CFormModel
 			array('password', 'compare', 'compareAttribute'=>'password_confirm', 'message' => 'Passwords do not match'),
 				
 			array('password_confirm', 'required', 'message' => 'Password confirm not setted'),
+
+			array('verifyCode', 'captcha', 'allowEmpty'=>!CCaptcha::checkRequirements()),
 		);
 	}
 	

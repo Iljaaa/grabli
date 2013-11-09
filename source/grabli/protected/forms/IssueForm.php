@@ -48,7 +48,7 @@ class IssueForm extends CFormModel
 			array ('title', 'required', 'message' => 'Name not setted'),
 			array ('title', 'length', 'max'=>128, 'tooLong'=>'Name to long'),
 				
-			array ('description', 'required', 'message' => 'Descrption not setted'),
+			//array ('description', 'required', 'message' => 'Description not setted'),
 			array ('description', 'length', 'max'=>1024, 'tooLong'=>'Description to long'),
 
 			array ('rep_steps', 'length', 'max'=>1024, 'tooLong'=>'Rep steps to long'),
