@@ -18,13 +18,39 @@ class IssueFilterForm extends CFormModel
 	 */
 	public $assigned_to;
 	public $posted_by;
+
 	public $project;
 
 	public $sorting = 'number'; // Сортировка результатов
 	public $direction = 'asc'; // Сортировка результатов
-	public $show = 'groups'; // Тип отображения
 	public $page = 1;
 	public $pagesize = 20;
+
+	/**
+	 * Специальное условие
+	 * только открытые все
+	 * 'open', 'closed', 'all'
+	 *
+	 * @var int
+	 */
+	public $open = 'all';
+
+	/**
+	 * Специанльное условие
+	 * для пользователя
+	 *
+	 * @var
+	 */
+	public $for; // для пользовталея
+
+
+	/**
+	 * Способ отображения
+	 * влияет на сортировку
+	 *
+	 * @var string
+	 */
+	public $show = 'groups'; // Тип отображения
 
 	/**
 	 * Способы отображения
@@ -69,15 +95,69 @@ class IssueFilterForm extends CFormModel
 	protected $_actionUrl = '';
 
 
+	/**
+	 * Фабрика объекта формы
+	 *
+	 */
+	public static function factory(array $data)
+	{
+		$f = new IssueFilterForm();
+
+		$f->attributes = $data;
+
+
+		return $f;
+	}
 
 
 
 	public function rules()
 	{
 		return array(
-			array ('project, assigned_to, posted_by, show, sort, direction', 'required'),
+			array ('project, assigned_to, posted_by, show, sorting, direction, for, open', 'required'),
 			array ('page', 'validPage')
 		);
+	}
+
+	/**
+	 * Строим критериб на основании фильтров
+	 *
+	 */
+	public function buildCriteria ()
+	{
+		$criteria = new CDbCriteria();
+		$criteria->order = '';
+
+		if ($this->show == 'groups'){
+			$criteria->order = 'steps_id ASC, ';
+		}
+
+		$criteria->order .= $this->sorting.' '.$this->direction;
+		$criteria->params = array ();
+
+		if ($this->assigned_to > 0){
+			$criteria->addCondition('assigned_to = :assigned_to');
+			$criteria->params[':assigned_to'] = $this->assigned_to;
+		}
+
+		if ($this->posted_by > 0){
+			$criteria->addCondition('owner_id = :owner_id');
+			$criteria->params[':owner_id'] = $this->posted_by;
+		}
+
+		if ($this->for > 0)
+		{
+			$criteria->addCondition('owner_id = :owner_id OR assigned_to = :assigned_to');
+			$criteria->params[':owner_id'] = $this->for;
+			$criteria->params[':assigned_to'] = $this->for;
+		}
+
+		// статус открытости
+		if ($this->open == 'open') {
+			$criteria->addCondition('steps_id <> 6');
+		}
+
+		return $criteria;
 	}
 
 	/**
@@ -86,7 +166,6 @@ class IssueFilterForm extends CFormModel
 	 * @param $user
 	 */
 	public function setUserObject ($user) {
-		yii::app()->firephp->log ($user, 'user');
 		$this->_userObject = $user;
 	}
 
@@ -135,7 +214,7 @@ class IssueFilterForm extends CFormModel
 		return true;
 	}
 
-	protected function validPage ($attribute,$params){
+	public function validPage ($attribute,$params){
 		if ($this->page <= 1) $page = 1;
 
 	}

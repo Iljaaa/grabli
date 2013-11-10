@@ -1,4 +1,5 @@
 <style>
+
 	.issues-list tbody tr td {
 		vertical-align: middle;
 	}

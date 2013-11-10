@@ -14,8 +14,7 @@
 		});
 	}
 
-	$(document).ready(function (){
-		console.log ('ready');
+	$(document).ready(function () {
 		$( "#deadline-input" ).datepicker({
 			dateFormat	: 'dd.mm.yy',
 			onSelect	: deadLineSetted
@@ -69,7 +68,7 @@ if ($bug->dedline_date > 0) $val = date('d.m.Y', $bug->dedline_date);
 	<?php if ($bug->dedline_date > 0) : ?>
 		<a href="javascript:showDualog()">
 			change
-		</a><br />
+		</a>&nbsp;
 		<a href="javascript:clearDeadline()">
 			clear
 		</a>

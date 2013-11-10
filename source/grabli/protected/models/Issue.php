@@ -60,7 +60,7 @@ class Issue extends CActiveRecord
     	 
     	return Issue::model()->find($criteria);
     }
-    
+
     /**
      * Формируем урл иконки на основании типа 
      * 
@@ -74,7 +74,7 @@ class Issue extends CActiveRecord
     public function getSmallIconUrl () {
     	return self::getIconUrlByBugType($this->type);
     }
-    
+
     
     /**
      * Проверяет можно ли установить статус
@@ -117,9 +117,34 @@ class Issue extends CActiveRecord
     	
     	return Comment::model()->findAll($criteria); 	
     }
-    
-    
-    
+
+	/**
+	 * получаем родительское задание
+	 *
+	 */
+	public function getParent ()
+	{
+		if ($this->parent_id == 0) return null;
+
+		return Issue::model()->findByPk($this->parent_id);
+	}
+
+	/**
+	 * Дочерние таски
+	 *
+	 * @return array|CActiveRecord|mixed|null
+	 */
+	public function getChildrens ()
+	{
+		$criteria = new CDbCriteria();
+		$criteria->addCondition('parent_id = :parent');
+		$criteria->params = array (':parent' => $this->id);
+		$criteria->order = "number asc";
+
+		return Issue::model()->findAll($criteria);
+	}
+
+
     public function updateByAddModel ($model) 
     {
    		$this->steps_id 	= $model->step_id;
@@ -129,6 +154,9 @@ class Issue extends CActiveRecord
 		else $this->assigned_to	= $model->assigned_to;
 		
 		$this->owner_id		= $model->owner_id;
+
+		if ($model->parent_id == 0) $this->parent_id = null;
+		else $this->parent_id	= $model->parent_id;
 		
 		$this->title		= $model->title;
 		$this->type			= $model->type;

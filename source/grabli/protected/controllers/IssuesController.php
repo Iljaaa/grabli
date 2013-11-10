@@ -270,11 +270,11 @@ class IssuesController extends Controller
 		$model->step_id = 1;
 		$model->type = $type;
 
+		$model->parent_id = yii::app()->getRequest()->getParam ('parent_id', 0);
+
 		if ($project != null) {
 			$model->project_id = $project->id;
 		}
-
-
 
 		
 		if (isset($_POST['IssueForm']) && count(($_POST['IssueForm'])) > 0) :
@@ -296,8 +296,7 @@ class IssuesController extends Controller
 
 				//
 				$item->createSystemComment ('Issue created');
-				
-				// $this->redirect('/bugbyid/'.$item->id);
+
 				$this->redirect('/issue/'.$project->code.'/'.$item->number);
 			}
 		endif;

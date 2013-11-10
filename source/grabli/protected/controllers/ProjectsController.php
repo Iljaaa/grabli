@@ -296,44 +296,29 @@ class ProjectsController extends Controller
 			throw new CHttpException(302, 'You can\'t view this project');
 		}
 
-		yii::app()->firephp->log ($_POST, 'post');
-
 		$this->pageTitle = 'Issues : '.$project->name;
 		//$this->breadcrumbs['Мои проекты'] = array('/projects/');
 		$this->breadcrumbs['Проект: '.$project->name] = array('/project/'.$project->code.'/');
 		$this->breadcrumbs['Issues for project : '.$project->name] = array('/project/'.$project->code.'/users');
 
-		$form = new IssueFilterForm ();
+		$form = IssueFilterForm::factory($_GET);
 		$form->setScenario ('project-based');
 		$form->setProject ($project);
 		$form->setActionUrl('/project/'.$project->code.'/issues');
 
+		$valid = $form->validate();
+
+		/*
 		$form->show = yii::app()->getRequest()->getParam('show', 'groups');
 		$form->sorting = yii::app()->getRequest()->getParam('sorting', 'number');
 		$form->direction = yii::app()->getRequest()->getParam('direction', 'asc');
 		$form->assigned_to = yii::app()->getRequest()->getParam('assigned_to', 0);
 		$form->posted_by = yii::app()->getRequest()->getParam('posted_by', 0);
 		$form->page = yii::app()->getRequest()->getParam('page', 1);
-		$form->pagesize = yii::app()->getRequest()->getParam('pagesize', 20);
+		$form->pagesize = yii::app()->getRequest()->getParam('pagesize', 20);*/
 
 
-		$criteria = new CDbCriteria();
-		$criteria->order = '';
-		if ($form->show == 'groups'){
-			$form->show == 'steps_id ASC AND ';
-		}
-		$criteria->order .= $form->sorting.' '.$form->direction;
-		$criteria->params = array ();
-
-		if ($form->assigned_to > 0){
-			$criteria->addCondition('assigned_to = :assigned_to');
-			$criteria->params[':assigned_to'] = $form->assigned_to;
-		}
-
-		if ($form->posted_by > 0){
-			$criteria->addCondition('owner_id = :owner_id');
-			$criteria->params[':owner_id'] = $form->posted_by;
-		}
+		$criteria = $form->buildCriteria($_GET);
 
 		$data = array (
 			'project'	=> $project,

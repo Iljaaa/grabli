@@ -1,4 +1,6 @@
-<div>
+<?php Yii::app()->getClientScript()->registerScriptFile(Yii::app()->baseUrl.'/js/popup.js'); ?>
+
+<div class="f-row">
 	<div class="issue-ico issue-ico-<?=$bug->type ?>" style="float: left; margin-right: 10px; height: 50px;">
 		<div><div><?=ucfirst(IssueHelper::getIssueAbbreviation($bug->type)); ?></div></div>
 	</div>
@@ -17,77 +19,18 @@
 <?php endif; ?>
 
 
-<div style="display: none;">
-<?=$this->renderPartial('/issues/view/commands', array('bug'=>$bug)); ?>
+<div  style="padding-top: 15px">
+<?=$this->renderPartial('/issues/view/commands', array('issue'=>$bug, 'project' => $project)); ?>
 </div>
+
+
 
 <div class="g-row" style="margin-top: 0px;">
 	<div class="g-5">
-	
-	<table class="f-table-zebra">
-		<tbody>
-			<tr>
-				<td style="width: 105px;">Проект</td>
-				<td>
-					<a href="<?=$this->createUrl('/project/'.$project->code); ?>"><?=$project->name ?></a>
-				</td>
-			</tr>
-			<tr>
-				<td>Владелец</td>
-				<td><?php $this->widget('ShowUserWidget', array('user' => $bug->getOwner())); ?></td>
-			</tr>
-			<tr>
-				<td>Ответственный</td>
-				<td><?php $this->renderPartial ('/issues/view/assigneduser', array ('bug' => $bug, 'project' => $project)); ?></td>
-			</tr>
-			
-			<tr>
-				<td>Статус</td>
-				<td>
-					<?php $this->renderPartial ('/issues/view/status', array ('bug' => $bug, 'project' => $project)) ?>
-				</td>
-			</tr>
-	
-		</tbody>
-	
-	</table>
-	
+		<?=$this->renderPartial('/issues/view/data', array('issue'=>$bug, 'project' => $project)); ?>
 	</div>
-	<div class="g-4"> 
-	
-	<table class="f-table-zebra">
-		<tbody>
-			<tr>
-				<td style="width: 105px;">Create date :</td>
-				<td>
-					<?php if ($bug->added_date == 0) : ?>
-						<i>unknown</i>
-					<?php else : ?>
-						<?=date('d.m.Y H.s', $bug->added_date); ?>
-					<?php endif; ?>
-				</td>
-			</tr>
-			<tr>
-				<td>&nbsp;</td>
-				<td></td>
-			</tr>
-			<tr>
-				<td>Dedline :</td>
-				<td>
-					<?php $this->renderPartial ('/issues/view/deadline', array ('bug' => $bug, 'project' => $project)) ?>
-				</td>
-			</tr>
-			<tr>
-				<td>Milestone :</td>
-				<td>
-					---
-				</td>
-			</tr>
-	
-		</tbody>
-	
-	</table>
-	
+	<div class="g-4">
+		<?=$this->renderPartial('/issues/view/life', array('issue' => $bug, 'project' => $project)); ?>
 	</div>
 </div>
 
@@ -97,14 +40,22 @@
 
 
 <div class="f-message">
-	<h5>Описание</h5>
-	<?=nl2br($bug->description); ?>
+	<h5>Description</h5>
+	<?php if ($bug->description != '') : ?>
+		<?=nl2br($bug->description); ?>
+	<?php else : ?>
+		<i>Description not setted</i>
+	<?php endif; ?>
 </div>
 
 <?php if ($bug->type == "bug") : ?>
 <div class="f-message">
-	<h5>Последовательность действий:</h5> 
-	<?=nl2br($bug->rep_steps); ?>
+	<h5>Reproducing steps:</h5>
+	<?php if ($bug->rep_steps != '') : ?>
+		<?=nl2br($bug->rep_steps); ?>
+	<?php else : ?>
+		<i>Reproducing steps not setted</i>
+	<?php endif; ?>
 </div>
 <?php endif; ?>
 

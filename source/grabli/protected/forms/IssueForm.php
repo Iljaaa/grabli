@@ -12,6 +12,7 @@ class IssueForm extends CFormModel
 	public $owner_id;
 	public $assigned_to;
 	public $type;
+	public $parent_id;
 	
 	public $number;
 	
@@ -36,6 +37,9 @@ class IssueForm extends CFormModel
 
 			array ('assigned_to', 'requiredValidate'),
 			array ('assigned_to', 'required', 'message' => 'Assigned to required'),
+
+			array ('parent_id', 'requiredValidate'),
+			array ('parent_id', 'required', 'message' => 'Parent id to required'),
 			// array ('assigned_to', 'assignedUserRequired'),
 
 			array ('owner_id', 'required', 'message' => 'Owner id required'),
@@ -64,7 +68,8 @@ class IssueForm extends CFormModel
 		return array (
 			'rep_steps'		=> 'Reproduction steps',
 			'project_id'	=> 'Project',
-			'owner_id'		=> 'Owner'
+			'owner_id'		=> 'Owner',
+			'parent_id'		=> 'Child for'
 		);
 	}
 
@@ -123,6 +128,7 @@ class IssueForm extends CFormModel
 	 */
 	public function requiredValidate () {
 		if ($this->assigned_to == '')  $this->assigned_to = 0;
+		if ($this->parent_id == '')  $this->parent_id = 0;
 	}
 
 }

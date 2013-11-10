@@ -28,6 +28,7 @@ foreach ($userProjects as $p) $projectsForSelect[$p->id] = $p->name;
 <?=CHtml::activeHiddenField($model, 'id'); ?>
 <?=CHtml::activeHiddenField($model, 'step_id') ?>
 <?=CHtml::activeHiddenField($model, 'assigned_to') ?>
+<?=CHtml::activeHiddenField($model, 'parent_id') ?>
 
 <?php yii::app()->firephp->log ($model->getScenario(), 'scn'); ?>
 
@@ -62,6 +63,24 @@ foreach ($userProjects as $p) $projectsForSelect[$p->id] = $p->name;
 	</div>
 </div>
 
+<?php if ($model->parent_id > 0) : ?>
+	<?php $parentIssue = Issue::model('issue')->findByPk($model->parent_id); ?>
+	<?php if ($parentIssue != null) : ?>
+		<div class="f-row">
+			<?=CHtml::activeLabel($model, 'parent_id') ?>
+			<div class="f-input">
+				<div class="issue-small-ico issue-ico-<?=$parentIssue->type ?>"  style="float: left;">
+					<div><div><?=ucfirst(IssueHelper::getIssueAbbreviation($parentIssue->type)); ?></div></div>
+
+				</div>
+				<div style="margin: 0 0 0 7px; float: left;">
+					#<?=$parentIssue->number.' '.$parentIssue->title ?>
+				</div>
+				<div style="clear: both"></div>
+				</div>
+		</div>
+	<?php endif; ?>
+<?php endif; ?>
 
 <div class="f-row">
 	<?=CHtml::activeLabel($model, 'title') ?>

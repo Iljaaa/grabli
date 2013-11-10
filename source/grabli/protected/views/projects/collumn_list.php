@@ -19,9 +19,9 @@
 		<div style="margin-top: 10px;">
 			<a href="<?=$this->createUrl('/project/'.$p->code.'/issues') ?>">Issues</a>
 			<ul>
-				<li><a href="#">my issues</a></li>
-				<li><a href="#">open issues</a></li>
-				<li><a href="#">issues open for my</a></li>
+				<li><a href="<?=$this->createUrl('/project/'.$p->code.'/issues') ?>?for=<?=yii::app()->user->getId() ?>">my issues</a></li>
+				<li><a href="<?=$this->createUrl('/project/'.$p->code.'/issues') ?>?open=open">open issues</a></li>
+				<li><a href="<?=$this->createUrl('/project/'.$p->code.'/issues') ?>?open=open&assigned_to=<?=yii::app()->user->getId() ?>">issues open for my</a></li>
 			</ul>
 		</div>
 		<?php endif; ?>

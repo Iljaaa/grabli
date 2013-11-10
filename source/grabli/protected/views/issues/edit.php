@@ -32,6 +32,7 @@ foreach ($userProjects as $p) $projectsForSelect[$p->id] = $p->name;
 <?=CHtml::activeHiddenField($model, 'id'); ?>
 <?=CHtml::activeHiddenField($model, 'step_id') ?>
 <?=CHtml::activeHiddenField($model, 'assigned_to') ?>
+<?=CHtml::activeHiddenField($model, 'parent_id') ?>
 
 <?php yii::app()->firephp->log ($model->getScenario(), 'scn'); ?>
 

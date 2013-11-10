@@ -43,7 +43,8 @@ return array(
 		// uncomment the following to enable URLs in path-format
 		
 		'urlManager'=>array(
-			'urlFormat'=>'path',
+			'urlFormat'			=>'path',
+			'showScriptName'	=> false,
 			'rules'=>array(
 					
 				'project/<code:\w+>' 		=> 'projects/view',
