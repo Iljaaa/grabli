@@ -25,7 +25,7 @@ if ($parent != null) :
 			<div class="issue-small-ico issue-ico-<?=$parent->type ?>" style="width: 25px; float: left;">
 				<div><div><?=ucfirst(IssueHelper::getIssueAbbreviation($parent->type)); ?></div></div>
 			</div>
-			<div style="padding-left: 5px; display: table-cell; vertical-align: middle; height: 25px;">
+			<div style="padding-left: 5px; display: table-cell; vertical-align: middle; height: 25px; overflow: hidden; max-width: 260px;">
 				<nobr><b>#<?=$parent->number ?></b> <?=$parent->title ?></nobr>
 			</div>
 		</a>
@@ -37,7 +37,7 @@ if ($parent != null) :
 		<div class="issue-small-ico issue-ico-gray" style="width: 25px; float: left;">
 			<div><div>?</div></div>
 		</div>
-		<div style="padding-left: 5px; display: table-cell; vertical-align: middle; height: 25px; overflow: hidden; max-width: 260px;">
+		<div style="padding-left: 5px; display: table-cell; vertical-align: middle; height: 25px;">
 			Nothing
 		</div>
 	</div>
@@ -74,9 +74,9 @@ if (count($childs) > 0) : ?>
 ?>
 
 	<?php if ($i > 4) : ?>
-		<div style="padding-left: 5px; display: none;" show="1">
+		<div style="padding-left: 5px; margin-top: 5px; display: none;" show="1">
 	<?php else : ?>
-		<div style="padding-left: 5px;">
+		<div style="padding-left: 5px; margin-top: 5px;">
 	<?php endif; ?>
 
 	<a href="<?=$this->createUrl ('/issue/'.$project->code.'/'.$ch->number); ?>">
