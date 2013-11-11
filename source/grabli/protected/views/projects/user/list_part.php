@@ -25,7 +25,7 @@
 				<a href="<?=$this->createUrl('/project/'.$p->code); ?>#users">[<?=$p->usersCount(); ?>]</a>
 			</td>
 			<td style="text-align: center;">
-				<a href="<?=$this->createUrl('/project/'.$p->code); ?>#bugs">[<?=$p->getActiveBugsCount() ?>/<?=$p->bugsCount() ?>]</a>
+				<a href="<?=$this->createUrl('/project/'.$p->code); ?>#bugs">[<?=$p->getOpenIssuesCount() ?>/<?=$p->bugsCount() ?>]</a>
 			</td>
 		</tr>
 		<?php endforeach; ?>

@@ -96,6 +96,7 @@ class ProjectsController extends Controller
 	 */
 	public function actionView ($code) 
 	{
+
 		if ($code == '') {
 			throw new CHttpException('Project code not sended');
 		}
@@ -110,12 +111,15 @@ class ProjectsController extends Controller
 			throw new CHttpException(302, 'You can\'t view this project');
 		}
 
-
 		$this->pageTitle = $project->name;
 		$this->breadcrumbs['Проект: '.$project->name] = array('/project/'.$project->code); 
-		
+
+		$issuesCriteria = new CDbCriteria();
+		$issuesCriteria->limit = 10;
+
 		$this->render('view', array(
 			'project'	=> $project,
+            'issues'    => $project->getOpenIssues ($issuesCriteria)
 		));
 	}
 

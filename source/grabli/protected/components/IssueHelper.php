@@ -31,8 +31,6 @@ class IssueHelper {
 	 */
 	public static function getIssueNameByType ($issueType)
 	{
-		yii::app()->firephp->log ('IssueHelper::getIssueNameByType('.$issueType.')');
-
 		if (isset(static::$_issuesNames[$issueType])){
 			return static::$_issuesNames[$issueType];
 		}
@@ -48,8 +46,6 @@ class IssueHelper {
 	 */
 	public static function getIssueAbbreviation ($issueType)
 	{
-		yii::app()->firephp->log ('IssueHelper::getIssueAbbreviation('.$issueType.')');
-
 		if (isset(static::$_issuesAbbreviation[$issueType])){
 			return static::$_issuesAbbreviation[$issueType];
 		}

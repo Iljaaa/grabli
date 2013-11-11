@@ -94,9 +94,16 @@
 <?=$this->renderPartial ('/projects/view/create_issue', array('project' => $project)) ?>
 
 
-<?php $bugs = $project->getOpenBugs (); ?>
-<?php if (count($bugs) > 0) : ?>
-<?=$this->renderPartial('/issues/list', array ('bugs' => $bugs)); ?>
+<?php if (isset($issues) && count($issues) > 0) : ?>
+	<?=$this->renderPartial('/issues/list', array ('bugs' => $issues)); ?>
+
+	<?php if ($project->getOpenIssuesCount() > count($issues)) : ?>
+		<div>
+			<a href="<?=$this->createUrl ('/project/'.$project->code.'/issues/'); ?>" class="f-bu f-bu-default">
+				View all <?=$project->getOpenIssuesCount() ?> issues</a>
+		</div>
+	<?php endif; ?>
+
 <?php else : ?>
 <p>No issues</p>
 <?php endif; ?>

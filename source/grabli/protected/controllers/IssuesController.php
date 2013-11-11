@@ -3,7 +3,6 @@
 class IssuesController extends Controller
 {
 
-
 	protected function beforeAction($action) 
 	{
 		
@@ -11,7 +10,6 @@ class IssuesController extends Controller
 		
 		return parent::beforeAction($action);
 	}
-	
 
 	/**
 	 * Список проектов для пользователя

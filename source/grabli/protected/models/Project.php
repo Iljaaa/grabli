@@ -31,6 +31,8 @@ class Project extends CActiveRecord
     	return Project::model()->find($criteria);
     }
 
+
+
 	/**
 	 * Владелец проекта
 	 *
@@ -61,8 +63,11 @@ class Project extends CActiveRecord
 		return false;
 	}
 
-    
-    
+	/**
+	 * Количество пользователей проекта
+	 *
+	 * @return CDbDataReader|mixed|string
+	 */
 	public function usersCount () 
 	{
 		$criteria = new CDbCriteria();
@@ -143,39 +148,7 @@ class Project extends CActiveRecord
 	}
 
 
-	/**
-	 * Получаем количество пользователей ассициотивны для пользователя
-	 * 
-	 * @param unknown_type $userId
-	 */
-	public function getActiveBugsCount ()
-	{
-		$criteria = new CDbCriteria();
-		$criteria->addCondition("project_id = :id");
-		// $criteria->addCondition("assigned_to = :userId");
-		$criteria->addCondition('steps_id != :active');
-		// $criteria->params = array (':id' => $this->id, ':userId' => $userId);
-		$criteria->params = array (':id' => $this->id, ':active' => 6);
-		
-		return Issue::model()->count($criteria);
-	}
 
-	/**
-	 * Количество закрытых багов
-	 *
-	 * @param unknown_type $userId
-	 */
-	public function getClosedIssuesCount ()
-	{
-		$criteria = new CDbCriteria();
-		$criteria->addCondition("project_id = :id");
-		$criteria->addCondition('steps_id = 6');
-		$criteria->params = array (':id' => $this->id);
-
-		return Issue::model()->count($criteria);
-	}
-	
-	
 	/**
 	 * Получаем баги из проекта за 
 	 * асайненые на пользователя
@@ -231,22 +204,63 @@ class Project extends CActiveRecord
 		return Issue::model()->count($criteria);
 	}
 
+
 	/**
 	 * Получаем только открытые баги для проекта
 	 *
 	 * @return array|CActiveRecord|mixed|null
 	 */
-	public function getOpenBugs ()
+	public function getOpenIssues (CDbCriteria $criteria = null)
 	{
-		$criteria = new CDbCriteria();
+		if ($criteria == null) {
+			$criteria = new CDbCriteria();
+		}
+
 		$criteria->addCondition("project_id = :id");
 		$criteria->addCondition("steps_id <> 6");
-		$criteria->params = array (':id' => $this->id);
+		$criteria->params[':id'] = $this->id;
+
+		if ($criteria->order == ''){
+			$criteria->order = 'last_activity DESC';
+		}
 
 		return Issue::model()->findAll($criteria);
 	}
-	
-	
+
+	/**
+	 * Получаем количество пользователей ассициотивны для пользователя
+	 *
+	 * @param unknown_type $userId
+	 */
+	public function getOpenIssuesCount ()
+	{
+		$criteria = new CDbCriteria();
+		$criteria->addCondition("project_id = :id");
+		// $criteria->addCondition("assigned_to = :userId");
+		$criteria->addCondition('steps_id != :active');
+		// $criteria->params = array (':id' => $this->id, ':userId' => $userId);
+		$criteria->params = array (':id' => $this->id, ':active' => 6);
+
+		return Issue::model()->count($criteria);
+	}
+
+	/**
+	 * Количество закрытых багов
+	 *
+	 * @param unknown_type $userId
+	 */
+	public function getClosedIssuesCount ()
+	{
+		$criteria = new CDbCriteria();
+		$criteria->addCondition("project_id = :id");
+		$criteria->addCondition('steps_id = 6');
+		$criteria->params = array (':id' => $this->id);
+
+		return Issue::model()->count($criteria);
+	}
+
+
+	/*
 	public function insertByModel ($model)
 	{	
 		$this->owner_id		= $model->owner_id;
@@ -272,6 +286,6 @@ class Project extends CActiveRecord
 	
 		
 		return $this;
-	}
+	}*/
 	
 }
