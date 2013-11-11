@@ -10651,3 +10651,173 @@ Stack trace:
 REQUEST_URI=/site/login
 HTTP_REFERER=http://grabli/users/restore
 ---
+2013/11/11 19:16:45 [warning] [application] Failed to set unsafe attribute "code" of "IssueFilterForm".
+in /var/www/grabli/source/grabli/protected/forms/IssueFilterForm.php (106)
+in /var/www/grabli/source/grabli/protected/controllers/ProjectsController.php (308)
+in /var/www/grabli/source/grabli/index.php (13)
+2013/11/11 19:16:48 [warning] [application] Failed to set unsafe attribute "pagesize" of "IssueFilterForm".
+in /var/www/grabli/source/grabli/protected/forms/IssueFilterForm.php (106)
+in /var/www/grabli/source/grabli/protected/controllers/ProjectsController.php (308)
+in /var/www/grabli/source/grabli/index.php (13)
+2013/11/11 19:16:48 [warning] [application] Failed to set unsafe attribute "code" of "IssueFilterForm".
+in /var/www/grabli/source/grabli/protected/forms/IssueFilterForm.php (106)
+in /var/www/grabli/source/grabli/protected/controllers/ProjectsController.php (308)
+in /var/www/grabli/source/grabli/index.php (13)
+2013/11/11 19:16:56 [warning] [application] Failed to set unsafe attribute "steps_id" of "IssueForm".
+in /var/www/grabli/source/grabli/protected/controllers/IssuesController.php (342)
+in /var/www/grabli/source/grabli/index.php (13)
+2013/11/11 19:16:56 [warning] [application] Failed to set unsafe attribute "added_date" of "IssueForm".
+in /var/www/grabli/source/grabli/protected/controllers/IssuesController.php (342)
+in /var/www/grabli/source/grabli/index.php (13)
+2013/11/11 19:16:56 [warning] [application] Failed to set unsafe attribute "dedline_date" of "IssueForm".
+in /var/www/grabli/source/grabli/protected/controllers/IssuesController.php (342)
+in /var/www/grabli/source/grabli/index.php (13)
+2013/11/11 19:16:56 [warning] [application] Failed to set unsafe attribute "last_activity" of "IssueForm".
+in /var/www/grabli/source/grabli/protected/controllers/IssuesController.php (342)
+in /var/www/grabli/source/grabli/index.php (13)
+2013/11/11 19:43:26 [warning] [application] Failed to set unsafe attribute "steps_id" of "IssueForm".
+in /var/www/grabli/source/grabli/protected/controllers/IssuesController.php (342)
+in /var/www/grabli/source/grabli/index.php (13)
+2013/11/11 19:43:26 [warning] [application] Failed to set unsafe attribute "added_date" of "IssueForm".
+in /var/www/grabli/source/grabli/protected/controllers/IssuesController.php (342)
+in /var/www/grabli/source/grabli/index.php (13)
+2013/11/11 19:43:26 [warning] [application] Failed to set unsafe attribute "dedline_date" of "IssueForm".
+in /var/www/grabli/source/grabli/protected/controllers/IssuesController.php (342)
+in /var/www/grabli/source/grabli/index.php (13)
+2013/11/11 19:43:26 [warning] [application] Failed to set unsafe attribute "last_activity" of "IssueForm".
+in /var/www/grabli/source/grabli/protected/controllers/IssuesController.php (342)
+in /var/www/grabli/source/grabli/index.php (13)
+2013/11/11 20:05:03 [warning] [application] Failed to set unsafe attribute "steps_id" of "IssueForm".
+in /var/www/grabli/source/grabli/protected/controllers/IssuesController.php (342)
+in /var/www/grabli/source/grabli/index.php (13)
+2013/11/11 20:05:03 [warning] [application] Failed to set unsafe attribute "added_date" of "IssueForm".
+in /var/www/grabli/source/grabli/protected/controllers/IssuesController.php (342)
+in /var/www/grabli/source/grabli/index.php (13)
+2013/11/11 20:05:03 [warning] [application] Failed to set unsafe attribute "dedline_date" of "IssueForm".
+in /var/www/grabli/source/grabli/protected/controllers/IssuesController.php (342)
+in /var/www/grabli/source/grabli/index.php (13)
+2013/11/11 20:05:03 [warning] [application] Failed to set unsafe attribute "last_activity" of "IssueForm".
+in /var/www/grabli/source/grabli/protected/controllers/IssuesController.php (342)
+in /var/www/grabli/source/grabli/index.php (13)
+2013/11/11 20:05:05 [warning] [application] Failed to set unsafe attribute "steps_id" of "IssueForm".
+in /var/www/grabli/source/grabli/protected/controllers/IssuesController.php (342)
+in /var/www/grabli/source/grabli/index.php (13)
+2013/11/11 20:05:05 [warning] [application] Failed to set unsafe attribute "added_date" of "IssueForm".
+in /var/www/grabli/source/grabli/protected/controllers/IssuesController.php (342)
+in /var/www/grabli/source/grabli/index.php (13)
+2013/11/11 20:05:05 [warning] [application] Failed to set unsafe attribute "dedline_date" of "IssueForm".
+in /var/www/grabli/source/grabli/protected/controllers/IssuesController.php (342)
+in /var/www/grabli/source/grabli/index.php (13)
+2013/11/11 20:05:05 [warning] [application] Failed to set unsafe attribute "last_activity" of "IssueForm".
+in /var/www/grabli/source/grabli/protected/controllers/IssuesController.php (342)
+in /var/www/grabli/source/grabli/index.php (13)
+2013/11/11 20:05:07 [warning] [application] Failed to set unsafe attribute "steps_id" of "IssueForm".
+in /var/www/grabli/source/grabli/protected/controllers/IssuesController.php (342)
+in /var/www/grabli/source/grabli/index.php (13)
+2013/11/11 20:05:07 [warning] [application] Failed to set unsafe attribute "added_date" of "IssueForm".
+in /var/www/grabli/source/grabli/protected/controllers/IssuesController.php (342)
+in /var/www/grabli/source/grabli/index.php (13)
+2013/11/11 20:05:07 [warning] [application] Failed to set unsafe attribute "dedline_date" of "IssueForm".
+in /var/www/grabli/source/grabli/protected/controllers/IssuesController.php (342)
+in /var/www/grabli/source/grabli/index.php (13)
+2013/11/11 20:05:07 [warning] [application] Failed to set unsafe attribute "last_activity" of "IssueForm".
+in /var/www/grabli/source/grabli/protected/controllers/IssuesController.php (342)
+in /var/www/grabli/source/grabli/index.php (13)
+2013/11/11 20:05:30 [error] [exception.CException] exception 'CException' with message 'Project and its behaviors do not have a method or closure named "canEdit".' in /var/www/grabli/source/framework/base/CComponent.php:265
+Stack trace:
+#0 /var/www/grabli/source/framework/db/ar/CActiveRecord.php(225): CComponent->__call('canEdit', Array)
+#1 /var/www/grabli/source/grabli/protected/views/issues/view/commands.php(13): CActiveRecord->__call('canEdit', Array)
+#2 /var/www/grabli/source/grabli/protected/views/issues/view/commands.php(13): Project->canEdit()
+#3 /var/www/grabli/source/framework/web/CBaseController.php(126): require('/var/www/grabli...')
+#4 /var/www/grabli/source/framework/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/grabli...', Array, true)
+#5 /var/www/grabli/source/framework/web/CController.php(869): CBaseController->renderFile('/var/www/grabli...', Array, true)
+#6 /var/www/grabli/source/grabli/protected/views/issues/view.php(23): CController->renderPartial('/issues/view/co...', Array)
+#7 /var/www/grabli/source/framework/web/CBaseController.php(126): require('/var/www/grabli...')
+#8 /var/www/grabli/source/framework/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/grabli...', Array, true)
+#9 /var/www/grabli/source/framework/web/CController.php(869): CBaseController->renderFile('/var/www/grabli...', Array, true)
+#10 /var/www/grabli/source/framework/web/CController.php(782): CController->renderPartial('view', Array, true)
+#11 /var/www/grabli/source/grabli/protected/controllers/IssuesController.php(64): CController->render('view', Array)
+#12 [internal function]: IssuesController->actionView('grabli', '2')
+#13 /var/www/grabli/source/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(IssuesController), Array)
+#14 /var/www/grabli/source/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(IssuesController), Object(ReflectionMethod), Array)
+#15 /var/www/grabli/source/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#16 /var/www/grabli/source/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#17 /var/www/grabli/source/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 /var/www/grabli/source/framework/web/CWebApplication.php(282): CController->run('view')
+#19 /var/www/grabli/source/framework/web/CWebApplication.php(141): CWebApplication->runController('issues/view')
+#20 /var/www/grabli/source/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#21 /var/www/grabli/source/grabli/index.php(13): CApplication->run()
+#22 {main}
+REQUEST_URI=/issue/grabli/2
+HTTP_REFERER=http://grabli/project/grabli/issues?sorting=number&direction=asc&page=2&pagesize=20&project=3&assigned_to=&posted_by=&show=groups
+---
+2013/11/11 20:07:26 [warning] [application] Failed to set unsafe attribute "steps_id" of "IssueForm".
+in /var/www/grabli/source/grabli/protected/controllers/IssuesController.php (346)
+in /var/www/grabli/source/grabli/index.php (13)
+2013/11/11 20:07:26 [warning] [application] Failed to set unsafe attribute "added_date" of "IssueForm".
+in /var/www/grabli/source/grabli/protected/controllers/IssuesController.php (346)
+in /var/www/grabli/source/grabli/index.php (13)
+2013/11/11 20:07:26 [warning] [application] Failed to set unsafe attribute "dedline_date" of "IssueForm".
+in /var/www/grabli/source/grabli/protected/controllers/IssuesController.php (346)
+in /var/www/grabli/source/grabli/index.php (13)
+2013/11/11 20:07:26 [warning] [application] Failed to set unsafe attribute "last_activity" of "IssueForm".
+in /var/www/grabli/source/grabli/protected/controllers/IssuesController.php (346)
+in /var/www/grabli/source/grabli/index.php (13)
+2013/11/11 20:07:27 [warning] [application] Failed to set unsafe attribute "steps_id" of "IssueForm".
+in /var/www/grabli/source/grabli/protected/controllers/IssuesController.php (346)
+in /var/www/grabli/source/grabli/index.php (13)
+2013/11/11 20:07:27 [warning] [application] Failed to set unsafe attribute "added_date" of "IssueForm".
+in /var/www/grabli/source/grabli/protected/controllers/IssuesController.php (346)
+in /var/www/grabli/source/grabli/index.php (13)
+2013/11/11 20:07:27 [warning] [application] Failed to set unsafe attribute "dedline_date" of "IssueForm".
+in /var/www/grabli/source/grabli/protected/controllers/IssuesController.php (346)
+in /var/www/grabli/source/grabli/index.php (13)
+2013/11/11 20:07:27 [warning] [application] Failed to set unsafe attribute "last_activity" of "IssueForm".
+in /var/www/grabli/source/grabli/protected/controllers/IssuesController.php (346)
+in /var/www/grabli/source/grabli/index.php (13)
+2013/11/11 20:07:33 [error] [exception.CHttpException.Issue closed and can't be edit] exception 'CHttpException' in /var/www/grabli/source/grabli/protected/controllers/IssuesController.php:328
+Stack trace:
+#0 [internal function]: IssuesController->actionEdit('grabli', '2')
+#1 /var/www/grabli/source/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(IssuesController), Array)
+#2 /var/www/grabli/source/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(IssuesController), Object(ReflectionMethod), Array)
+#3 /var/www/grabli/source/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /var/www/grabli/source/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#5 /var/www/grabli/source/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 /var/www/grabli/source/framework/web/CWebApplication.php(282): CController->run('edit')
+#7 /var/www/grabli/source/framework/web/CWebApplication.php(141): CWebApplication->runController('issues/edit')
+#8 /var/www/grabli/source/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#9 /var/www/grabli/source/grabli/index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/issue/grabli/2/edit?backto=issue
+---
+2013/11/11 20:07:44 [error] [exception.CHttpException.Issue closed and can't edit] exception 'CHttpException' in /var/www/grabli/source/grabli/protected/controllers/IssuesController.php:328
+Stack trace:
+#0 [internal function]: IssuesController->actionEdit('grabli', '2')
+#1 /var/www/grabli/source/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(IssuesController), Array)
+#2 /var/www/grabli/source/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(IssuesController), Object(ReflectionMethod), Array)
+#3 /var/www/grabli/source/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /var/www/grabli/source/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#5 /var/www/grabli/source/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 /var/www/grabli/source/framework/web/CWebApplication.php(282): CController->run('edit')
+#7 /var/www/grabli/source/framework/web/CWebApplication.php(141): CWebApplication->runController('issues/edit')
+#8 /var/www/grabli/source/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#9 /var/www/grabli/source/grabli/index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/issue/grabli/2/edit?backto=issue
+---
+2013/11/11 20:09:14 [warning] [application] Failed to set unsafe attribute "pagesize" of "IssueFilterForm".
+in /var/www/grabli/source/grabli/protected/forms/IssueFilterForm.php (106)
+in /var/www/grabli/source/grabli/protected/controllers/ProjectsController.php (308)
+in /var/www/grabli/source/grabli/index.php (13)
+2013/11/11 20:09:14 [warning] [application] Failed to set unsafe attribute "code" of "IssueFilterForm".
+in /var/www/grabli/source/grabli/protected/forms/IssueFilterForm.php (106)
+in /var/www/grabli/source/grabli/protected/controllers/ProjectsController.php (308)
+in /var/www/grabli/source/grabli/index.php (13)
+2013/11/11 20:09:20 [warning] [application] Failed to set unsafe attribute "pagesize" of "IssueFilterForm".
+in /var/www/grabli/source/grabli/protected/forms/IssueFilterForm.php (106)
+in /var/www/grabli/source/grabli/protected/controllers/ProjectsController.php (308)
+in /var/www/grabli/source/grabli/index.php (13)
+2013/11/11 20:09:20 [warning] [application] Failed to set unsafe attribute "code" of "IssueFilterForm".
+in /var/www/grabli/source/grabli/protected/forms/IssueFilterForm.php (106)
+in /var/www/grabli/source/grabli/protected/controllers/ProjectsController.php (308)
+in /var/www/grabli/source/grabli/index.php (13)

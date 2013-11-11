@@ -324,6 +324,10 @@ class IssuesController extends Controller
 			throw new CHttpException('Issue not found; project code : "'.$projectCode.'"; bug number : "'.$number.'"', 404);
 		}
 
+		if (!$bug->canEdit()){
+			throw new CHttpException('Issue closed and can\'t edit');
+		}
+
 		// проверяем есть ли упользователя доступ к провекту
 		if (!yii::app()->user->getUserObject()->isInProject($project->id)){
 			throw new CHttpException('You can\'t see this assign, вы не являетесь участником проекта', 403);

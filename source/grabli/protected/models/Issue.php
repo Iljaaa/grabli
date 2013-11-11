@@ -84,6 +84,19 @@ class Issue extends CActiveRecord
     public function canSetStep($stepId){
     	return true;
     }
+
+	/**
+	 * Проверка редактирования бага
+	 *
+	 */
+	public function canEdit () {
+
+		if ($this->steps_id == 6){
+			return false;
+		}
+
+		return true;
+	}
     
     
     public function getStep ()
