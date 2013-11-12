@@ -348,6 +348,40 @@ class UsersController extends Controller
 
 
 	/**
+	 * Для ajax ajax поиска пользователей
+	 *
+	 *
+	 */
+	public function actionAjaxUsers ()
+	{
+		$data = array (
+			// 'project'		=> $project,
+			'foundUsers'	=> array (),
+			'searched'		=> false,
+			'errors'		=> array ()
+		);
+
+		$search = yii::app()->request->getParam('search', '');
+		$modelAddUser = new AddUserForm();
+
+		yii::app()->firephp->log($search, 'search');
+
+		if ($search != '') :
+			$modelAddUser->name = $search;
+			if ($modelAddUser->validate()) {
+				$users = User::search ($modelAddUser->name);
+				foreach ($users as $u) {
+					$data['foundUsers'][] = $u->attributes;
+				}
+
+				$data['searched'] = true;
+			}
+		endif;
+
+		echo  json_encode($data);
+	}
+
+	/**
 	 *
 	 *
 	 

@@ -166,3 +166,6 @@
 </div>
 <?php endif; ?>
 
+<a href="javascript:startFindtUser('aaa')">ффф</a>
+<?php $this->widget('FindUsersWidget', array ('name' => 'aaa')); ?>
+

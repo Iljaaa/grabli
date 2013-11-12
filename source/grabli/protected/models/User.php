@@ -51,7 +51,10 @@ class User extends CActiveRecord
     	$crit->addCondition("email LIKE (:search) OR name LIKE (:search) ");
     	$crit->params = array (':search' => '%'.$searchString.'%');
 
-    	return User::model()->findAll($crit);
+		yii::app()->firephp->log($searchString, '$searchString');
+		$users = User::model()->findAll($crit);
+		yii::app()->firephp->log(count($users), '$users');
+    	return $users;
     }
 
 	/**
