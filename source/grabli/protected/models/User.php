@@ -21,7 +21,6 @@ class User extends CActiveRecord
         return 'user';
     }
 
-    
     /**
      *
      *
@@ -51,7 +50,8 @@ class User extends CActiveRecord
     	$crit->addCondition("email LIKE (:search) OR name LIKE (:search) ");
     	$crit->params = array (':search' => '%'.$searchString.'%');
 
-    	return User::model()->findAll($crit);
+		$users = User::model()->findAll($crit);
+    	return $users;
     }
 
 	/**

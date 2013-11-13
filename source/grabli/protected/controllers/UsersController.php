@@ -74,7 +74,6 @@ class UsersController extends Controller
 		}
 
 		$user = User::model()->findByPk($id);
-		yii::app()->firephp->log ($user->name, '$user');
 
 		if ($user == null) {
 			throw new CHttpException('User id "'.$id.'" not found');
@@ -104,7 +103,6 @@ class UsersController extends Controller
 		//
 		$issuesCrit = new CDbCriteria ();
 		$issuesCrit->limit = 10;
-		yii::app()->firephp->log ($user->name, '$user');
 
 		$data = array (
 			'user'		=> $user,
@@ -140,7 +138,6 @@ class UsersController extends Controller
 			if ($min > $image->height) $min = $image->height;
 
 			$k = 64 / $min;
-			yii::app()->firephp->log ($k, '$k');
 
 			$newWidth = intVal($k * $image->width);
 			$newHeight = intVal($k * $image->height);
@@ -273,8 +270,9 @@ class UsersController extends Controller
 			
 	}
 
-	
-
+	/**
+	 *
+	 */
 	public function actionRegistrationcomplite()
 	{
 		$this->pageTitle = 'Регистрация завершена';
@@ -346,6 +344,59 @@ class UsersController extends Controller
 		$em = mail($user->email, $title, $body, $headers);
 	}
 
+
+	/**
+	 * Для ajax ajax поиска пользователей
+	 *
+	 *
+	 */
+	public function actionAjaxUsers ()
+	{
+		$data = array (
+			// 'project'		=> $project,
+			'foundUsers'	=> array (),
+			'searched'		=> false,
+			'errors'		=> array ()
+		);
+
+		$search = yii::app()->request->getParam('search', '');
+		$modelAddUser = new AddUserForm();
+
+		if ($search != '') {
+			$modelAddUser->name = $search;
+			if ($modelAddUser->validate()) {
+				$users = User::search ($modelAddUser->name);
+				foreach ($users as $u) $data['foundUsers'][] = $u;
+				$data['searched'] = true;
+			}
+		}
+		else {
+			$data['errors'][] = 'Searching string not setted';
+		}
+
+
+
+		// тип вывода информации
+		$display = yii::app()->request->getParam('display', 'json');
+		if ($display == 'json'){
+			foreach ($data['foundUsers'] as $key => $val){
+				$data['foundUsers'][$key] = $val->attributes;
+			}
+
+			echo  json_encode($data);
+			yii::app()->end();
+		}
+
+		if ($display == 'html') {
+			$this->renderPartial ('ajax-users', $data);
+			yii::app()->end();
+		}
+
+
+		die ('MF die');
+
+
+	}
 
 	/**
 	 *
