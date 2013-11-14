@@ -25,11 +25,18 @@ function setBugStatus(id)
 <?php $currentStep = $bug->getStep(); ?>
 
 <div>
-	<div style="float: left; width: 15px; height: 15px; border: solid 1px gray; margin: 0 5px 0 0; background-color: <?=$currentStep->color ?>"></div>
-	<?=$currentStep->name ?>
-	<div style="float: right;">
+	<?php yii::app()->firephp->log ($currentStep->attributes, '$currentStep'); ?>
+
+	<div style="float: left; margin: 0 5px 0 0;" class="status-small-ico status-ico-<?=$currentStep->code ?>"></div>
+
+	<div style="float: right; display: table-cell; height: 25px; vertical-align: middle;">
 		<a href="javascript:showStatusChangeWindow()">change</a>
 	</div>
+
+	<div style="display: table-cell; height: 25px; vertical-align: middle;">
+	<?=$currentStep->name ?>
+	</div>
+
 </div>
 
 
@@ -61,7 +68,7 @@ function setBugStatus(id)
 						<?=$i->name ?>
 					</a>
 				<?php else : ?>
-					<span style="color: gray;"><?=$i->title ?></span>
+					<span style="color: gray;"><?=$i->name ?></span>
 				<?php endif; ?>
 			</li>
 		<?php endforeach; ?>
@@ -71,3 +78,4 @@ function setBugStatus(id)
 		<input type="button" value="Отмена" onclick="cancelStatusChangeWindow()" style="margin: 10px 10px 0 0" class="f-bu f-bu-warning" />
 	</div>
 </div>
+

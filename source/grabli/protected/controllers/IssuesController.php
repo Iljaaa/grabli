@@ -67,7 +67,6 @@ class IssuesController extends Controller
 	protected function viewCommandor ($bug, $project)
 	{
 		$command = yii::app()->request->getParam ('command', '');
-
 		
 		if ($command == 'set_status') {
 			$statusId = yii::app()->request->getParam('step', 0);
@@ -134,7 +133,6 @@ class IssuesController extends Controller
 			$selectedUser = yii::app()->request->getParam ('select_user_assigned_user', 0);	
 			if ($selectedUser > 0) 
 			{
-				echo $selectedUser;
 				$u = User::model()->findByPk($selectedUser);
 				
 				$mess = 'User <b>'.yii::app()->user->getUserObject()->name.'</b> ';
@@ -177,7 +175,27 @@ class IssuesController extends Controller
 			}
 				
 		}
-		
+
+		if ($command == 'set-type')
+		{
+			$typeName = yii::app()->request->getParam ('type', '');
+			if ($typeName == '') return;
+
+			$type = Type::findByCode($typeName);
+			if ($type == null) return ;
+
+			$mess = 'User <b>'.yii::app()->user->getUserObject()->name.'</b> ';
+			$mess .= 'change issue type to <b>'.$type->name.'</b> ';
+			$bug->createSystemComment($mess, yii::app()->user->getId());
+
+			$bug->type = $type->code;
+			$bug->save ();
+
+			yii::app()->user->setFlash ('good_news', 'Issue type changed.');
+
+			$this->refresh();
+		}
+
 		if ($command == 'post-comment') {
 			$comment = yii::app()->request->getParam ('comment', '');
 			
