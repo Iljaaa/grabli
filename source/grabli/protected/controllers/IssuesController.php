@@ -78,8 +78,8 @@ class IssuesController extends Controller
 					$nextStep = Step::model()->findByPk ($statusId);
 
 					$mess = 'User <b>'.yii::app()->user->getUserObject()->name.'</b> ';
-					$mess .= 'change status from <b>'.$currentStep->title.'</b> ';
-					$mess .= ' to <b>'.$nextStep->title.'</b> ';
+					$mess .= 'change status from <b>'.$currentStep->name.'</b> ';
+					$mess .= ' to <b>'.$nextStep->name.'</b> ';
 					
 					$bug->createSystemComment($mess, yii::app()->user->getId());
 					
@@ -165,7 +165,7 @@ class IssuesController extends Controller
 				$newStep = Step::model()->findByPk($newStatus);
 		
 				$mess = 'User <b>'.yii::app()->user->getUserObject()->name.'</b> ';
-				$mess .= 'set status <b>'.$newStep->title.'</b> ';
+				$mess .= 'set status <b>'.$newStep->name.'</b> ';
 		
 				$bug->createSystemComment ($mess);
 		

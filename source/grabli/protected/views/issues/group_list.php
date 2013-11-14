@@ -16,7 +16,7 @@ foreach ($steps as $step) :
 <h2 style="padding: 0px;">
 	<div style="float: left; width: 23px; height: 23px; background-color: <?=$step->color ?>; margin: 4px 10px 0 0; border: solid 2px gray;">
 	</div>
-<?=$step->title  ?>
+<?=$step->name  ?>
 </h2>
 
 <?php

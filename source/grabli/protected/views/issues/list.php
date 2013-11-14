@@ -104,7 +104,7 @@
 			</td>
 
 			<td style="text-align: center;">
-				<?=$b->getStep()->title ?>
+				<?=$b->getStep()->name ?>
 			</td>
 		</tr>
 		<?php endforeach; ?>

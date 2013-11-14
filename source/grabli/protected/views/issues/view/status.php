@@ -26,7 +26,7 @@ function setBugStatus(id)
 
 <div>
 	<div style="float: left; width: 15px; height: 15px; border: solid 1px gray; margin: 0 5px 0 0; background-color: <?=$currentStep->color ?>"></div>
-	<?=$currentStep->title ?>
+	<?=$currentStep->name ?>
 	<div style="float: right;">
 		<a href="javascript:showStatusChangeWindow()">change</a>
 	</div>
@@ -58,7 +58,7 @@ function setBugStatus(id)
 			
 				<?php if ($related) : ?>
 					<a style="text-decoration: none; font-size: 14px;" status="<?=$i->id ?>">
-						<?=$i->title ?>
+						<?=$i->name ?>
 					</a>
 				<?php else : ?>
 					<span style="color: gray;"><?=$i->title ?></span>

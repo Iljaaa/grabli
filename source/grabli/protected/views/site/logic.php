@@ -2,13 +2,13 @@
 
 <div style="margin-bottom: 20px;">
 	<div>
-		[<?=$s->id ?>] <b><?=$s->title ?></b> <i><?=$s->description ?></i>
+		[<?=$s->id ?>] <b><?=$s->name ?></b> <i><?=$s->description ?></i>
 	</div>
 	
 	<div style="padding-left: 30px;">
 		<?php $subSteps = $s->getRelatedSteps() ?>
 		<?php foreach ($subSteps as $subStep) : ?>
-			<div>[<?=$subStep->id ?>] <b><?=$subStep->title ?></b></div>
+			<div>[<?=$subStep->id ?>] <b><?=$subStep->name ?></b></div>
 		<?php endforeach; ?>
 	</div>
 </div>
