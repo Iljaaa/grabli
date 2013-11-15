@@ -1,6 +1,6 @@
 <?php
 
-class FindUsersWidget extends CWidget
+class FindIssueWidget extends CWidget
 {
 	/**
 	 * Проект если надо искать в польвателях проекта
@@ -23,6 +23,12 @@ class FindUsersWidget extends CWidget
 	 */
 	public $search = null;
 
+	/**
+	 * Заголовок окна
+	 *
+	 */
+	public $title = '';
+
 
 	public function init()
 	{
@@ -32,7 +38,7 @@ class FindUsersWidget extends CWidget
 
 	public function run()
 	{
-		$this->render ('FindUsersWidget');
+		$this->render ('FindIssueWidget');
 	}
 
 }

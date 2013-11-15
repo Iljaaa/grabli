@@ -1,4 +1,7 @@
 <?php Yii::app()->getClientScript()->registerScriptFile(Yii::app()->baseUrl.'/js/popup.js'); ?>
+<?php Yii::app()->getClientScript()->registerScriptFile(Yii::app()->baseUrl.'/js/issue_view.js'); ?>
+
+<?=CHtml::hiddenField('issue-id', $bug->id) ?>
 
 <div class="f-row">
 	<div class="issue-ico issue-ico-<?=$bug->type ?>" style="float: left; margin-right: 10px; height: 50px;">
@@ -16,6 +19,16 @@
 <?php $flash = yii::app()->user->getFlash('good_news'); ?>
 <?php if ($flash != '') : ?>
 <div class="f-message f-message-success" style="margin-top: 15px;"><?=$flash ?></div>
+<?php endif; ?>
+
+<?php $flash = yii::app()->user->getFlash('issue-command-goodnews'); ?>
+<?php if ($flash != '') : ?>
+	<div class="f-message f-message-success" style="margin-top: 15px;"><?=$flash ?></div>
+<?php endif; ?>
+
+<?php $flash = yii::app()->user->getFlash('issue-command-badnews'); ?>
+<?php if ($flash != '') : ?>
+	<div class="f-message f-message-error" style="margin-top: 15px;"><?=$flash ?></div>
 <?php endif; ?>
 
 

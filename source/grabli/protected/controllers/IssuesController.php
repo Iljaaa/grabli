@@ -3,12 +3,39 @@
 class IssuesController extends Controller
 {
 
+	public function actions()
+	{
+		return array(
+			'setparent'=>'application.controllers.issues.SetParentAction',
+		);
+	}
+
 	protected function beforeAction($action) 
 	{
-		
-
-		
 		return parent::beforeAction($action);
+	}
+
+	public function filters()
+	{
+		return array(
+			'accessControl',
+		);
+	}
+
+	public function accessRules()
+	{
+		return array(
+			array('deny',
+				'actions'=>array('setparent'),
+				// 'roles'=>array('admin'),
+				'users'=>array('?'),
+			),
+			/*
+			array('allow',
+				'actions'=>array('create', 'edit','delete'),
+				'users'=>array('@'),
+			),*/
+		);
 	}
 
 	/**
@@ -396,5 +423,64 @@ class IssuesController extends Controller
 		);
 
 		$this->render('edit', $data);
+	}
+
+	/**
+	 * Акшн для виджета поиска иссуе
+	 *
+	 */
+	public function actionAjaxIssues ()
+	{
+		$data = array (
+			// 'project'		=> $project,
+			'foundIssues'	=> array (),
+			'searched'		=> false,
+			'errors'		=> array ()
+		);
+
+		$search = yii::app()->request->getParam('search', '');
+		$projectId = yii::app()->request->getParam('projectid', 0);
+
+		if ($search != '') {
+
+			$criteria = null;
+			if ($projectId > 0){
+				$criteria = new CDbCriteria ();
+				$criteria->addCondition('project_id = :proj');
+				$criteria->params[':proj'] = $projectId;
+			}
+
+			$issues = Issue::search ($search, $criteria);
+
+			$data['foundIssues'] = $issues;
+			$data['searched'] = true;
+		}
+		else {
+			$data['errors'][] = 'Searching string not setted';
+		}
+
+
+
+		// тип вывода информации
+		$display = yii::app()->request->getParam('display', 'json');
+		if ($display == 'json'){
+			foreach ($data['foundIssues'] as $key => $val){
+				$data['foundIssues'][$key] = $val->attributes;
+			}
+
+			echo  json_encode($data);
+			yii::app()->end();
+		}
+
+		if ($display == 'html') {
+			$data['name'] = yii::app()->request->getParam('name', '');
+			$this->renderPartial ('ajax-issues', $data);
+			yii::app()->end();
+		}
+
+
+		die ('MF die');
+
+
 	}
 }

@@ -69,7 +69,25 @@ class Issue extends CActiveRecord
     {
     	return '/images/icons/bugs/'.$type.'.png';
     }
-    
+
+	/**
+	 * Поиск по строке
+	 *
+	 * @param $searchString
+	 * @return array|CActiveRecord|mixed|null
+	 */
+	public static function search ($searchString, $criteria = null)
+	{
+		if ($criteria == null){
+			$criteria = new CDbCriteria();
+		}
+
+		$criteria->addCondition("number LIKE (:search) OR description LIKE (:search) OR title LIKE (:search) ");
+		$criteria->params[':search'] = '%'.$searchString.'%';
+
+		$users = static::model()->findAll($criteria);
+		return $users;
+	}
     
     public function getSmallIconUrl () {
     	return self::getIconUrlByBugType($this->type);

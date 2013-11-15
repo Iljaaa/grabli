@@ -30,17 +30,17 @@
 
 			<tr>
 				<td style="width: 80px;">
-					<a href="javascript:setIssue('bug')" class="issue-ico issue-ico-red" style="margin: 0 auto; float: none;">
+					<a href="javascript:setIssueByWindow('bug')" class="issue-ico issue-ico-red" style="margin: 0 auto; float: none;">
 						<div><div>B</div></div>
 					</a>
 				</td>
 				<td style="width: 80px;">
-					<a href="javascript:setIssue('enhancement')" class="issue-ico issue-ico-c3" style="margin: 0 auto; float: none;">
+					<a href="javascript:setIssueByWindow('enhancement')" class="issue-ico issue-ico-c3" style="margin: 0 auto; float: none;">
 						<div><div>E</div></div>
 					</a>
 				</td>
 				<td style="width: 80px;">
-					<a href="javascript:setIssue('task')" class="issue-ico issue-ico-blue"  style="margin: 0 auto; float: none;">
+					<a href="javascript:setIssueByWindow('task')" class="issue-ico issue-ico-blue"  style="margin: 0 auto; float: none;">
 						<div><div>T</div></div>
 					</a>
 				</td>
@@ -48,13 +48,13 @@
 
 			<tr>
 				<td style="text-align: center;">
-					<a href="javascript:setIssue('bug')">Bug</a>
+					<a href="javascript:setIssueByWindow('bug')">Bug</a>
 				</td>
 				<td style="text-align: center;">
-					<a href="javascript:setIssue('enhancement')">Enhancement</a>
+					<a href="javascript:setIssueByWindow('enhancement')">Enhancement</a>
 				</td>
 				<td style="text-align: center;">
-					<a href="javascript:setIssue('task')">Task</a>
+					<a href="javascript:setIssueByWindow('task')">Task</a>
 				</td>
 			</tr>
 
@@ -64,17 +64,17 @@
 
 			<tr>
 				<td style="width: 80px;">
-					<a href="javascript:setIssue('featurerequest')" class="issue-ico issue-ico-orange" style="margin: 0 auto; float: none;">
+					<a href="javascript:setIssueByWindow('featurerequest')" class="issue-ico issue-ico-orange" style="margin: 0 auto; float: none;">
 						<div><div>Fr</div></div>
 					</a>
 				</td>
 				<td style="width: 80px;">
-					<a href="javascript:setIssue('idea')" class="issue-ico issue-ico-navy" style="margin: 0 auto; float: none;">
+					<a href="javascript:setIssueByWindow('idea')" class="issue-ico issue-ico-navy" style="margin: 0 auto; float: none;">
 						<div><div>I</div></div>
 					</a>
 				</td>
 				<td style="width: 80px;">
-					<a href=javascript:setIssue('other')"" class="issue-ico issue-ico-gray"  style="margin: 0 auto; float: none;">
+					<a href=javascript:setIssueByWindow('other')"" class="issue-ico issue-ico-gray"  style="margin: 0 auto; float: none;">
 						<div><div>O</div></div>
 					</a>
 				</td>
@@ -82,13 +82,13 @@
 
 			<tr>
 				<td style="text-align: center;">
-					<a href="javascript:setIssue('featurerequest')">Feature Request</a>
+					<a href="javascript:setIssueByWindow('featurerequest')">Feature Request</a>
 				</td>
 				<td style="text-align: center;">
-					<a href="javascript:setIssue('idea')">Idea</a>
+					<a href="javascript:setIssueByWindow('idea')">Idea</a>
 				</td>
 				<td style="text-align: center;">
-					<a href="javascript:setIssue('other')">Other</a>
+					<a href="javascript:setIssueByWindow('other')">Other</a>
 				</td>
 			</tr>
 
