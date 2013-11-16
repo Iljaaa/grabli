@@ -339,7 +339,7 @@ class UsersController extends Controller
 		$headers .= "Content-type: text/html; charset=utf-8\r\n";
 		$headers .= "From: grablyBot <noreply@".$_SERVER["HTTP_HOST"].">\r\n";
 		
-		$title = 'Восстановление пароля на граблях';
+		$title = 'Restore password';
 		
 		$em = mail($user->email, $title, $body, $headers);
 	}

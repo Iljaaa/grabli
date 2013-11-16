@@ -1,4 +1,4 @@
-<h1>Новые данные доступа:</h1>
+<h1>New access data:</h1>
 
 email: <?=$user->email ?> <br />
-пароль : <?=$newPassword ?>
+password : <?=$newPassword ?>

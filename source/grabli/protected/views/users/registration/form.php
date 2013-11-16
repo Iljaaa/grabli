@@ -54,7 +54,7 @@
 
 <div class="f-row">
 	<div class="f-actions">
-		<?=CHtml::submitButton('Зарегистрироваться', array('class'=>'f-bu f-bu-success')); ?>
+		<?=CHtml::submitButton('Registration', array('class'=>'f-bu f-bu-success')); ?>
 	</div>
 </div>
 

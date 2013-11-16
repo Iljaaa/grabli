@@ -8,7 +8,7 @@ class RestorePasswordForm extends CFormModel
 	public function rules()
 	{
 		return array(
-			array('email', 'required', 'message' => 'Ничего не введено'),
+			array('email', 'required', 'message' => 'Email not set'),
 			array('email', 'email', 'message' => 'Not email'),
 			array('email', 'existEmail'),
 		);

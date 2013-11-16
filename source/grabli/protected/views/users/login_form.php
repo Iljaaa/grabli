@@ -1,5 +1,5 @@
 <div>
-	<h2>Авторизоция</h2>
+	<h2>Auth</h2>
 
 	<?=CHtml::beginForm($this->createUrl('/site/login/'), 'post') ?>
 	<div>
@@ -28,6 +28,6 @@
 </div>
 
 <div>
-<a href="<?=$this->createUrl('/users/restore/') ?>">Восстановление пароля</a><br />
-<a href="<?=$this->createUrl('/users/registration/') ?>">Регистрация</a>
+<a href="<?=$this->createUrl('/users/restore/') ?>">Restore passowrd</a><br />
+<a href="<?=$this->createUrl('/users/registration/') ?>">Registration</a>
 </div>

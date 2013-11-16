@@ -1,15 +1,15 @@
-<h1>Восстановление пароля</h1>
+<h1>Restore passoword</h1>
 
 <?php if (isset($_GET['emailsended'])) : ?>
 
 	<div class="f-message f-message-success">
-		Новый пароль отправлен.
+		New passowrd send
 	</div>
 	
 <?php else : ?>
 
 	<div class="f-message">
-		Для восстановления пароля введите Email указанный при регистрации
+		Check you email.
 	</div>
 
 	<?=CHtml::beginForm(); ?>
@@ -25,7 +25,7 @@
 	
 	<div class="f-row">
 		<div class="f-actions">
-			<?=CHtml::submitButton('Восстановить', array('class'=>'f-bu f-bu-success')); ?>
+			<?=CHtml::submitButton('Restore', array('class'=>'f-bu f-bu-success')); ?>
 		</div>
 	</div>
 	
