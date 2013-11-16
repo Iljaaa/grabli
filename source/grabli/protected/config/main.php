@@ -7,7 +7,7 @@
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'My Web Application',
+	'name'=>'GRABL! the open bug tracker',
 
 	// preloading 'log' component
 	'preload'=>array('log'),
@@ -110,7 +110,7 @@ return array(
 	// using Yii::app()->params['paramName']
 	'params'=>array(
 		// this is used in contact page
-		'adminEmail'=>'webmaster@example.com',
+		'adminEmail'=>'the.ilja@gmail.com',
 		'version'	=> '0.0.2'
 	),
 );

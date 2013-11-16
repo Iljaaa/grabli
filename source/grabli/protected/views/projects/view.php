@@ -1,4 +1,4 @@
-<h1>Проект: <?=$project->name ?></h1>
+<h1><i style="font-weight: normal;">Project :</i> <?=$project->name ?></h1>
 
 <?php if (yii::app()->user->getId() == $project->owner_id) : ?>
 <p class="f-buttons">
@@ -16,14 +16,14 @@
 <div class="g-row">
 	<div class="g-6">
 		<div class="f-message" style="min-height: 70px;">
-			<h5>Описание :</h5>
+			<h5>Description :</h5>
 			<?=nl2br($project->description) ?>
 		</div>
 	</div>
 	
 	<div class="g-3">
 		<div class="f-message" style="min-height: 70px;">
-			<h5>Участники :</h5>
+			<h5>Users :</h5>
 			<?php $users = $project->getUsers(); ?>
 			<?php if (count($users) > 0) : ?>
 			<?=$this->renderPartial('/projects/view/users', array ('users' => $users)); ?>

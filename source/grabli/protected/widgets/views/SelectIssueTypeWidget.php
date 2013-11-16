@@ -7,7 +7,6 @@
 
 </script>
 
-<?php $types = Type::model()->findAll(); ?>
 <div id="select-issue-type-window-<?=$this->name ?>" class="popup-window" style="display: none;">
 	<h1 style="text-align: center;"><?=$this->title ?></h1>
 

@@ -1,3 +1,3 @@
 <?php foreach ($users as $u) : ?>
-<?=$this->renderPartial('/users/user_block', array('user' => $u)); ?>
+<?php $this->widget ('ShowUserWidget', array('user' => $u)); ?>
 <?php endforeach; ?>

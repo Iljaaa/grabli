@@ -3,8 +3,9 @@
 		<tr>
 			<th style="width: 20px;"></th>
 			<th>Project</th>
+			<th style="width: 100px;">Owner</th>
 			<th style="width: 75px; text-align: center">Users</th>
-			<th style="width: 75px; text-align: center">Issues</th>
+			<th style="width: 75px; text-align: center" title="open/all">Issues *</th>
 		</tr>
 		
 	</thead>
@@ -19,11 +20,16 @@
 				<?=$p->name ?> (<?=$p->code ?>)
 				</a>
 			</td>
-			<td style="text-align: center;">
-				<a href="<?=$this->createUrl('/project/'.$p->code); ?>#users">[<?=$p->usersCount(); ?>]</a>
+			<td>
+				<?php $this->widget ('ShowUserWidget', array('user' => $p->getOwner())) ?>
 			</td>
 			<td style="text-align: center;">
-				<a href="<?=$this->createUrl('/project/'.$p->code); ?>#bugs">[<?=$p->getIssuesCount() ?>]</a>
+				<?=$p->usersCount(); ?>
+			</td>
+			<td style="text-align: center;">
+				<a href="<?=$this->createUrl('/project/'.$p->code.'/issues'); ?>"><?=$p->getOpenIssuesCount() ?></a>
+				/
+				<a href="<?=$this->createUrl('/project/'.$p->code.'/issues'); ?>"><?=$p->getIssuesCount() ?></a>
 			</td>
 		</tr>
 		<?php endforeach; ?>

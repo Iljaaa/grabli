@@ -18,85 +18,82 @@
 
 <body>
 
-<div class="g">
-	<div class="g-row">
-		<div class="g-12">
+<div class="g" style="min-height: 100%;">
+	<div >
+		<div class="g-row">
+			<div class="g-12">
 
-			<div id="logo">
-				<h1><?php echo CHtml::encode(Yii::app()->name); ?></h1>
+				<div id="logo">
+					<img src="/images/logo.png" style="height: 30px; float: left; margin-right: 10px;" />
+					<h1 style="margin: 7px 0px;"><?php echo CHtml::encode(Yii::app()->name); ?></h1>
+				</div>
+
+
+				<div class="f-nav-bar">
+					<div class="f-nav-bar-body">
+						<div class="f-nav-bar-title">
+							<?php if (isset($pageTitle)) : ?>
+							<?php endif; ?>
+							<a href="/">Grabl!</a>
+						</div><!-- f-nav-bar-title -->
+
+
+							<?php $this->widget('zii.widgets.CMenu',array(
+								'items'=>array(
+
+									array('label'=>'Home', 'url'=>array('/site/index')),
+									array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
+									array('label'=>'Contact', 'url'=>array('/site/contact')),
+									array('label'=>'The application logic', 'url'=>array('/site/logic')),
+
+
+									array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
+									array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
+								),
+								'htmlOptions' => array( 'class' => 'f-nav'),
+							)); ?>
+
+					</div><!-- f-nav-bar-body -->
+				</div><!-- f-nav-bar -->
+
+				<?php if(isset($this->breadcrumbs)):?>
+					<?php $this->widget('zii.widgets.CBreadcrumbs', array(
+						'links'=>$this->breadcrumbs,
+					)); ?><!-- breadcrumbs -->
+				<?php endif?>
+			</div>
+		</div>
+
+		<div class="g-row">
+			<div class="g-9">
+				<?php echo $content; ?>
 			</div>
 
+			<div class="g-3">
+				<?php if (yii::app()->user->isGuest) :  ?>
+					<?php $this->renderPartial('/users/login_form'); ?>
+				<?php else : ?>
+					<?php $this->renderPartial('/users/user_menu'); ?>
+				<?php endif; ?>
+			</div>
 
-			<div class="f-nav-bar">
-				<div class="f-nav-bar-body">
-					<div class="f-nav-bar-title">
-						<a href="/">Грабли</a>
-					</div><!-- f-nav-bar-title -->
-
-
-						<?php $this->widget('zii.widgets.CMenu',array(
-							'items'=>array(
-								
-								array('label'=>'Проекты', 'url'=>'/projects', 'visible'=>!Yii::app()->user->isGuest),
-								array('label'=>'Баги', 'url'=>'/issues', 'visible'=>!Yii::app()->user->isGuest),
-								array('label'=>'Персональная информация', 'url'=>'/user', 'visible'=>!Yii::app()->user->isGuest),
-									
-								array('label'=>'Home', 'url'=>array('/site/index')),
-								array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
-								array('label'=>'Contact', 'url'=>array('/site/contact')),
-								array('label'=>'Логика приложения', 'url'=>array('/site/logic')),
-									
-									
-								array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
-								array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
-							),
-							'htmlOptions' => array( 'class' => 'f-nav'),
-						)); ?>
-
-				</div><!-- f-nav-bar-body -->
-			</div><!-- f-nav-bar -->
-
-			<?php if(isset($this->breadcrumbs)):?>
-				<?php $this->widget('zii.widgets.CBreadcrumbs', array(
-					'links'=>$this->breadcrumbs,
-				)); ?><!-- breadcrumbs -->
-			<?php endif?>
 		</div>
+
 	</div>
-	
-	<div class="g-row">
-		<div class="g-9">
-			<?php echo $content; ?>
-		</div>
 
-		<div class="g-3">
-			<?php if (yii::app()->user->isGuest) :  ?>
-				<?php $this->renderPartial('/users/login_form'); ?>
-			<?php else : ?>
-				<?php $this->renderPartial('/users/user_menu'); ?>
-			<?php endif; ?>
-		</div>
-		
-	</div>
-	
-	<div class="g-row">
+</div>
+
+<div class="g f-nav-bar" style="margin-top: -52px; height: 50px; background-color: silver;">
+	<div class="g-row" style="margin-top: 10px;">
 		<div class="g-12">
-				
-			<div id="footer">
-				Copyright &copy; <?php echo date('Y'); ?> by My Company.<br/>
-				All Rights Reserved.<br/>
+			<div id="footer" class="" style="text-align: center; ">
 				v. <?=Yii::app()->params['version'] ?>
+				<br />
+				&copy <?=date('Y') ?> GRABL! the bug tracker
 			</div><!-- footer -->
-
 		</div>
 	</div>
 </div>
-
-<div class="container" id="page">
-
-
-
-</div><!-- page -->
 
 </body>
 </html>

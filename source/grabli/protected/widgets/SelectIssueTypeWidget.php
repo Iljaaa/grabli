@@ -23,6 +23,6 @@ class SelectIssueTypeWidget extends CWidget
 
 	public function run()
 	{
-		$this->render ('SelectIssueTypeWidget');
+		$this->render ('SelectIssueTypeWidget', array ('types' => Type::model()->findAll()));
 	}
 }

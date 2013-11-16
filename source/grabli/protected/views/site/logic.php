@@ -17,88 +17,25 @@
 
 
 
-<?php /*
-<p class="f-buttons">
-	Create: &nbsp;&nbsp;&nbsp;
-	<span class="f-bu">
-		<a href="<?=$this->createUrl('/issues/create/'.$project->code.'/bug') ?>" class="f-bu-bug">
-			Issue
-		</a>
-	</span>
+<?php $types = Type::model()->findAll(); ?>
 
-	<span class="f-bu">
-		<a href="<?=$this->createUrl('/issues/create/'.$project->code.'/encantment') ?>"  class="f-bu-enhancement">
-			Enhancement</a>
-	</span>
-
-	<span class="f-bu">
-		<a href="<?=$this->createUrl('/issues/create/'.$project->code.'/task') ?>" class="f-bu-task">
-			Task</a>
-	</span>
-
-	<span class="f-bu">
-		<a href="<?=$this->createUrl('/issues/create/'.$project->code.'/featurerequest') ?>" class="f-bu-featurerequest">
-			Feature Request</a>
-	</span>
+<?php $i = 0 ?>
+<?php foreach ($types as $t) : ?>
+	<?php $i++; ?>
+	<div style="width: 80px; text-align: center; float: left;">
+		<div   class="issue-ico issue-ico-<?=$t->code ?>" style="margin: 0 auto; float: none;">
+			<div><div><?=$t->abbreviation ?></div></div>
+		</div>
+		<div style="text-align: center; margin-top: 10px;">
+			<?=$t->name ?>
+		</div>
+	</div>
+	<?php
+	if ($i == 3) {
+		$i = 0;
+		echo '</tr><tr>';
+	}
+endforeach; ?>
 
 
-	<span class="f-bu">
-		<a href="<?=$this->createUrl('/issues/create/'.$project->code.'/idea') ?>" class="f-bu-idea">
-			Idea</a>
-	</span>
-
-	<span class="f-bu">
-		<a href="<?=$this->createUrl('/issues/create/'.$project->code.'/other'); ?>" class="f-bu-other">
-			Other</a>
-	</span>
-</p> */ ?>
-
-
-<div>
-	<a href="#" class="issue-ico issue-ico-red" style="margin-left: 5px;">
-		<div><div>
-				B
-			</div></div>
-	</a>
-	<a href="#" class="issue-ico issue-ico-orange" style="margin-left: 5px;">
-		<div><div>
-				B
-			</div></div>
-	</a>
-	<a href="#" class="issue-ico issue-ico-purple" style="margin-left: 5px;">
-		<div><div>
-				C
-			</div></div>
-	</a>
-	<a href="#" class="issue-ico issue-ico-pr" style="margin-left: 5px;">
-		<div><div>
-				B
-			</div></div>
-	</a>
-	<a href="#" class="issue-ico issue-ico-navy" style="margin-left: 5px;">
-		<div><div>
-				B
-			</div></div>
-	</a>
-	<a href="#" class="issue-ico issue-ico-blue" style="margin-left: 5px;">
-		<div><div>
-				B
-			</div></div>
-	</a>
-	<a href="#" class="issue-ico issue-ico-light-blue" style="margin-left: 5px;">
-		<div><div>
-				B
-			</div></div>
-	</a>
-	<a href="#" class="issue-ico issue-ico-c3" style="margin-left: 5px;">
-		<div><div>
-				B
-			</div></div>
-	</a>
-	<a href="#" class="issue-ico issue-ico-c4" style="margin-left: 5px;">
-		<div><div>
-				B
-			</div></div>
-	</a>
-	<div style="clear: both;"></div>
-</div>
+<div style="clear: both;"></div>

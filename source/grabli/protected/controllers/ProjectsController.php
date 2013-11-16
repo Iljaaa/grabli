@@ -36,9 +36,8 @@ class ProjectsController extends Controller
 			throw new CHttpException('403 Auth required');
 		}
 
-		$this->pageTitle = 'Создание нового проекта'; 
-		$this->breadcrumbs['Мои проекты'] = array('/projects/');
-		$this->breadcrumbs['Новый проект'] = array('/projects/add/');
+		$this->pageTitle = 'New project';
+		$this->breadcrumbs['New project'] = array('/projects/add/');
 		
 		$model = new ProjectForm();
 		$model->setScenario('create');
@@ -72,9 +71,6 @@ class ProjectsController extends Controller
 	 */
 	public function actionIndex()
 	{
-		if (yii::app()->user->isGuest) {
-			throw new CHttpException('403 Auth required');
-		} 
 
 		$this->pageTitle = 'User projects ';
 
@@ -192,7 +188,7 @@ class ProjectsController extends Controller
 			throw new CHttpException('403 only owner can manage users for project "'.$code.'"');
 		}
 
-		$this->pageTitle = 'Участники проекта : '.$project->name;
+		$this->pageTitle = 'Project users : '.$project->name;
 		$this->breadcrumbs[$project->name] = array('/project/'.$project->code.'/');
 		$this->breadcrumbs['Project users'] = array('/project/'.$project->code.'/users');
 
@@ -304,7 +300,7 @@ class ProjectsController extends Controller
 
 		$this->pageTitle = 'Issues : '.$project->name;
 		//$this->breadcrumbs['Мои проекты'] = array('/projects/');
-		$this->breadcrumbs['Проект: '.$project->name] = array('/project/'.$project->code.'/');
+		$this->breadcrumbs[$project->name] = array('/project/'.$project->code.'/');
 		$this->breadcrumbs['Issues for project : '.$project->name] = array('/project/'.$project->code.'/users');
 
 		$form = IssueFilterForm::factory($_GET);

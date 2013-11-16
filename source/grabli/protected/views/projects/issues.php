@@ -1,4 +1,4 @@
-<h1>Issues for project: <?=$project->name ?></h1>
+<h1><i style="font-weight: noraml;">Issues for project :</i> <?=$project->name ?></h1>
 
 <div class="f-row">
 <?php $this->renderPartial('/projects/issues/filter', array('form' => $form)); ?>

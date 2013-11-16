@@ -1,13 +1,8 @@
-<h1><i style="font-weight: normal;">Projects for user : </i><?=$user->name ?> projects</h1>
-<hr />
+<h1><i style="font-weight: normal;">Projects for user : </i><?=$user->name ?></h1>
 
-
-<p class="f-buttons">
-	<strong>
-		Участник следйющих проектов 
-	</strong>
-</p>
-
+<div class="f-row">
+	<a href="<?=$this->createUrl('/projects/add/'); ?>" class="f-bu f-bu-success">Create new project</a>
+</div>
 
 <?php if (count($projects) > 0) : ?>
 
@@ -16,14 +11,14 @@
 <?php else : ?>
 
 	<div class="f-message">
-	<p>Нет ни одного проекта</p>
+	<p>No projects</p>
 	</div>
 
 <?php endif; ?>
 
 <hr />
 
-
+<?php /*
 <p class="f-buttons">
 	<strong>
 		Мои проекты
@@ -35,7 +30,7 @@
 			Создать проект
 		</a>
 	</span>
-</p>
+
 
 <div class="f-message">
 
@@ -51,7 +46,7 @@
 		</a>
 	</span>&nbsp;&nbsp;
 	<?php endforeach; ?>
-</div>
+</div></p>
 
 
 
@@ -80,7 +75,6 @@
 	<?php endforeach; ?>
 
 </div>
+*/ ?>
 
-
-$data['foundUsers']
 

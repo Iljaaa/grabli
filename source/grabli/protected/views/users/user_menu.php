@@ -13,9 +13,16 @@
 		</div>
 		
 		<div style="text-align: right; margin-top: 15px;">
+			<a href="<?=$this->createUrl('/issues'); ?>">
+				Issues for my
+			</a><br />
 			<a href="<?=$this->createUrl('/user/'.yii::app()->user->getId()); ?>">
-				personal
-			</a>
+				Personal info
+			</a><br />
+			<a href="<?=$this->createUrl('/projects'); ?>">
+				Projects
+			</a><br />
+
 		</div>
 	</div>
 	
@@ -28,9 +35,6 @@
 			<?php $this->renderPartial('/projects/collumn_list', array ('projects' => $projects, 'user' => yii::app()->user->getUserObject())); ?>
 		</div>	
 	<?php endif; ?>
-	
-	
-	
-	
+
 </div>
 
