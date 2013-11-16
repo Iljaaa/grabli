@@ -2,6 +2,7 @@
 <?php Yii::app()->getClientScript()->registerScriptFile(Yii::app()->baseUrl.'/js/issue_view.js'); ?>
 
 <?=CHtml::hiddenField('issue-id', $bug->id) ?>
+<?=CHtml::hiddenField('project-code', $bug->getProject()->code) ?>
 
 <div class="f-row">
 	<div class="issue-ico issue-ico-<?=$bug->type ?>" style="float: left; margin-right: 10px; height: 50px;">

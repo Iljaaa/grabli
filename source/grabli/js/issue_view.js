@@ -1,5 +1,7 @@
 function setIssueByWindow (type){
-    document.location = "<?=$this->createUrl('/issue/create/'.$project->code.'/"+type+"/?parent_id='.$issue->id) ?>";
+    var projectCode = $("#project-code").val();
+    var issueId = $("#issue-id").val();
+    document.location = "/issue/create/"+projectCode+'/'+type+'/?parent_id='+issueId;
 }
 
 
