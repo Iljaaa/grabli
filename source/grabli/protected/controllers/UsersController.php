@@ -245,7 +245,7 @@ class UsersController extends Controller
 	 */
 	public function actionRegistration ()
 	{
-		$this->pageTitle = 'Регистрация';
+		$this->pageTitle = 'Registration';
 		
 		$model = new RegistrationForm();
 		
@@ -275,7 +275,7 @@ class UsersController extends Controller
 	 */
 	public function actionRegistrationcomplite()
 	{
-		$this->pageTitle = 'Регистрация завершена';
+		$this->pageTitle = 'Registration is completed';
 		$this->render ('registratuioncomplite');	
 	}
 	

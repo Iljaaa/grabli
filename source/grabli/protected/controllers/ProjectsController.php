@@ -14,7 +14,7 @@ class ProjectsController extends Controller
 	{
 		return array(
 			array('deny',
-				'actions'=>array('index', 'create', 'edit', 'users', 'issues', 'view'),
+				'actions'=>array('index', 'create', 'edit', 'users', 'issues', 'view', 'add'),
 				// 'roles'=>array('admin'),
 				'users'=>array('?'),
 			),

@@ -11,14 +11,14 @@ $this->pageTitle=Yii::app()->name;
 </p>
 
 <p style="font-weight: bold;">
-	email: demo@demo.ru<br />
+	email: demo@demo.demo<br />
 	password: demo
 </p>
 
 or
 
 <p style="font-weight: bold;">
-	email: user@demo.ru<br />
+	email: user@demo.demo<br />
 	password: user
 </p>
 

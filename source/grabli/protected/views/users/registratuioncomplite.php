@@ -1,6 +1,6 @@
-<h1>Регистрация завершена</h1>
+<h1>Registration is completed</h1>
 
 <div class="f-message f-message-success">
-Регистрация завершена.<br />
-Вы можете войти в свой аккаунт используя введеные ранне данные доступа. 
+	Registration is completed. <br />
+	You can log into your account using the introduction of early access data.
 </div>
