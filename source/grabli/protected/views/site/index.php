@@ -10,7 +10,17 @@ $this->pageTitle=Yii::app()->name;
 	For access to demo content use
 </p>
 
-<p style="font-weight: bold;">demo/demo</p>
+<p style="font-weight: bold;">
+	email: demo@demo.ru<br />
+	password: demo
+</p>
+
+or
+
+<p style="font-weight: bold;">
+	email: user@demo.ru<br />
+	password: user
+</p>
 
 <p>to login</p>
 

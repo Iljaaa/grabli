@@ -1,4 +1,4 @@
-<h1><i>Create project</i></h1>
+<h1><i>Create new project</i></h1>
 
 <?=CHtml::beginForm(); ?>
 
@@ -10,20 +10,10 @@
 	</div>
 </div>
 
-
-
-<div class="f-row">
-	<label><?=CHtml::label('id', 'id') ?></label>
-	<div class="f-input">
-		<?=CHtml::activeTextField ($model, 'id', array('class'=>'g-1')) ?>
-		<?=CHtml::error($model, "id"); ?>
-	</div>
-</div>
-
 <div class="f-row">
 	<?=CHtml::activeLabel($model, 'owner_id') ?>
 	<div class="f-input">
-		<?=CHtml::activeTextField($model, 'owner_id', array('maxlength' => 128, 'class'=>'g-1')) ?>
+		<?php $this->widget('ShowUserWidget', array('user_id' => $model->owner_id)); ?>
 		<?=CHtml::error($model, "owner_id"); ?>
 	</div>
 </div>

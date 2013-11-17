@@ -35,7 +35,7 @@
 <?php $users = $project->getUsers(); ?>
 
 <?php if (count($users) == 0) : ?>
-<p>В проекте нет ни одного участника</p>
+<p>No users, use <a href="javascript:startFindUser('addUser2Project')">search</a> for add.</p>
 <?php endif; ?>
 
 <?php if (count($users) > 0) : ?>

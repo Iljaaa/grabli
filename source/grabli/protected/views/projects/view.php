@@ -28,7 +28,7 @@
 			<?php if (count($users) > 0) : ?>
 			<?=$this->renderPartial('/projects/view/users', array ('users' => $users)); ?>
 			<?php else : ?>
-			В проекте нет участинков
+			--
 			<?php endif; ?>
 		</div>
 		
@@ -63,9 +63,12 @@
 						<?=$all; ?>
 					</td>
 					<td style="text-align: center; font-weight: bold;">
-						<?php
-						echo ' '.number_format((($closed/$all) * 100), 1);
-						echo '%';
+						<?php if ($all > 0 && $closed > 0) :
+							echo ' '.number_format((($closed/$all) * 100), 1);
+							echo '%';
+							else :
+							echo '--';
+							endif;
 						?>
 					</td>
 				</tr>

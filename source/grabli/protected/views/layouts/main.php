@@ -64,7 +64,7 @@
 			</div>
 		</div>
 
-		<div class="g-row">
+		<div class="g-row" style="padding-bottom: 75px;">
 			<div class="g-9">
 				<?php echo $content; ?>
 			</div>

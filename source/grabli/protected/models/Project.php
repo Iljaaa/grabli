@@ -259,33 +259,16 @@ class Project extends CActiveRecord
 		return Issue::model()->count($criteria);
 	}
 
-
-	/*
-	public function insertByModel ($model)
-	{	
+	/**
+	 * Обновляем проект на основании формы
+	 *
+	 */
+	public function updateByModel ($model)
+	{
 		$this->owner_id		= $model->owner_id;
 		$this->name			= $model->name;
 		$this->code			= $model->code;
 		$this->description	= $model->description;
-	
-		$this->save();
-	
-		return $this;
 	}
-	
-	public function updateByModel ($model)
-	{
-		$data = array (		
-			'owner_id'		=> $model->owner_id,
-			'name'			=> $model->name,
-			'code'			=> $model->code,
-			'description'	=> $model->description
-		);
-		
-		Yii::app()->db->createCommand()->update($this->tableName(), $data, 'id=:id', array(':id' => $model->id));
-	
-		
-		return $this;
-	}*/
-	
+
 }

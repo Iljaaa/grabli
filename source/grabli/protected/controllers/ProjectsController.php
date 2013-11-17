@@ -32,25 +32,25 @@ class ProjectsController extends Controller
 	 */
 	public function actionAdd ()
 	{
-		if (yii::app()->user->isGuest) {
-			throw new CHttpException('403 Auth required');
-		}
 
 		$this->pageTitle = 'New project';
 		$this->breadcrumbs['New project'] = array('/projects/add/');
 		
 		$model = new ProjectForm();
 		$model->setScenario('create');
-		$model->id = 0;
 		$model->owner_id = yii::app()->user->getId();
-
 
 		if (isset($_POST['ProjectForm']) && count(($_POST['ProjectForm'])) > 0) :
 			$model->attributes = $_POST['ProjectForm'];
 			if ($model->validate())
 			{
 				$item = new Project();
-				$item->insertByModel ($model);	
+				// $item->insertByModel ($model);
+				$item->updateByModel($model);
+				$item->save();
+
+				// добавить владельца в участники
+				$item->addUser($model->owner_id);
 
 				$this->redirect('/project/'.$item->code.'/');
 			}
@@ -154,6 +154,7 @@ class ProjectsController extends Controller
 			$model->attributes = $_POST['ProjectForm'];
 			if ($model->validate()) {
 				$project->updateByModel ($model);
+				$project->save();
 				$this->redirect('/project/'.$model->code.'/');
 			}
 		}

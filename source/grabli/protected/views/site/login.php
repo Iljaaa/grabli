@@ -10,10 +10,6 @@ $this->breadcrumbs=array(
 ?>
 
 <h1>Login</h1>
-
-<p>Please fill out the following form with your login credentials:</p>
-
-<div class="form">
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'login-form',
 	'enableClientValidation'=>true,
@@ -22,38 +18,43 @@ $this->breadcrumbs=array(
 	),
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'username'); ?>
+<div class="f-row">
+	<?php echo $form->labelEx($model,'username'); ?>
+	<div class="f-input">
 		<?php echo $form->textField($model,'username'); ?>
 		<?php echo $form->error($model,'username'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'password'); ?>
+</div>
+
+<div class="f-row">
+	<?php echo $form->labelEx($model,'password'); ?>
+	<div class="f-input">
 		<?php echo $form->passwordField($model,'password'); ?>
 		<?php echo $form->error($model,'password'); ?>
-		<p class="hint">
-			Hint: You may login with <kbd>demo</kbd>/<kbd>demo</kbd> or <kbd>admin</kbd>/<kbd>admin</kbd>.
-		</p>
 	</div>
+</div>
 
-	<div class="row rememberMe">
+<div class="f-row">
+	<?php echo $form->label($model,'rememberMe'); ?>
+	<div class="f-input">
 		<?php echo $form->checkBox($model,'rememberMe'); ?>
-		<?php echo $form->label($model,'rememberMe'); ?>
 		<?php echo $form->error($model,'rememberMe'); ?>
 	</div>
+</div>
 
-	<div class="row buttons">
-		<?php echo CHtml::submitButton('Login'); ?>
+<div class="f-row">
+	<div class="f-actions">
+		<?php echo CHtml::submitButton('Login', array('class' => 'f-bu f-bu-success')); ?>
+		&nbsp;&nbsp;&nbsp;
+		<a href="<?=$this->createUrl('/users/restore/') ?>">Restore passowrd</a>
 	</div>
 
 <?php $this->endWidget(); ?>
 </div>
 
-<div>
-<a href="<?=$this->createUrl('/users/restore/') ?>">Восстановление пароля</a>
-</div>
+<p style="margin-top: 20px;">
+
+</p>
 
 

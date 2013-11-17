@@ -164,19 +164,27 @@ class User extends CActiveRecord
      */
     public function getProjects () 
     {
-    	$projects = array ();
-		
+
 		$criteria = new CDbCriteria();
 		$criteria->addCondition("user_id = :id");
 		$criteria->params = array (':id' => $this->id);
 		
-		$projetsIds = UserHasProjects::model()->FindAll($criteria);
-		
-		foreach ($projetsIds as $uid) {
-			$project = Project::model()->findByPk($uid->project_id);
-			if ($project != null) $projects[] = $project;
+		$projetsIdsData = UserHasProjects::model()->FindAll($criteria);
+		$projetsIds = array ();
+		foreach ($projetsIdsData as $pid) {
+			$projetsIds[] = $pid->project_id;
 		}
-		
+
+	    $criteria = new CDbCriteria();
+	    // $criteria->addInCondition('id', $projetsIds);
+	    $criteria->addCondition('id IN (:projects_ids) OR owner_id = :owner');
+	    $criteria->params = array (
+		    ':projects_ids' => implode(', ', $projetsIds),
+		    ':owner'        => $this->id
+	    );
+
+
+	    $projects = Project::model()->findAll($criteria);
 		return $projects;
     }
    
