@@ -76,6 +76,19 @@
 		</table>
 
 	</div>
+
+	<div class="g-3">
+		<div class="f-message" style="min-height: 70px;">
+			<h5>Tags :</h5>
+			<?php $users = $project->getUsers(); ?>
+			<div>
+				<a href="javascript:addTag()" style="text-decoration: none;">[+]</a>
+				<a href="javascript:addTag()">add tag</a>
+			</div>
+		</div>
+
+	</div>
+
 </div>
 
 <hr />
@@ -94,9 +107,6 @@
 
 </div>
 
-<?=$this->renderPartial ('/projects/view/create_issue', array('project' => $project)) ?>
-
-
 <?php if (isset($issues) && count($issues) > 0) : ?>
 	<?=$this->renderPartial('/issues/list', array ('bugs' => $issues)); ?>
 
@@ -111,4 +121,7 @@
 <p>No issues</p>
 <?php endif; ?>
 
+
+<?=$this->renderPartial ('/projects/view/create_issue', array('project' => $project)) ?>
+<?=$this->renderPartial ('/projects/view/add_tag', array('project' => $project)) ?>
 
