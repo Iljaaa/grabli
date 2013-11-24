@@ -11,3 +11,6 @@ $this->breadcrumbs=array(
 <p>
 GRABL! it's simple and functional bug tracker.
 </p>
+
+
+<?php $this->widget("TableGenerator"); ?>
