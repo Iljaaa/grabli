@@ -8,6 +8,7 @@
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'GRABL! the open bug tracker',
+    'timeZone' => 'Europe/Moscow',
 
 	// preloading 'log' component
 	'preload'=>array('log'),
