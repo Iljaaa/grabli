@@ -23,6 +23,7 @@ class Issue extends CActiveRecord
 	/**
 	 * Получаем следующий свободный номер
 	 * для бага по проекту
+     * TODO : move to IssueSearch
 	 *
 	 * @param $projectId
 	 * @return array|int|mixed|null
@@ -46,6 +47,7 @@ class Issue extends CActiveRecord
 
 	/**
 	 * Получаем бар по коду проекта и номеру
+     * TODO : move to IssueSearch
 	 *
 	 * @param $project_id
 	 * @param $number
@@ -62,7 +64,8 @@ class Issue extends CActiveRecord
     }
 
     /**
-     * Формируем урл иконки на основании типа 
+     * Формируем урл иконки на основании типа
+     * TODO : move to IssueSearch
      * 
      */
     public static function getIconUrlByBugType ($type)
@@ -72,8 +75,9 @@ class Issue extends CActiveRecord
 
 	/**
 	 * Поиск по строке
+     * TODO : move to IssueSearch
 	 *
-	 * @param $searchString
+	 * @param string $searchString
 	 * @return array|CActiveRecord|mixed|null
 	 */
 	public static function search ($searchString, $criteria = null)
@@ -132,7 +136,10 @@ class Issue extends CActiveRecord
     {
     	return User::model()->findByPk ($this->assigned_to);	
     }
-    
+
+    /**
+     * @return Project
+     */
     public function getProject () 
     {
     	if ($this->project_id == 0) return null;

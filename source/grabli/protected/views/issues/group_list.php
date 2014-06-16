@@ -1,4 +1,4 @@
-<?php 
+<?php
 $steps = Step::model()->getOrderSteps(); ?>
 <?php
 

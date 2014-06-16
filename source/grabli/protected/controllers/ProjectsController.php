@@ -285,6 +285,7 @@ class ProjectsController extends Controller
 	 */
 	public function actionIssues ($code)
 	{
+
 		if ($code == '') {
 			throw new CHttpException('Project code not sended');
 		}
@@ -343,9 +344,23 @@ class ProjectsController extends Controller
 		$data['bugs'] = $project->getIssues ($criteria);
 
 
+
 		// ищим задачи по проекту
 		// $search = $data['search'] =  yii::app()->request->getParam('search', '');
 		// $modelAddUser = new AddUserForm();
+
+        /** @var CHttpRequest $req */
+        $req = yii::app()->getRequest();
+        yii::app()->firephp->info ($req->getQueryString(), 'here');
+
+        $params = $req->getParam('IssueFiler', array());
+        $params['project_id'] = $project->id;
+        yii::app()->firephp->info ($params, 'form $params');
+
+        $issueFilterForm = new IssueFiler();
+        $issueFilterForm->attributes = $params;
+        //echo '<pre>'; var_dump ($issueFilterForm->attributes);
+        $data['issueFilterForm'] = $issueFilterForm;
 
 		$this->render('issues', $data);
 	}
